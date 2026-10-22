@@ -1,0 +1,10 @@
+{
+  "id": "bg.port",
+  "floor": 0.723,
+  "ambient": 0.5,
+  "lights": [
+    { "x": 124, "y": 360, "radius": 300, "intensity": 0.55 },
+    { "x": 650, "y": 440, "radius": 300, "intensity": 0.55 },
+    { "x": 1510, "y": 360, "radius": 320, "intensity": 0.6 }
+  ]
+}

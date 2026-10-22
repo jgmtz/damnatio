@@ -1,0 +1,30 @@
+{
+  "id": "bibulo",
+  "name": "char.bibulo.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": {
+      "art": "bibulo.pose.idle",
+      "ground": {
+        "x": 328,
+        "y": 977
+      },
+      "headPx": 114
+    }
+  },
+  "animation": {
+    "walk": {
+      "speed": 160,
+      "stepPeriod": 0.42,
+      "bob": 4,
+      "frames": [
+        "idle"
+      ]
+    }
+  },
+  "defaultExpression": "neutral",
+  "portraits": {
+    "neutral": "bibulo.portrait"
+  }
+}

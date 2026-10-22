@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="1024" viewBox="0 0 600 1024">
+  <!-- PLACEHOLDER silhouette: young Vestal / novice (Cláudia, other Vestals). Facing right. Ground (300,990), head 112-228. -->
+  <g stroke="#0c0907" stroke-width="5" stroke-linejoin="round">
+    <!-- short veil, to the shoulders -->
+    <path d="M262 120 Q300 92 342 112 Q356 150 350 196 L320 250 Q270 290 250 380 L214 380 Q214 250 262 120 Z" fill="#d8945a"/>
+    <!-- robe, narrower -->
+    <path d="M256 256 Q300 240 346 262 Q372 430 380 600 Q390 800 404 975 L204 975 Q210 780 224 600 Q236 420 256 256 Z" fill="#c8743a"/>
+    <!-- head -->
+    <path d="M268 140 Q300 110 340 122 Q362 140 364 172 L380 196 L364 204 Q366 222 350 228 Q320 236 292 222 Q264 200 266 160 Z" fill="#c8743a"/>
+    <!-- veil over the head -->
+    <path d="M258 130 Q300 90 348 110 Q340 120 324 124 Q292 128 280 152 Q270 186 274 240 L248 250 Q242 176 258 130 Z" fill="#d8945a"/>
+    <!-- front arm, hands together in front -->
+    <path d="M334 288 Q352 360 368 420 L394 430 L388 446 L356 440 Q326 380 316 300 Z" fill="#c8743a"/>
+    <!-- feet -->
+    <path d="M240 975 L240 990 L300 990 L292 975 Z M318 975 L322 990 L392 990 L378 975 Z" fill="#c8743a"/>
+  </g>
+  <g fill="none" stroke="#0c0907" stroke-width="3">
+    <path d="M246 440 Q300 428 364 444"/>
+    <path d="M270 470 Q266 700 246 962 M310 466 Q314 700 320 965"/>
+    <circle cx="342" cy="168" r="4" fill="#0c0907"/>
+  </g>
+</svg>

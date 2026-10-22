@@ -1,0 +1,30 @@
+{
+  "id": "escriba",
+  "name": "char.escriba.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": {
+      "art": "escriba.pose.idle",
+      "ground": {
+        "x": 323,
+        "y": 977
+      },
+      "headPx": 104
+    }
+  },
+  "animation": {
+    "walk": {
+      "speed": 160,
+      "stepPeriod": 0.42,
+      "bob": 4,
+      "frames": [
+        "idle"
+      ]
+    }
+  },
+  "defaultExpression": "neutral",
+  "portraits": {
+    "neutral": "escriba.portrait"
+  }
+}

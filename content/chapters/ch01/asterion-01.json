@@ -1,0 +1,177 @@
+{
+  "id": "asterion-01",
+  "protagonist": "asterion",
+  "title": "asterion01.title",
+  "start": "s01",
+  "nodes": [
+    {
+      "id": "s01",
+      "type": "stage",
+      "background": "bg.labyrinth.chamber",
+      "worldWidth": 3840,
+      "mode": "dark",
+      "characters": [{ "id": "asterion", "pose": "listen", "x": 520, "facing": "right" }],
+      "audio": { "music": "labyrinth" },
+      "next": "t01"
+    },
+    { "id": "t01", "type": "thought", "man": "asterion01.t01.man", "beast": "asterion01.t01.beast", "next": "t02" },
+    { "id": "t02", "type": "thought", "pose": "idle", "man": "asterion01.t02.man", "next": "e01" },
+    {
+      "id": "e01",
+      "type": "exploration",
+      "character": "asterion",
+      "width": 3840,
+      "start": 520,
+      "hint": "asterion01.e01.hint",
+      "sounds": [
+        { "x": 1500, "y": 520, "every": 2.6 },
+        { "x": 3560, "y": 650, "every": 1.7 }
+      ],
+      "hotspots": [
+        {
+          "id": "wall",
+          "view": "fpv.asterion.wall",
+          "x": 1575,
+          "label": "asterion01.h.wall",
+          "lines": ["asterion01.h.wall.1"],
+          "conditions": [{ "not": { "flag": "livia_viu_marca" } }]
+        },
+        {
+          "id": "wall_lit",
+          "view": "fpv.asterion.wall",
+          "viewGlow": [{"x": 0.5, "y": 0.36, "r": 0.11}],
+          "x": 1575,
+          "label": "asterion01.h.wall",
+          "lines": ["asterion01.h.wall.1", "asterion01.h.wall.lit"],
+          "conditions": [{ "flag": "livia_viu_marca" }]
+        },
+        { "id": "bed", "view": "fpv.asterion.bed", "x": 820, "label": "asterion01.h.bed", "lines": ["asterion01.h.bed.1"] },
+        { "id": "bone", "view": "fpv.asterion.bone", "x": 2150, "label": "asterion01.h.bone", "lines": ["asterion01.h.bone.1"] },
+        { "id": "chain", "view": "fpv.asterion.chain", "x": 2750, "label": "asterion01.h.chain", "lines": ["asterion01.h.chain.1"] }
+      ],
+      "exits": [{ "id": "air", "from": 3500, "to": 3840, "next": "t03" }]
+    },
+    { "id": "t03", "type": "thought", "pose": "listen", "man": "asterion01.t03.man", "beast": "asterion01.t03.beast", "next": "e02" },
+    {
+      "id": "e02",
+      "type": "exploration",
+      "character": "asterion",
+      "width": 3840,
+      "hint": "asterion01.e02.hint",
+      "sounds": [{ "x": 1500, "y": 700, "every": 0.9 }],
+      "scent": { "trails": [{ "from": 3600, "to": 1450, "kind": "person" }] },
+      "exits": [{ "id": "stairs", "from": 1650, "to": 2050, "next": "s02" }]
+    },
+    {
+      "id": "s02",
+      "type": "stage",
+      "update": [
+        { "id": "asterion", "pose": "idle", "facing": "left" },
+        { "id": "mirto", "pose": "idle", "x": 1350, "facing": "right", "flame": 0.8 }
+      ],
+      "next": "d01"
+    },
+    { "id": "d01", "type": "dialogue", "speaker": "mirto", "text": "asterion01.d01", "next": "d02" },
+    { "id": "d02", "type": "dialogue", "speaker": "mirto", "text": "asterion01.d02", "next": "b01" },
+    {
+      "id": "b01",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "flag": "claudia_levada_a_serio" }], "next": "d03a" }],
+      "default": "d04"
+    },
+    { "id": "d03a", "type": "dialogue", "speaker": "mirto", "text": "asterion01.d03a", "next": "d04" },
+    { "id": "d04", "type": "dialogue", "speaker": "mirto", "pose": "bread", "text": "asterion01.d04", "next": "c01" },
+    {
+      "id": "c01",
+      "type": "choice",
+      "speaker": "mirto",
+      "text": "asterion01.c01",
+      "choices": [
+        {
+          "id": "take",
+          "text": "asterion01.c01.take",
+          "effects": [{ "relation": "asterion:mirto", "add": 1 }, { "relation": "mirto:asterion", "add": 1 }],
+          "next": "s_bread"
+        },
+        { "id": "wait", "text": "asterion01.c01.wait", "next": "t04b" },
+        {
+          "id": "growl",
+          "text": "asterion01.c01.growl",
+          "voice": "beast",
+          "effects": [{ "flag": "fera", "add": 1 }, { "relation": "mirto:asterion", "add": -1 }],
+          "next": "t04c"
+        }
+      ]
+    },
+    { "id": "t04a", "type": "thought", "pose": "reach", "man": "asterion01.t04a.man", "next": "d05a" },
+    { "id": "s_bread", "type": "stage", "update": [{ "id": "mirto", "x": 1560 }], "next": "t04a" },
+    { "id": "d05a", "type": "dialogue", "speaker": "mirto", "text": "asterion01.d05a", "next": "s03" },
+    { "id": "t04b", "type": "thought", "man": "asterion01.t04b.man", "beast": "asterion01.t04b.beast", "next": "d05b" },
+    { "id": "d05b", "type": "dialogue", "speaker": "mirto", "text": "asterion01.d05b", "next": "s03" },
+    { "id": "t04c", "type": "thought", "pose": "beast", "man": "asterion01.t04c.man", "beast": "asterion01.t04c.beast", "next": "s02c" },
+    { "id": "s02c", "type": "stage", "update": [{ "id": "mirto", "x": 1150 }], "next": "d05c" },
+    { "id": "d05c", "type": "dialogue", "speaker": "mirto", "pose": "scared", "text": "asterion01.d05c", "next": "s03" },
+    {
+      "id": "s03",
+      "type": "stage",
+      "update": [{ "id": "asterion", "pose": "beast" }, { "id": "mirto", "pose": "idle" }],
+      "next": "t05"
+    },
+    { "id": "t05", "type": "thought", "man": "asterion01.t05.man", "beast": "asterion01.t05.beast", "next": "d06" },
+    { "id": "d06", "type": "dialogue", "speaker": "mirto", "text": "asterion01.d06", "next": "s04" },
+    { "id": "s04", "type": "stage", "update": [{ "id": "asterion", "pose": "idle" }], "next": "c02" },
+    {
+      "id": "c02",
+      "type": "choice",
+      "speaker": "mirto",
+      "text": "asterion01.c02",
+      "choices": [
+        {
+          "id": "mark",
+          "text": "asterion01.c02.mark",
+          "thread": "tie",
+          "effects": [
+            { "relation": "asterion:mirto", "add": 1 },
+            { "relation": "mirto:asterion", "add": 1 },
+            { "fate": "porta", "add": 1 },
+            { "flag": "mirto_copiou_simbolo", "value": true }
+          ],
+          "next": "t06a"
+        },
+        {
+          "id": "silence",
+          "text": "asterion01.c02.silence",
+          "thread": "tangle",
+          "effects": [{ "fate": "porta", "add": -1 }],
+          "next": "t06b"
+        },
+        {
+          "id": "knock",
+          "text": "asterion01.c02.knock",
+          "thread": "cut",
+          "effects": [
+            { "flag": "fera", "add": 1 },
+            { "fate": "porta", "add": -1 },
+            { "flag": "asterion_rachou_pedra", "value": true },
+            { "flag": "colegio_alerta", "add": 1 }
+          ],
+          "next": "t06c"
+        }
+      ]
+    },
+    { "id": "t06a", "type": "thought", "pose": "reach", "man": "asterion01.t06a.man", "next": "d07a" },
+    { "id": "d07a", "type": "dialogue", "speaker": "mirto", "text": "asterion01.d07a", "next": "s05" },
+    { "id": "t06b", "type": "thought", "man": "asterion01.t06b.man", "beast": "asterion01.t06b.beast", "next": "d07b" },
+    { "id": "d07b", "type": "dialogue", "speaker": "mirto", "text": "asterion01.d07b", "next": "s05" },
+    { "id": "t06c", "type": "thought", "pose": "charge", "man": "asterion01.t06c.man", "beast": "asterion01.t06c.beast", "next": "d07c" },
+    { "id": "d07c", "type": "dialogue", "speaker": "mirto", "pose": "scared", "text": "asterion01.d07c", "next": "s05" },
+    {
+      "id": "s05",
+      "type": "stage",
+      "update": [{ "id": "mirto", "remove": true }, { "id": "asterion", "pose": "listen", "facing": "right" }],
+      "next": "t07"
+    },
+    { "id": "t07", "type": "thought", "man": "asterion01.t07.man", "beast": "asterion01.t07.beast", "next": "end" },
+    { "id": "end", "type": "end" }
+  ]
+}

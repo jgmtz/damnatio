@@ -1,0 +1,13 @@
+{
+  "id": "varrao",
+  "name": "char.varrao.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": { "art": "varrao.pose.idle", "ground": { "x": 342, "y": 994 }, "headPx": 113 },
+    "write": { "art": "varrao.pose.write", "ground": { "x": 342, "y": 994 }, "headPx": 113 }
+  },
+  "animation": {
+    "walk": { "speed": 161, "stepPeriod": 0.42, "bob": 4, "frames": ["idle"] }
+  }
+}

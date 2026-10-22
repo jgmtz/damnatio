@@ -1,0 +1,12 @@
+{
+  "id": "domicia",
+  "name": "char.domicia.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": { "art": "domicia.pose.idle", "ground": { "x": 433, "y": 1164 }, "headPx": 137 }
+  },
+  "animation": {
+    "walk": { "speed": 154, "stepPeriod": 0.42, "bob": 4, "frames": ["idle"] }
+  }
+}

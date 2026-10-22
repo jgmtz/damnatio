@@ -1,0 +1,12 @@
+{
+  "id": "augur_old",
+  "name": "char.augur_old.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": { "art": "augur_old.pose.idle", "ground": { "x": 301, "y": 989 }, "headPx": 121 }
+  },
+  "animation": {
+    "walk": { "speed": 140, "stepPeriod": 0.42, "bob": 4, "frames": ["idle"] }
+  }
+}

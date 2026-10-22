@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="1024" viewBox="0 0 600 1024">
+  <!-- PLACEHOLDER silhouette: pilgrim from the Hellenic Provinces (hooded travel cloak, ragged hem). Facing right. Ground (300,990), head 112-228. -->
+  <g stroke="#0c0907" stroke-width="5" stroke-linejoin="round">
+    <!-- cloak, slightly hunched -->
+    <path d="M244 250 Q300 226 356 258 Q384 420 394 600 Q404 800 416 960 L392 975 L370 958 L344 976 L318 958 L292 976 L268 958 L242 976 L216 958 L194 970 Q198 780 210 600 Q222 420 244 250 Z" fill="#8a4f28"/>
+    <!-- head -->
+    <path d="M270 146 Q302 114 342 126 Q364 144 366 176 L382 200 L366 206 Q368 224 352 230 Q322 238 294 224 Q266 202 268 164 Z" fill="#c8743a"/>
+    <!-- deep hood -->
+    <path d="M250 136 Q296 84 352 112 Q366 128 354 136 Q320 122 296 136 Q272 156 274 210 Q276 250 300 262 L232 300 Q222 200 250 136 Z" fill="#8a4f28"/>
+    <!-- hands clasped at the chest -->
+    <path d="M330 300 Q360 330 372 360 L388 368 L380 384 L358 378 Q330 350 314 320 Z" fill="#c8743a"/>
+    <!-- feet -->
+    <path d="M246 975 L246 990 L300 990 L292 975 Z M324 975 L328 990 L392 990 L380 975 Z" fill="#c8743a"/>
+  </g>
+  <g fill="none" stroke="#0c0907" stroke-width="3">
+    <path d="M262 420 Q256 700 236 950 M310 420 Q312 700 318 955 M350 430 Q362 700 378 950"/>
+    <circle cx="344" cy="172" r="4" fill="#0c0907"/>
+  </g>
+</svg>

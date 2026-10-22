@@ -1,0 +1,28 @@
+{
+  "id": "bg.temple",
+  "floor": 0.81,
+  "repeat": true,
+  "ambient": 0.45,
+  "lights": [
+    { "x": 1200, "y": 560, "radius": 520, "intensity": 0.35 },
+    { "x": 1840, "y": 600, "radius": 300, "intensity": 0.2 }
+  ],
+  "props": [
+    { "art": "prop.temple.column", "x": 240, "ground": { "x": 448, "y": 1151 }, "scale": 0.653 },
+    { "art": "prop.temple.lamp", "x": 560, "ground": { "x": 447, "y": 1082 }, "scale": 0.354, "flame": { "x": 447, "y": 250, "size": 1, "intensity": 0.9 } },
+    { "art": "prop.temple.column", "x": 880, "ground": { "x": 448, "y": 1151 }, "scale": 0.653 },
+    { "art": "prop.temple.gate", "x": 1200, "ground": { "x": 448, "y": 1135 }, "scale": 0.565 },
+    { "art": "prop.temple.column", "x": 1520, "ground": { "x": 448, "y": 1151 }, "scale": 0.653 },
+    { "art": "prop.temple.niche", "x": 1840, "ground": { "x": 448, "y": 1152 }, "scale": 0.469 },
+    { "art": "prop.temple.column", "x": 2160, "ground": { "x": 448, "y": 1151 }, "scale": 0.653 },
+    { "art": "prop.temple.lamp", "x": 2480, "ground": { "x": 447, "y": 1082 }, "scale": 0.354, "flame": { "x": 447, "y": 250, "size": 1, "intensity": 0.9 } },
+    { "art": "prop.temple.column", "x": 2800, "ground": { "x": 448, "y": 1151 }, "scale": 0.653 },
+    { "art": "prop.temple.altar", "x": 3250, "ground": { "x": 447, "y": 1039 }, "scale": 0.337 },
+    { "art": "prop.temple.column", "x": 3640, "ground": { "x": 448, "y": 1151 }, "scale": 0.653 }
+  ],
+  "foreground": [
+    { "x": 120, "art": "prop.temple.column", "ground": { "x": 448, "y": 1151 }, "scale": 0.95 },
+    { "x": 2850, "art": "prop.temple.column", "ground": { "x": 448, "y": 1151 }, "scale": 0.95 },
+    { "x": 4480, "art": "prop.temple.column", "ground": { "x": 448, "y": 1151 }, "scale": 0.95 }
+  ]
+}

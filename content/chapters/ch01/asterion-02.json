@@ -1,0 +1,185 @@
+{
+  "id": "asterion-02",
+  "protagonist": "asterion",
+  "title": "asterion02.title",
+  "start": "s01",
+  "nodes": [
+    {
+      "id": "s01",
+      "type": "stage",
+      "background": "bg.labyrinth.chamber",
+      "worldWidth": 1920,
+      "mode": "dark",
+      "characters": [{ "id": "asterion", "pose": "reach", "x": 900, "facing": "right" }],
+      "audio": { "music": "labyrinth" },
+      "next": "t01"
+    },
+    { "id": "t01", "type": "thought", "man": "asterion02.t01.man", "beast": "asterion02.t01.beast", "next": "m_name" },
+    {
+      "id": "m_name",
+      "type": "minigame",
+      "game": "trace",
+      "params": { "hint": "asterion02.mname.hint", "letters": "ΑΣΤΕΡ", "nailArt": "fp.asterion.nail" },
+      "outcomes": [
+        { "id": "clean", "label": "asterion02.mname.clean", "next": "s02" },
+        { "id": "shaky", "label": "asterion02.mname.shaky", "next": "s02" }
+      ]
+    },
+    {
+      "id": "s02",
+      "type": "stage",
+      "mode": "flashback",
+      "background": "bg.labyrinth.archive",
+      "characters": [
+        { "id": "asterion_young", "pose": "idle", "x": 820, "facing": "right" },
+        { "id": "calias", "pose": "idle", "x": 1180, "facing": "left" }
+      ],
+      "next": "d01"
+    },
+    { "id": "d01", "type": "dialogue", "text": "asterion02.d01", "next": "d02" },
+    { "id": "d02", "type": "dialogue", "speaker": "calias", "text": "asterion02.d02", "next": "d03" },
+    { "id": "d03", "type": "dialogue", "speaker": "calias", "pose": "scratch", "text": "asterion02.d03", "next": "m_teach" },
+    {
+      "id": "m_teach",
+      "type": "minigame",
+      "game": "trace",
+      "params": { "hint": "asterion02.mteach.hint", "letters": "ΜΙΝΩ", "fingerArt": "fp.asterion_child.finger", "handWidth": 160 },
+      "outcomes": [
+        {
+          "id": "clean",
+          "label": "asterion02.mteach.clean",
+          "effects": [{ "flag": "asterion_traco_firme", "value": true }],
+          "next": "d04a"
+        },
+        { "id": "shaky", "label": "asterion02.mteach.shaky", "next": "d04b" }
+      ]
+    },
+    { "id": "d04a", "type": "dialogue", "speaker": "calias", "text": "asterion02.d04a", "next": "d05" },
+    { "id": "d04b", "type": "dialogue", "speaker": "calias", "text": "asterion02.d04b", "next": "d05" },
+    { "id": "d05", "type": "dialogue", "speaker": "calias", "pose": "idle", "text": "asterion02.d05", "next": "s03" },
+    {
+      "id": "s03",
+      "type": "stage",
+      "update": [
+        { "id": "calias", "x": 1500 },
+        { "id": "asterion_young", "x": 1200 }
+      ],
+      "next": "d06"
+    },
+    { "id": "d06", "type": "dialogue", "speaker": "calias", "pose": "scratch", "text": "asterion02.d06", "next": "m_heal" },
+    {
+      "id": "m_heal",
+      "type": "minigame",
+      "game": "trace",
+      "params": { "hint": "asterion02.mheal.hint", "letters": "ΘΗΡΩΝ", "heal": true, "guided": true, "fingerArt": "fp.asterion_child.finger", "handWidth": 160 },
+      "outcomes": [{ "id": "healed", "label": "asterion02.mheal.healed", "next": "d07" }]
+    },
+    { "id": "d07", "type": "dialogue", "speaker": "calias", "text": "asterion02.d07", "next": "t02" },
+    { "id": "t02", "type": "thought", "speaker": "asterion_young", "man": "asterion02.t02.man", "next": "b01" },
+    {
+      "id": "b01",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "flag": "livia_ouviu_o_chao" }], "next": "t03a" }],
+      "default": "t03b"
+    },
+    { "id": "t03a", "type": "thought", "speaker": "asterion_young", "man": "asterion02.t03a.man", "next": "s04" },
+    { "id": "t03b", "type": "thought", "speaker": "asterion_young", "man": "asterion02.t03b.man", "next": "s04" },
+    {
+      "id": "s04",
+      "type": "stage",
+      "update": [
+        { "id": "guard2", "pose": "idle", "x": 230, "facing": "right" },
+        { "id": "cacador", "pose": "idle", "x": 520, "facing": "right" },
+        { "id": "asterion_young", "facing": "left" }
+      ],
+      "next": "d08"
+    },
+    { "id": "d08", "type": "dialogue", "speaker": "guard2", "text": "asterion02.d08", "next": "d09" },
+    { "id": "d09", "type": "dialogue", "speaker": "calias", "text": "asterion02.d09", "next": "c01" },
+    {
+      "id": "c01",
+      "type": "choice",
+      "text": "asterion02.c01",
+      "choices": [
+        {
+          "id": "protect",
+          "text": "asterion02.c01.protect",
+          "thread": "tie",
+          "effects": [{ "flag": "asterion_protegeu_livro", "value": true }, { "fate": "porta", "add": -1 }],
+          "next": "s05a"
+        },
+        {
+          "id": "obey",
+          "text": "asterion02.c01.obey",
+          "thread": "cut",
+          "effects": [{ "fate": "porta", "add": 1 }],
+          "next": "d10b"
+        },
+        {
+          "id": "charge",
+          "text": "asterion02.c01.charge",
+          "thread": "tangle",
+          "voice": "beast",
+          "conditions": [{ "not": { "flag": "asterion_traco_firme" } }],
+          "effects": [{ "flag": "fera", "add": 1 }],
+          "next": "s05c"
+        }
+      ]
+    },
+    { "id": "s05a", "type": "stage", "update": [{ "id": "asterion_young", "pose": "charge", "x": 1800, "facing": "right" }], "next": "d10a" },
+    { "id": "d10a", "type": "dialogue", "text": "asterion02.d10a", "next": "fe_calias" },
+    { "id": "d10b", "type": "dialogue", "speaker": "guard2", "text": "asterion02.d10b", "next": "d10b2" },
+    { "id": "d10b2", "type": "dialogue", "text": "asterion02.d10b2", "next": "s06" },
+    { "id": "s05c", "type": "stage", "update": [{ "id": "asterion_young", "pose": "charge", "x": 600 }], "next": "d10c" },
+    { "id": "d10c", "type": "dialogue", "text": "asterion02.d10c", "next": "fe_calias" },
+    { "id": "fe_calias", "type": "fate_event", "thread": "cut", "next": "s06" },
+    {
+      "id": "s06",
+      "type": "stage",
+      "mode": "dark",
+      "background": "bg.labyrinth.chamber",
+      "characters": [{ "id": "asterion", "pose": "idle", "x": 900, "facing": "right" }],
+      "next": "b02"
+    },
+    {
+      "id": "b02",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "flag": "asterion_protegeu_livro" }], "next": "t04a" }],
+      "default": "t04b"
+    },
+    { "id": "t04a", "type": "thought", "man": "asterion02.t04a.man", "next": "s07" },
+    { "id": "t04b", "type": "thought", "man": "asterion02.t04b.man", "beast": "asterion02.t04b.beast", "next": "s07" },
+    {
+      "id": "s07",
+      "type": "stage",
+      "update": [{ "id": "asterion", "pose": "listen", "facing": "left" }],
+      "next": "d11"
+    },
+    { "id": "d11", "type": "dialogue", "text": "asterion02.d11", "next": "c02" },
+    {
+      "id": "c02",
+      "type": "choice",
+      "text": "asterion02.c02",
+      "choices": [
+        {
+          "id": "take",
+          "text": "asterion02.c02.take",
+          "effects": [{ "flag": "quinto_pao", "value": true }, { "flag": "colegio_alerta", "add": 1 }],
+          "next": "t05a"
+        },
+        {
+          "id": "sniff",
+          "text": "asterion02.c02.sniff",
+          "voice": "beast",
+          "effects": [{ "flag": "quinto_cheiro", "value": true }, { "flag": "fera", "add": 1 }],
+          "next": "t05b"
+        },
+        { "id": "leave", "text": "asterion02.c02.leave", "next": "t05c" }
+      ]
+    },
+    { "id": "t05a", "type": "thought", "pose": "reach", "man": "asterion02.t05a.man", "next": "end" },
+    { "id": "t05b", "type": "thought", "man": "asterion02.t05b.man", "beast": "asterion02.t05b.beast", "next": "end" },
+    { "id": "t05c", "type": "thought", "man": "asterion02.t05c.man", "beast": "asterion02.t05c.beast", "next": "end" },
+    { "id": "end", "type": "end" }
+  ]
+}

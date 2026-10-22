@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="3840" height="1080" viewBox="0 0 3840 1080">
+  <!-- PLACEHOLDER: Templo da Chama as a vase frieze. Replace with real art via assets/art/manifest.json. -->
+  <defs>
+    <pattern id="hatch" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#c8743a" stroke-width="1.2" stroke-opacity="0.09"/>
+    </pattern>
+    <pattern id="floorHatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(-20)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#c8743a" stroke-width="1" stroke-opacity="0.18"/>
+    </pattern>
+    <pattern id="meander" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M0 35 H35 V5 H8 V28 H28 V12 H15 V20" fill="none" stroke="#c8743a" stroke-width="3"/>
+    </pattern>
+    <pattern id="triglyph" x="208" y="168" width="160" height="50" patternUnits="userSpaceOnUse">
+      <path d="M8 2 v46 M24 2 v46 M40 2 v46" fill="none" stroke="#8a4f28" stroke-width="3"/>
+    </pattern>
+    <g id="column">
+      <rect x="-72" y="226" width="144" height="26" fill="#1a120c" stroke="#c8743a" stroke-width="4"/>
+      <path d="M-58 252 H58 L46 282 H-46 Z" fill="#1a120c" stroke="#c8743a" stroke-width="4"/>
+      <rect x="-44" y="282" width="88" height="708" fill="#140d09" stroke="#c8743a" stroke-width="4"/>
+      <path d="M-22 290 V982 M0 290 V982 M22 290 V982" stroke="#8a4f28" stroke-width="2"/>
+      <rect x="-58" y="986" width="116" height="14" fill="#1a120c" stroke="#c8743a" stroke-width="4"/>
+    </g>
+    <g id="lamp">
+      <path d="M0 1000 L-34 1000 M0 1000 L34 1000 M0 1000 V820 M-30 1000 L0 900 L30 1000" stroke="#8a4f28" stroke-width="4" fill="none"/>
+      <path d="M-40 800 Q0 850 40 800 Z" fill="#1a120c" stroke="#d9b45a" stroke-width="3"/>
+      <path d="M-10 798 Q0 770 6 750 Q12 776 10 798 Z" fill="#c8521f" opacity="0.8"/>
+    </g>
+  </defs>
+
+  <rect width="3840" height="1080" fill="#0c0907"/>
+  <rect width="3840" height="860" fill="url(#hatch)"/>
+
+  <!-- Architecture drawn on a 120..1000 grid, compressed so the floor sits at y=860 (GROUND_Y in src/ui/figure.ts). -->
+  <g transform="matrix(1 0 0 0.84091 0 19.09)">
+
+  <!-- Entablature: architrave with triglyphs and a meander band -->
+  <rect x="0" y="120" width="3840" height="40" fill="url(#meander)"/>
+  <rect x="0" y="160" width="3840" height="66" fill="#140d09" stroke="#c8743a" stroke-width="4"/>
+  <rect x="0" y="168" width="3840" height="50" fill="url(#triglyph)"/>
+
+  <!-- Columns -->
+  <use xlink:href="#column" x="240"/>
+  <use xlink:href="#column" x="880"/>
+  <use xlink:href="#column" x="1520"/>
+  <use xlink:href="#column" x="2160"/>
+  <use xlink:href="#column" x="2800"/>
+  <use xlink:href="#column" x="3640"/>
+
+  <!-- The Temple gate: bronze double door -->
+  <g>
+    <path d="M1060 1000 V560 Q1200 470 1340 560 V1000" fill="#140d09" stroke="#c8743a" stroke-width="5"/>
+    <path d="M1084 1000 V578 Q1200 500 1316 578 V1000" fill="#2a1a10" stroke="#8a4f28" stroke-width="3"/>
+    <line x1="1200" y1="526" x2="1200" y2="1000" stroke="#8a4f28" stroke-width="4"/>
+    <g fill="#d9b45a">
+      <circle cx="1130" cy="640" r="6"/><circle cx="1270" cy="640" r="6"/>
+      <circle cx="1130" cy="760" r="6"/><circle cx="1270" cy="760" r="6"/>
+      <circle cx="1130" cy="880" r="6"/><circle cx="1270" cy="880" r="6"/>
+      <circle cx="1184" cy="800" r="9"/><circle cx="1216" cy="800" r="9"/>
+    </g>
+  </g>
+
+  <!-- Niche with an amphora -->
+  <path d="M1760 1000 V600 A80 80 0 0 1 1920 600 V1000" fill="#100a07" stroke="#8a4f28" stroke-width="4"/>
+  <path d="M1810 990 Q1790 900 1815 820 Q1800 800 1820 790 H1860 Q1880 800 1865 820 Q1890 900 1870 990 Z" fill="#c8743a" stroke="#0c0907" stroke-width="3"/>
+  <path d="M1806 880 H1874 M1810 900 H1870" stroke="#0c0907" stroke-width="3"/>
+
+  <!-- Oil lamps -->
+  <use xlink:href="#lamp" x="560"/>
+  <use xlink:href="#lamp" x="2480"/>
+
+  <!-- The altar of Vesta -->
+  <g>
+    <rect x="3110" y="756" width="280" height="26" fill="#1a120c" stroke="#c8743a" stroke-width="4"/>
+    <rect x="3130" y="782" width="240" height="218" fill="#1a120c" stroke="#c8743a" stroke-width="4"/>
+    <rect x="3130" y="800" width="240" height="40" fill="url(#meander)"/>
+    <path d="M3170 756 Q3250 700 3330 756" fill="none" stroke="#d9b45a" stroke-width="4"/>
+    <path d="M3180 900 Q3250 870 3320 900 M3180 930 Q3250 900 3320 930" fill="none" stroke="#8a4f28" stroke-width="3"/>
+  </g>
+
+  </g>
+
+  <!-- Floor: a wide base band, like the foot of a vase -->
+  <rect x="0" y="860" width="3840" height="220" fill="#1a120c"/>
+  <rect x="0" y="860" width="3840" height="220" fill="url(#floorHatch)"/>
+  <rect x="0" y="900" width="3840" height="40" fill="url(#meander)" opacity="0.55"/>
+  <line x1="0" y1="900" x2="3840" y2="900" stroke="#8a4f28" stroke-width="2"/>
+  <line x1="0" y1="940" x2="3840" y2="940" stroke="#8a4f28" stroke-width="2"/>
+  <line x1="0" y1="860" x2="3840" y2="860" stroke="#c8743a" stroke-width="4"/>
+</svg>

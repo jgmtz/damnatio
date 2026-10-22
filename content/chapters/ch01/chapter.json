@@ -1,0 +1,424 @@
+{
+  "id": "ch01",
+  "title": "ch01.title",
+  "order": [
+    "prologue",
+    "livia-01",
+    "asterion-01",
+    "theron-01",
+    "livia-02",
+    "asterion-02",
+    "theron-02",
+    "livia-03",
+    "asterion-03",
+    "theron-03",
+    "livia-04",
+    "asterion-04",
+    "theron-04",
+    "coda"
+  ],
+  "summary": [
+    {
+      "cases": [
+        {
+          "conditions": [
+            {
+              "dead": "domicia"
+            }
+          ],
+          "text": "ch01.summary.domicia.0"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "livia_sabe_da_falta"
+            }
+          ],
+          "text": "ch01.summary.domicia.1"
+        },
+        {
+          "text": "ch01.summary.domicia.2"
+        }
+      ]
+    },
+    {
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "livia_confessou"
+            }
+          ],
+          "text": "ch01.summary.varrao.0"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "varrao_humilhado"
+            }
+          ],
+          "text": "ch01.summary.varrao.1"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "livia_acusou_domicia"
+            }
+          ],
+          "text": "ch01.summary.varrao.2"
+        }
+      ]
+    },
+    {
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "livia_presa"
+            }
+          ],
+          "text": "ch01.summary.livia.0"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "livia_desceu_ao_fundo"
+            }
+          ],
+          "text": "ch01.summary.livia.1"
+        },
+        {
+          "conditions": [
+            {
+              "crossover": "livia-theron"
+            }
+          ],
+          "text": "ch01.summary.livia.2"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "livia_viu_portais"
+            }
+          ],
+          "text": "ch01.summary.livia.3"
+        },
+        {
+          "text": "ch01.summary.livia.4"
+        }
+      ]
+    },
+    {
+      "cases": [
+        {
+          "conditions": [
+            {
+              "dead": "mirto"
+            }
+          ],
+          "text": "ch01.summary.mirto.0"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "mirto_preso"
+            }
+          ],
+          "text": "ch01.summary.mirto.1"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "mirto_seguiu"
+            }
+          ],
+          "text": "ch01.summary.mirto.2"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "mirto_salvo_pelo_pai"
+            }
+          ],
+          "text": "ch01.summary.mirto.3"
+        },
+        {
+          "text": "ch01.summary.mirto.4"
+        }
+      ]
+    },
+    {
+      "cases": [
+        {
+          "conditions": [
+            {
+              "dead": "quinto"
+            }
+          ],
+          "text": "ch01.summary.quinto.0"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "quinto_ferido"
+            }
+          ],
+          "text": "ch01.summary.quinto.1"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "quinto_ajudado"
+            }
+          ],
+          "text": "ch01.summary.quinto.2"
+        },
+        {
+          "text": "ch01.summary.quinto.3"
+        }
+      ]
+    },
+    {
+      "cases": [
+        {
+          "conditions": [
+            {
+              "any": [
+                {
+                  "flag": "mirto_seguiu"
+                },
+                {
+                  "flag": "livia_desceu_ao_fundo"
+                }
+              ]
+            }
+          ],
+          "text": "ch01.summary.asterion.0"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "fera",
+              "min": 4
+            }
+          ],
+          "text": "ch01.summary.asterion.1"
+        },
+        {
+          "text": "ch01.summary.asterion.2"
+        }
+      ]
+    },
+    {
+      "cases": [
+        {
+          "conditions": [
+            {
+              "dead": "nerea"
+            }
+          ],
+          "text": "ch01.summary.nerea.0"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "nerea_levada"
+            }
+          ],
+          "text": "ch01.summary.nerea.1"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "nerea_fugiu"
+            }
+          ],
+          "text": "ch01.summary.nerea.2"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "nerea_golpe"
+            }
+          ],
+          "text": "ch01.summary.nerea.4"
+        },
+        {
+          "text": "ch01.summary.nerea.3"
+        }
+      ]
+    },
+    {
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "iante_sem_luto"
+            }
+          ],
+          "text": "ch01.summary.iante.0"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "iante_sem_esperanca"
+            }
+          ],
+          "text": "ch01.summary.iante.1"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "iante_chave_devolvida"
+            }
+          ],
+          "text": "ch01.summary.iante.2"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "iante_chave",
+              "is": "pedida"
+            }
+          ],
+          "text": "ch01.summary.iante.3"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "iante_chave"
+            }
+          ],
+          "text": "ch01.summary.iante.4"
+        },
+        {
+          "text": "ch01.summary.iante.5"
+        }
+      ]
+    },
+    {
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "iante_brasa"
+            }
+          ],
+          "text": "ch01.summary.dion.0"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "livia_prometeu_peregrina"
+            }
+          ],
+          "text": "ch01.summary.dion.1"
+        }
+      ]
+    },
+    {
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "laco",
+              "min": 4
+            }
+          ],
+          "text": "ch01.summary.theron.0"
+        },
+        {
+          "conditions": [
+            {
+              "giftUses": "theron",
+              "min": 3
+            }
+          ],
+          "text": "ch01.summary.theron.1"
+        },
+        {
+          "text": "ch01.summary.theron.2"
+        }
+      ]
+    },
+    {
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "theron_sem_golpe"
+            }
+          ],
+          "text": "ch01.summary.copos.3"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "theron_vitima",
+              "is": "escriba"
+            },
+            {
+              "not": {
+                "flag": "guarda_porto_atento"
+              }
+            }
+          ],
+          "text": "ch01.summary.copos.0"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "theron_vitima",
+              "is": "mercadora"
+            },
+            {
+              "not": {
+                "flag": "guarda_porto_atento"
+              }
+            }
+          ],
+          "text": "ch01.summary.copos.1"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "theron_vitima",
+              "is": "bibulo"
+            },
+            {
+              "not": {
+                "flag": "guarda_porto_atento"
+              }
+            }
+          ],
+          "text": "ch01.summary.copos.2"
+        }
+      ]
+    },
+    {
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "colegio_alerta",
+              "min": 4
+            }
+          ],
+          "text": "ch01.summary.colegio.0"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "colegio_alerta",
+              "min": 2
+            }
+          ],
+          "text": "ch01.summary.colegio.1"
+        },
+        {
+          "text": "ch01.summary.colegio.2"
+        }
+      ]
+    }
+  ]
+}

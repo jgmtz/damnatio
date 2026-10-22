@@ -1,0 +1,498 @@
+{
+  "music": {
+    "title": {
+      "layers": [
+        {
+          "file": "music/mystic_journey.ogg"
+        }
+      ]
+    },
+    "pause": {
+      "layers": [
+        {
+          "file": "music/soft_harp.ogg"
+        }
+      ]
+    },
+    "prologue": {
+      "layers": [
+        {
+          "file": "music/walking_with_poseidon.ogg"
+        }
+      ]
+    },
+    "temple_dawn": {
+      "layers": [
+        {
+          "file": "music/soft_harp.ogg"
+        },
+        {
+          "file": "music/temple_dawn/warm.ogg",
+          "when": {
+            "signal": "selo",
+            "min": 2
+          }
+        },
+        {
+          "file": "music/temple_dawn/cold.ogg",
+          "when": {
+            "signal": "selo",
+            "max": -2
+          }
+        }
+      ]
+    },
+    "temple_day": {
+      "layers": [
+        {
+          "file": "music/mystic_journey.ogg"
+        },
+        {
+          "file": "music/temple_day/warm.ogg",
+          "when": {
+            "signal": "selo",
+            "min": 2
+          }
+        },
+        {
+          "file": "music/temple_day/cold.ogg",
+          "when": {
+            "signal": "selo",
+            "max": -2
+          }
+        }
+      ]
+    },
+    "temple_dusk": {
+      "layers": [
+        {
+          "file": "music/soft_harp.ogg"
+        },
+        {
+          "file": "music/temple_dusk/warm.ogg",
+          "when": {
+            "signal": "selo",
+            "min": 2
+          }
+        },
+        {
+          "file": "music/temple_dusk/cold.ogg",
+          "when": {
+            "signal": "selo",
+            "max": -2
+          }
+        }
+      ]
+    },
+    "flashback": {
+      "layers": [
+        {
+          "file": "music/soft_harp.ogg"
+        },
+        {
+          "file": "music/flashback/warm.ogg",
+          "when": {
+            "signal": "selo",
+            "min": 2
+          }
+        },
+        {
+          "file": "music/flashback/cold.ogg",
+          "when": {
+            "signal": "selo",
+            "max": -2
+          }
+        }
+      ]
+    },
+    "night_rite": {
+      "layers": [
+        {
+          "file": "music/evil_temple.ogg"
+        },
+        {
+          "file": "music/night_rite/warm.ogg",
+          "when": {
+            "signal": "selo",
+            "min": 2
+          }
+        },
+        {
+          "file": "music/night_rite/cold.ogg",
+          "when": {
+            "signal": "selo",
+            "max": -2
+          }
+        }
+      ]
+    },
+    "night_temple": {
+      "layers": [
+        {
+          "file": "music/secret_sanctum.ogg"
+        },
+        {
+          "file": "music/night_temple/warm.ogg",
+          "when": {
+            "signal": "selo",
+            "min": 2
+          }
+        },
+        {
+          "file": "music/night_temple/cold.ogg",
+          "when": {
+            "signal": "selo",
+            "max": -2
+          }
+        }
+      ]
+    },
+    "galleries": {
+      "layers": [
+        {
+          "file": "music/cave_theme.ogg"
+        },
+        {
+          "file": "music/galleries/warm.ogg",
+          "when": {
+            "signal": "selo",
+            "min": 2
+          }
+        },
+        {
+          "file": "music/galleries/cold.ogg",
+          "when": {
+            "signal": "selo",
+            "max": -2
+          }
+        }
+      ]
+    },
+    "iante": {
+      "loop": false,
+      "layers": [
+        {
+          "file": "music/iante.ogg"
+        }
+      ]
+    },
+    "labyrinth": {
+      "layers": [
+        {
+          "file": "music/dark_ambience.ogg"
+        },
+        {
+          "file": "music/labyrinth/beast1.ogg",
+          "when": {
+            "signal": "fera",
+            "min": 1
+          }
+        },
+        {
+          "file": "music/labyrinth/beast2.ogg",
+          "when": {
+            "signal": "fera",
+            "min": 3
+          }
+        },
+        {
+          "file": "music/labyrinth/roar.ogg",
+          "when": {
+            "signal": "fera",
+            "min": 4
+          }
+        }
+      ]
+    },
+    "bronze": {
+      "layers": [
+        {
+          "file": "music/find_nothing.ogg"
+        },
+        {
+          "file": "music/bronze/beast1.ogg",
+          "when": {
+            "signal": "fera",
+            "min": 1
+          }
+        },
+        {
+          "file": "music/bronze/beast2.ogg",
+          "when": {
+            "signal": "fera",
+            "min": 3
+          }
+        },
+        {
+          "file": "music/bronze/roar.ogg",
+          "when": {
+            "signal": "fera",
+            "min": 4
+          }
+        }
+      ]
+    },
+    "port_day": {
+      "layers": [
+        {
+          "file": "music/minstrel_dance.ogg"
+        },
+        {
+          "file": "music/port_day/melody_full.ogg",
+          "when": {
+            "signal": "presence",
+            "min": 0.75
+          }
+        },
+        {
+          "file": "music/port_day/melody_sparse.ogg",
+          "when": {
+            "signal": "presence",
+            "min": 0.5,
+            "below": 0.75
+          }
+        },
+        {
+          "file": "music/port_day/melody_bare.ogg",
+          "when": {
+            "signal": "presence",
+            "below": 0.5
+          }
+        }
+      ]
+    },
+    "keeper_house": {
+      "layers": [
+        {
+          "file": "music/old_tower_inn.ogg"
+        },
+        {
+          "file": "music/keeper_house/melody_full.ogg",
+          "when": {
+            "signal": "presence",
+            "min": 0.75
+          }
+        },
+        {
+          "file": "music/keeper_house/melody_sparse.ogg",
+          "when": {
+            "signal": "presence",
+            "min": 0.5,
+            "below": 0.75
+          }
+        },
+        {
+          "file": "music/keeper_house/melody_bare.ogg",
+          "when": {
+            "signal": "presence",
+            "below": 0.5
+          }
+        }
+      ]
+    },
+    "villa_night": {
+      "layers": [
+        {
+          "file": "music/bards_tale.ogg"
+        },
+        {
+          "file": "music/villa_night/melody_full.ogg",
+          "when": {
+            "signal": "presence",
+            "min": 0.75
+          }
+        },
+        {
+          "file": "music/villa_night/melody_sparse.ogg",
+          "when": {
+            "signal": "presence",
+            "min": 0.5,
+            "below": 0.75
+          }
+        },
+        {
+          "file": "music/villa_night/melody_bare.ogg",
+          "when": {
+            "signal": "presence",
+            "below": 0.5
+          }
+        }
+      ]
+    },
+    "port_night": {
+      "layers": [
+        {
+          "file": "music/port_night.ogg"
+        },
+        {
+          "file": "music/port_night/lyre.ogg"
+        },
+        {
+          "file": "music/port_night/aulos_full.ogg",
+          "when": {
+            "signal": "presence",
+            "min": 0.75
+          }
+        },
+        {
+          "file": "music/port_night/aulos_sparse.ogg",
+          "when": {
+            "signal": "presence",
+            "below": 0.75
+          }
+        }
+      ]
+    },
+    "coda": {
+      "loop": false,
+      "layers": [
+        {
+          "file": "music/coda.ogg"
+        }
+      ]
+    }
+  },
+  "sfx": {
+    "thread.tie": "sfx/thread_tie.ogg",
+    "thread.cut": "sfx/thread_cut.ogg",
+    "thread.tangle": "sfx/thread_tangle.ogg",
+    "echo.tie": "sfx/echo_tie.ogg",
+    "echo.fray": "sfx/echo_fray.ogg",
+    "echo.alert": "sfx/echo_alert.ogg",
+    "theron.fade": "sfx/theron_fade.ogg",
+    "flame.waver": "sfx/flame_waver.ogg",
+    "bronze.knock": "sfx/bronze_knock.ogg",
+    "knock_gate": "sfx/knock_gate.ogg",
+    "knocking_below": "sfx/knocking_below.ogg",
+    "flame_falter": "sfx/flame_waver.ogg"
+  },
+  "credits": [
+    {
+      "work": "Mystic Journey",
+      "author": "Tausdei",
+      "license": "CC-BY 3.0",
+      "url": "https://opengameart.org/content/mystic-journey",
+      "files": [
+        "music/mystic_journey.ogg"
+      ]
+    },
+    {
+      "work": "Soft Mysterious Harp Loop",
+      "author": "VWolfdog",
+      "license": "CC-BY 3.0",
+      "url": "https://opengameart.org/content/soft-mysterious-harp-loop",
+      "files": [
+        "music/soft_harp.ogg"
+      ]
+    },
+    {
+      "work": "Walking with Poseidon",
+      "author": "mvrasseli",
+      "license": "CC-BY 3.0",
+      "url": "https://opengameart.org/content/walking-with-poseidon",
+      "files": [
+        "music/walking_with_poseidon.ogg"
+      ]
+    },
+    {
+      "work": "Dark Ambience Loop",
+      "author": "Iwan Gabovitch",
+      "license": "CC-BY 3.0",
+      "url": "https://opengameart.org/content/dark-ambience-loop",
+      "files": [
+        "music/dark_ambience.ogg"
+      ],
+      "line": "Dark Ambience Loop by Iwan Gabovitch qubodup.net (CC-BY 3.0)"
+    },
+    {
+      "work": "Cave Theme",
+      "author": "Brandon75689",
+      "license": "OGA-BY 3.0 / CC0",
+      "url": "https://opengameart.org/content/cave-theme",
+      "files": [
+        "music/cave_theme.ogg"
+      ]
+    },
+    {
+      "work": "Evil Temple Ambiance Loop",
+      "author": "Brandon Morris",
+      "license": "OGA-BY 3.0 / CC0",
+      "url": "https://opengameart.org/content/evil-temple-ambiance-loop",
+      "files": [
+        "music/evil_temple.ogg"
+      ]
+    },
+    {
+      "work": "Soundscape - Find Nothing",
+      "author": "Ellary",
+      "license": "CC-BY 4.0",
+      "url": "https://opengameart.org/content/soundscape-find-nothing",
+      "files": [
+        "music/find_nothing.ogg"
+      ]
+    },
+    {
+      "work": "Medieval: The Old Tower Inn",
+      "author": "RandomMind",
+      "license": "CC0",
+      "url": "https://opengameart.org/content/medieval-the-old-tower-inn",
+      "files": [
+        "music/old_tower_inn.ogg"
+      ]
+    },
+    {
+      "work": "Medieval: The Bard's Tale",
+      "author": "RandomMind",
+      "license": "CC0",
+      "url": "https://opengameart.org/content/medieval-the-bards-tale",
+      "files": [
+        "music/bards_tale.ogg"
+      ]
+    },
+    {
+      "work": "Medieval: Minstrel Dance",
+      "author": "RandomMind",
+      "license": "CC0",
+      "url": "https://opengameart.org/content/medieval-minstrel-dance",
+      "files": [
+        "music/minstrel_dance.ogg"
+      ]
+    },
+    {
+      "work": "Secret Sanctum",
+      "author": "Viktor Kraus",
+      "license": "CC-BY 3.0",
+      "url": "https://opengameart.org/content/secret-sanctum",
+      "files": [
+        "music/secret_sanctum.ogg"
+      ]
+    },
+    {
+      "work": "Underwater Theme",
+      "author": "Cleyton Kauffman",
+      "license": "CC0",
+      "url": "https://opengameart.org/content/underwater-theme",
+      "files": [
+        "music/port_night.ogg"
+      ]
+    },
+    {
+      "work": "Breves dies hominis",
+      "author": "Magdalen Kadel",
+      "license": "CC0",
+      "url": "https://opengameart.org/content/breves-dies-hominis",
+      "files": [
+        "music/iante.ogg"
+      ]
+    },
+    {
+      "work": "Epilogue",
+      "author": "tcarisland",
+      "license": "CC-BY 4.0",
+      "url": "https://opengameart.org/content/epilogue",
+      "files": [
+        "music/coda.ogg"
+      ]
+    }
+  ]
+}

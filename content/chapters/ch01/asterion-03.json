@@ -1,0 +1,298 @@
+{
+  "id": "asterion-03",
+  "protagonist": "asterion",
+  "title": "asterion03.title",
+  "start": "s01",
+  "nodes": [
+    {
+      "id": "s01",
+      "type": "stage",
+      "background": "bg.labyrinth.corridor",
+      "worldWidth": 3840,
+      "mode": "dark",
+      "characters": [
+        { "id": "asterion", "pose": "listen", "x": 3400, "facing": "left" },
+        { "id": "quinto", "pose": "idle", "x": 2000, "facing": "right", "flame": 1 }
+      ],
+      "audio": { "music": "labyrinth" },
+      "next": "t01"
+    },
+    { "id": "t01", "type": "thought", "man": "asterion03.t01.man", "beast": "asterion03.t01.beast", "next": "d01" },
+    { "id": "d01", "type": "dialogue", "speaker": "quinto", "text": "asterion03.d01", "next": "e01" },
+    {
+      "id": "e01",
+      "type": "exploration",
+      "character": "asterion",
+      "width": 3840,
+      "start": 3400,
+      "hint": "asterion03.e01.hint",
+      "niches": [2328, 1819, 1310],
+      "watchers": [{ "id": "quinto", "range": 520, "turnEvery": 4.2 }],
+      "scent": {
+        "trails": [
+          { "from": 3400, "to": 350, "kind": "path" },
+          { "from": 1700, "to": 2500, "kind": "danger" }
+        ],
+        "effects": [{ "giftUse": "asterion" }, { "flag": "fera", "add": 1 }]
+      },
+      "exits": [{ "id": "lair", "from": 0, "to": 480, "label": "asterion03.e01.lair", "next": "t02" }],
+      "caught": {
+        "label": "asterion03.e01.seen",
+        "effects": [{ "flag": "quinto_viu", "value": true }, { "flag": "fera", "add": 1 }, { "flag": "colegio_alerta", "add": 1 }],
+        "next": "dseen"
+      }
+    },
+    { "id": "dseen", "type": "dialogue", "speaker": "quinto", "text": "asterion03.dseen", "next": "dseen2" },
+    { "id": "dseen2", "type": "dialogue", "text": "asterion03.dseen2", "next": "s02" },
+    { "id": "t02", "type": "thought", "pose": "idle", "man": "asterion03.t02.man", "next": "s02" },
+    {
+      "id": "s02",
+      "type": "stage",
+      "background": "bg.labyrinth.gallery",
+      "worldWidth": 1920,
+      "characters": [
+        { "id": "asterion", "pose": "listen", "x": 1500, "facing": "left" },
+        { "id": "quinto", "pose": "fallen", "x": 520, "facing": "right" }
+      ],
+      "next": "d02"
+    },
+    { "id": "d02", "type": "dialogue", "text": "asterion03.d02", "next": "d03" },
+    { "id": "d03", "type": "dialogue", "speaker": "quinto", "text": "asterion03.d03", "next": "b_known" },
+    {
+      "id": "b_known",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "any": [{ "flag": "quinto_pao" }, { "flag": "quinto_cheiro" }] }], "next": "t_known" }],
+      "default": "e02"
+    },
+    { "id": "t_known", "type": "thought", "man": "asterion03.tknown.man", "beast": "asterion03.tknown.beast", "next": "e02" },
+    {
+      "id": "e02",
+      "type": "exploration",
+      "character": "asterion",
+      "width": 1920,
+      "hint": "asterion03.e02.hint",
+      "hotspots": [
+        { "id": "tablet", "view": "fpv.asterion.tablet", "x": 1150, "label": "asterion03.h.tablet", "lines": ["asterion03.h.tablet.1"] },
+        {
+          "id": "shard",
+          "view": "fpv.asterion.shard",
+          "x": 900,
+          "label": "asterion03.h.shard",
+          "lines": ["asterion03.h.shard.1"],
+          "conditions": [{ "flag": "mirto_copiou_simbolo" }]
+        }
+      ],
+      "exits": [{ "id": "close", "from": 600, "to": 760, "next": "s03" }]
+    },
+    { "id": "s03", "type": "stage", "update": [{ "id": "asterion", "pose": "idle" }], "next": "b_shard" },
+    {
+      "id": "b_shard",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "flag": "mirto_copiou_simbolo" }], "next": "c_shard" }],
+      "default": "c01"
+    },
+    {
+      "id": "c_shard",
+      "type": "choice",
+      "text": "asterion03.cshard",
+      "choices": [
+        {
+          "id": "take",
+          "text": "asterion03.cshard.take",
+          "effects": [{ "flag": "caco_recolhido", "value": true }, { "flag": "fera", "add": 1 }],
+          "next": "t_shard"
+        },
+        { "id": "leave", "text": "asterion03.cshard.leave", "next": "c01" }
+      ]
+    },
+    { "id": "t_shard", "type": "thought", "man": "asterion03.tshard.man", "beast": "asterion03.tshard.beast", "next": "c01" },
+    {
+      "id": "c01",
+      "type": "choice",
+      "text": "asterion03.c01",
+      "choices": [
+        {
+          "id": "help",
+          "text": "asterion03.c01.help",
+          "thread": "tie",
+          "conditions": [
+            {
+              "any": [
+                { "flag": "fera", "max": 2 },
+                { "all": [{ "any": [{ "flag": "quinto_pao" }, { "flag": "quinto_cheiro" }] }, { "flag": "fera", "max": 3 }] }
+              ]
+            }
+          ],
+          "showWhenLocked": true, "lockedHint": "asterion03.c01.help.locked",
+          "effects": [{ "flag": "quinto_ajudado", "value": true }, { "fate": "porta", "add": 1 }],
+          "next": "s_guide"
+        },
+        {
+          "id": "leave",
+          "text": "asterion03.c01.leave",
+          "thread": "tangle",
+          "effects": [{ "flag": "quinto_vivo", "value": true }],
+          "next": "b_leave"
+        },
+        {
+          "id": "easy",
+          "text": "asterion03.c01.easy",
+          "voice": "beast",
+          "thread": "cut",
+          "conditions": [{ "flag": "fera", "min": 3 }],
+          "next": "m_hold"
+        },
+        {
+          "id": "attack",
+          "text": "asterion03.c01.attack",
+          "thread": "cut",
+          "conditions": [{ "flag": "fera", "max": 2 }],
+          "next": "m_hold"
+        }
+      ]
+    },
+    {
+      "id": "s_guide",
+      "type": "stage",
+      "worldWidth": 3840,
+      "characters": [
+        { "id": "asterion", "pose": "idle", "x": 950, "facing": "right" },
+        { "id": "quinto", "pose": "fallen", "x": 300, "facing": "right", "flame": 0.5 }
+      ],
+      "next": "e_guide"
+    },
+    {
+      "id": "e_guide",
+      "type": "exploration",
+      "character": "asterion",
+      "width": 3840,
+      "hint": "asterion03.eguide.hint",
+      "guide": {
+        "follower": "quinto",
+        "speed": 0.5,
+        "fearRange": 420,
+        "captions": ["asterion03.h.knock.1", "asterion03.h.knock.2", "asterion03.h.knock.3"]
+      },
+      "exits": [{ "id": "stairs", "from": 3300, "to": 3840, "by": "quinto", "next": "dhelp" }]
+    },
+    { "id": "dhelp", "type": "dialogue", "text": "asterion03.dhelp", "next": "t_alive" },
+    {
+      "id": "b_leave",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "flag": "mirto_copiou_simbolo" }, { "not": { "flag": "caco_recolhido" } }], "next": "dleave" }],
+      "default": "dleave_plain"
+    },
+    {
+      "id": "dleave",
+      "type": "dialogue",
+      "text": "asterion03.dleave",
+      "effects": [{ "flag": "colegio_sabe_do_mirto", "value": true }, { "flag": "colegio_alerta", "add": 1 }],
+      "next": "t_alive"
+    },
+    {
+      "id": "dleave_plain",
+      "type": "dialogue",
+      "text": "asterion03.dleave_plain",
+      "effects": [{ "flag": "colegio_alerta", "add": 1 }],
+      "next": "t_alive"
+    },
+    {
+      "id": "m_hold",
+      "type": "minigame",
+      "game": "restraint",
+      "params": { "hint": "asterion03.mhold.hint", "seconds": 12 },
+      "outcomes": [
+        {
+          "id": "held",
+          "label": "asterion03.mhold.held",
+          "effects": [{ "flag": "quinto_poupado", "value": true }, { "flag": "colegio_alerta", "add": 1 }],
+          "next": "b_tells"
+        },
+        {
+          "id": "strained",
+          "label": "asterion03.mhold.strained",
+          "effects": [{ "flag": "quinto_poupado", "value": true }, { "flag": "colegio_alerta", "add": 1 }, { "flag": "fera", "add": 1 }],
+          "next": "b_tells"
+        },
+        {
+          "id": "lost",
+          "label": "asterion03.mhold.lost",
+          "effects": [{ "flag": "fera", "add": 2 }],
+          "next": "b_lost"
+        }
+      ]
+    },
+    {
+      "id": "b_tells",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "flag": "mirto_copiou_simbolo" }, { "not": { "flag": "caco_recolhido" } }], "next": "s_tells" }],
+      "default": "dheld"
+    },
+    { "id": "s_tells", "type": "stage", "update": [], "effects": [{ "flag": "colegio_sabe_do_mirto", "value": true }], "next": "dheld" },
+    { "id": "dheld", "type": "dialogue", "text": "asterion03.dheld", "next": "t_alive" },
+    {
+      "id": "b_lost",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "any": [{ "flag": "quinto_pao" }, { "flag": "quinto_cheiro" }] }], "next": "d_wounded" }],
+      "default": "dlost"
+    },
+    {
+      "id": "d_wounded",
+      "type": "dialogue",
+      "text": "asterion03.dwounded",
+      "effects": [{ "flag": "quinto_ferido", "value": true }, { "flag": "colegio_alerta", "add": 1 }],
+      "next": "b_tells2"
+    },
+    {
+      "id": "b_tells2",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "flag": "mirto_copiou_simbolo" }, { "not": { "flag": "caco_recolhido" } }], "next": "s_tells2" }],
+      "default": "t_wounded"
+    },
+    { "id": "s_tells2", "type": "stage", "update": [], "effects": [{ "flag": "colegio_sabe_do_mirto", "value": true }], "next": "t_wounded" },
+    { "id": "t_wounded", "type": "thought", "man": "asterion03.twounded.man", "beast": "asterion03.twounded.beast", "next": "s_wounded" },
+    { "id": "s_wounded", "type": "stage", "update": [{ "id": "quinto", "remove": true }], "next": "s_shelter" },
+    { "id": "dlost", "type": "dialogue", "text": "asterion03.dlost", "next": "s_lost" },
+    { "id": "s_lost", "type": "stage", "update": [{ "id": "quinto", "remove": true }, { "id": "asterion", "pose": "beast" }], "next": "fe_quinto" },
+    { "id": "fe_quinto", "type": "fate_event", "thread": "cut", "effects": [{ "kill": "quinto" }], "next": "t_lost" },
+    { "id": "t_lost", "type": "thought", "man": "asterion03.tlost.man", "beast": "asterion03.tlost.beast", "next": "s_shelter" },
+    { "id": "t_alive", "type": "thought", "man": "asterion03.talive.man", "next": "s_shelter" },
+    {
+      "id": "s_shelter",
+      "type": "stage",
+      "worldWidth": 3840,
+      "characters": [{ "id": "asterion", "pose": "idle", "x": 1920, "facing": "right" }],
+      "next": "t_shelter"
+    },
+    { "id": "t_shelter", "type": "thought", "man": "asterion03.tshelter.man", "beast": "asterion03.tshelter.beast", "next": "e_shelter" },
+    {
+      "id": "e_shelter",
+      "type": "exploration",
+      "character": "asterion",
+      "width": 3840,
+      "start": 1920,
+      "hint": "asterion03.eshelter.hint",
+      "sounds": [{ "x": 300, "y": 380, "every": 3.0 }],
+      "exits": [
+        { "id": "warm", "from": 0, "to": 420, "label": "asterion03.eshelter.warm", "next": "t_warm" },
+        { "id": "deep", "from": 3420, "to": 3840, "label": "asterion03.eshelter.deep", "next": "t_deep" }
+      ]
+    },
+    {
+      "id": "t_warm",
+      "type": "thought",
+      "man": "asterion03.twarm.man",
+      "beast": "asterion03.twarm.beast",
+      "effects": [{ "flag": "asterion_abrigo", "value": "calor" }],
+      "next": "end"
+    },
+    {
+      "id": "t_deep",
+      "type": "thought",
+      "man": "asterion03.tdeep.man",
+      "effects": [{ "flag": "asterion_abrigo", "value": "fundo" }],
+      "next": "end"
+    },
+    { "id": "end", "type": "end" }
+  ]
+}

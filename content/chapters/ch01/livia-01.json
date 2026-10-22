@@ -1,0 +1,1124 @@
+{
+  "id": "livia-01",
+  "protagonist": "livia",
+  "title": "livia01.title",
+  "start": "s01",
+  "nodes": [
+    {
+      "id": "s01",
+      "type": "stage",
+      "background": "bg.temple",
+      "worldWidth": 3840,
+      "mode": "normal",
+      "characters": [
+        {
+          "id": "livia",
+          "pose": "idle",
+          "x": 520,
+          "flame": 0.5
+        },
+        {
+          "id": "claudia",
+          "pose": "idle",
+          "x": 860,
+          "facing": "left"
+        },
+        {
+          "id": "vestal_a",
+          "pose": "idle",
+          "x": 1420
+        },
+        {
+          "id": "domicia",
+          "pose": "idle",
+          "x": 1990,
+          "facing": "left"
+        },
+        {
+          "id": "vestal_b",
+          "pose": "idle",
+          "x": 2620,
+          "facing": "left"
+        },
+        {
+          "id": "hearth",
+          "pose": "idle",
+          "x": 3250,
+          "flame": 1
+        }
+      ],
+      "audio": {
+        "music": "temple_dawn"
+      },
+      "next": "d01"
+    },
+    {
+      "id": "d01",
+      "type": "dialogue",
+      "text": "livia01.d01",
+      "next": "d02"
+    },
+    {
+      "id": "d02",
+      "type": "dialogue",
+      "speaker": "claudia",
+      "text": "livia01.d02",
+      "next": "d03"
+    },
+    {
+      "id": "d03",
+      "type": "dialogue",
+      "speaker": "livia",
+      "text": "livia01.d03",
+      "next": "d04"
+    },
+    {
+      "id": "d04",
+      "type": "dialogue",
+      "speaker": "claudia",
+      "text": "livia01.d04",
+      "next": "c01"
+    },
+    {
+      "id": "c01",
+      "type": "choice",
+      "text": "livia01.c01",
+      "choices": [
+        {
+          "id": "doctrine",
+          "text": "livia01.c01.doctrine",
+          "effects": [
+            {
+              "fate": "selo",
+              "add": 1
+            }
+          ],
+          "next": "d05a"
+        },
+        {
+          "id": "serious",
+          "text": "livia01.c01.serious",
+          "effects": [
+            {
+              "relation": "livia:claudia",
+              "add": 1
+            },
+            {
+              "flag": "claudia_levada_a_serio",
+              "value": true
+            }
+          ],
+          "next": "d05b"
+        },
+        {
+          "id": "scold",
+          "text": "livia01.c01.scold",
+          "effects": [
+            {
+              "relation": "livia:claudia",
+              "add": -1
+            },
+            {
+              "fate": "selo",
+              "add": 1
+            }
+          ],
+          "next": "d05c"
+        }
+      ]
+    },
+    {
+      "id": "d05a",
+      "type": "dialogue",
+      "speaker": "claudia",
+      "text": "livia01.d05a",
+      "next": "s02"
+    },
+    {
+      "id": "d05b",
+      "type": "dialogue",
+      "speaker": "claudia",
+      "text": "livia01.d05b",
+      "next": "s02"
+    },
+    {
+      "id": "d05c",
+      "type": "dialogue",
+      "speaker": "claudia",
+      "text": "livia01.d05c",
+      "next": "s02"
+    },
+    {
+      "id": "s02",
+      "type": "stage",
+      "update": [
+        {
+          "id": "claudia",
+          "x": 260
+        }
+      ],
+      "next": "d06"
+    },
+    {
+      "id": "d06",
+      "type": "dialogue",
+      "text": "livia01.d06",
+      "next": "e01"
+    },
+    {
+      "id": "e01",
+      "type": "exploration",
+      "character": "livia",
+      "width": 3840,
+      "hint": "livia01.e01.hint",
+      "hotspots": [
+        {
+          "id": "tablet",
+          "view": "fpv.livia.tablet",
+          "x": 700,
+          "label": "livia01.h.tablet",
+          "lines": [
+            "livia01.h.tablet.1",
+            "livia01.h.tablet.2"
+          ]
+        },
+        {
+          "id": "lamp",
+          "view": "fpv.livia.lamp_bread",
+          "x": 1000,
+          "label": "livia01.h.lamp",
+          "lines": [
+            "livia01.h.lamp.1"
+          ]
+        },
+        {
+          "id": "gate",
+          "view": "fpv.livia.gate",
+          "viewGlow": [
+            {
+              "x": 0.5,
+              "y": 0.45,
+              "r": 0.1
+            }
+          ],
+          "viewShade": {
+            "amount": 0.28,
+            "keep": {
+              "x": 0.62,
+              "y": 0.6,
+              "r": 0.3
+            }
+          },
+          "x": 1240,
+          "label": "livia01.h.gate",
+          "lines": [
+            "livia01.h.gate.1"
+          ]
+        }
+      ],
+      "exits": [
+        {
+          "id": "domicia",
+          "from": 1700,
+          "to": 3840,
+          "next": "d07"
+        }
+      ],
+      "barks": [
+        {
+          "x": 1350,
+          "speaker": "vestal_a",
+          "text": "livia01.bark.vestal_a"
+        }
+      ]
+    },
+    {
+      "id": "d07",
+      "type": "dialogue",
+      "speaker": "domicia",
+      "text": "livia01.d07",
+      "next": "d08"
+    },
+    {
+      "id": "d08",
+      "type": "dialogue",
+      "speaker": "livia",
+      "expression": "serene",
+      "text": "livia01.d08",
+      "next": "d09"
+    },
+    {
+      "id": "d09",
+      "type": "dialogue",
+      "speaker": "domicia",
+      "text": "livia01.d09",
+      "next": "t_gift"
+    },
+    {
+      "id": "t_gift",
+      "type": "thought",
+      "speaker": "livia",
+      "man": "livia01.t_gift",
+      "second": "livia01.t_gift.second",
+      "next": "d10"
+    },
+    {
+      "id": "d10",
+      "type": "dialogue",
+      "text": "livia01.d10",
+      "gift": "g01",
+      "giftHint": "livia01.gh",
+      "next": "d10b"
+    },
+    {
+      "id": "d10b",
+      "type": "dialogue",
+      "speaker": "domicia",
+      "text": "livia01.d10b",
+      "gift": "g01",
+      "giftHint": "livia01.gh",
+      "next": "c02"
+    },
+    {
+      "id": "g01",
+      "type": "minigame",
+      "game": "reveal",
+      "effects": [
+        {
+          "giftUse": "livia"
+        },
+        {
+          "fate": "selo",
+          "add": -1
+        }
+      ],
+      "params": {
+        "surface": "cloak",
+        "surfaceArt": "closeup.cloak",
+        "hint": "livia01.g01.hint",
+        "limit": 14,
+        "targets": [
+          {
+            "id": "hand",
+            "x": 1180,
+            "y": 640,
+            "glyph": "text",
+            "label": "livia01.g01.hand",
+            "effects": [
+              {
+                "flag": "livia_viu_medo_domicia",
+                "value": true
+              }
+            ]
+          }
+        ]
+      },
+      "outcomes": [
+        {
+          "id": "all",
+          "label": "livia01.g01.all",
+          "next": "g01a"
+        },
+        {
+          "id": "none",
+          "label": "livia01.g01.none",
+          "next": "g01b"
+        }
+      ]
+    },
+    {
+      "id": "g01a",
+      "type": "dialogue",
+      "text": "livia01.g01a",
+      "next": "g01c"
+    },
+    {
+      "id": "g01b",
+      "type": "dialogue",
+      "text": "livia01.g01b",
+      "next": "g01c"
+    },
+    {
+      "id": "g01c",
+      "type": "dialogue",
+      "text": "livia01.g01c",
+      "next": "c02"
+    },
+    {
+      "id": "c02",
+      "type": "choice",
+      "text": "livia01.c02",
+      "choices": [
+        {
+          "id": "ask",
+          "text": "livia01.c02.ask",
+          "effects": [
+            {
+              "flag": "livia_perguntou_colegio",
+              "value": true
+            }
+          ],
+          "next": "d11a"
+        },
+        {
+          "id": "nod",
+          "text": "livia01.c02.nod",
+          "effects": [
+            {
+              "relation": "domicia:livia",
+              "add": 1
+            }
+          ],
+          "next": "d11b"
+        },
+        {
+          "id": "fear",
+          "text": "livia01.c02.fear",
+          "conditions": [
+            {
+              "flag": "livia_viu_medo_domicia"
+            }
+          ],
+          "effects": [
+            {
+              "flag": "livia_sabe_da_falta",
+              "value": true
+            },
+            {
+              "relation": "domicia:livia",
+              "add": 1
+            }
+          ],
+          "next": "d11c"
+        }
+      ]
+    },
+    {
+      "id": "d11a",
+      "type": "dialogue",
+      "speaker": "domicia",
+      "text": "livia01.d11a",
+      "next": "d12"
+    },
+    {
+      "id": "d11b",
+      "type": "dialogue",
+      "speaker": "domicia",
+      "text": "livia01.d11b",
+      "next": "d12"
+    },
+    {
+      "id": "d11c",
+      "type": "dialogue",
+      "speaker": "domicia",
+      "text": "livia01.d11c",
+      "next": "d11c2"
+    },
+    {
+      "id": "d11c2",
+      "type": "dialogue",
+      "speaker": "domicia",
+      "text": "livia01.d11c2",
+      "next": "d12"
+    },
+    {
+      "id": "d12",
+      "type": "dialogue",
+      "speaker": "domicia",
+      "text": "livia01.d12",
+      "next": "e02"
+    },
+    {
+      "id": "e02",
+      "type": "exploration",
+      "character": "livia",
+      "width": 3840,
+      "hint": "livia01.e02.hint",
+      "hotspots": [
+        {
+          "id": "lamp2",
+          "view": "fpv.livia.lamp_crooked",
+          "viewFlame": {
+            "x": 0.5,
+            "y": 0.2,
+            "size": 1.1
+          },
+          "x": 2480,
+          "label": "livia01.h.lamp2",
+          "lines": [
+            "livia01.h.lamp2.1"
+          ]
+        },
+        {
+          "id": "crack",
+          "view": "fpv.livia.crack",
+          "x": 2740,
+          "label": "livia01.h.crack",
+          "lines": [
+            "livia01.h.crack.1"
+          ],
+          "effects": [
+            {
+              "flag": "sentiu_calor_da_fenda",
+              "value": true
+            }
+          ]
+        }
+      ],
+      "exits": [
+        {
+          "id": "altar",
+          "from": 2900,
+          "to": 3840,
+          "next": "s03"
+        }
+      ],
+      "barks": [
+        {
+          "x": 2480,
+          "speaker": "vestal_b",
+          "text": "livia01.bark.vestal_b"
+        }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "stage",
+      "update": [
+        {
+          "id": "livia",
+          "pose": "offering",
+          "x": 2990,
+          "facing": "right"
+        }
+      ],
+      "next": "d13"
+    },
+    {
+      "id": "d13",
+      "type": "dialogue",
+      "text": "livia01.d13",
+      "next": "m_pour"
+    },
+    {
+      "id": "m_pour",
+      "type": "minigame",
+      "game": "pour",
+      "params": {
+        "hint": "livia01.mpour.hint",
+        "duration": 8,
+        "difficulty": 0.8,
+        "amphoraArt": "prop.amphora"
+      },
+      "outcomes": [
+        {
+          "id": "careful",
+          "label": "livia01.mpour.careful",
+          "effects": [
+            {
+              "flag": "ritual_cuidado",
+              "add": 2
+            }
+          ],
+          "next": "r1a"
+        },
+        {
+          "id": "uneven",
+          "label": "livia01.mpour.uneven",
+          "effects": [
+            {
+              "flag": "ritual_cuidado",
+              "add": 1
+            }
+          ],
+          "next": "r1u"
+        },
+        {
+          "id": "clumsy",
+          "label": "livia01.mpour.clumsy",
+          "next": "r1b"
+        }
+      ]
+    },
+    {
+      "id": "r1a",
+      "type": "stage",
+      "update": [
+        {
+          "id": "livia",
+          "flame": 1
+        }
+      ],
+      "next": "d14a"
+    },
+    {
+      "id": "r1u",
+      "type": "stage",
+      "update": [
+        {
+          "id": "livia",
+          "flame": 0.7
+        }
+      ],
+      "next": "d14u"
+    },
+    {
+      "id": "r1b",
+      "type": "stage",
+      "update": [
+        {
+          "id": "livia",
+          "flame": 0.35
+        }
+      ],
+      "next": "d14b"
+    },
+    {
+      "id": "d14a",
+      "type": "dialogue",
+      "speaker": "livia",
+      "expression": "serene",
+      "text": "livia01.d14a",
+      "next": "c04"
+    },
+    {
+      "id": "d14u",
+      "type": "dialogue",
+      "speaker": "livia",
+      "expression": "serene",
+      "text": "livia01.d14u",
+      "next": "c04"
+    },
+    {
+      "id": "d14b",
+      "type": "dialogue",
+      "speaker": "livia",
+      "expression": "worried",
+      "text": "livia01.d14b",
+      "next": "c04"
+    },
+    {
+      "id": "c04",
+      "type": "choice",
+      "text": "livia01.c04",
+      "timeLimit": {
+        "seconds": 6,
+        "fallback": "formula"
+      },
+      "choices": [
+        {
+          "id": "formula",
+          "text": "livia01.c04.formula",
+          "effects": [
+            {
+              "flag": "ritual_cuidado",
+              "add": 1
+            }
+          ],
+          "next": "r2a"
+        },
+        {
+          "id": "own",
+          "text": "livia01.c04.own",
+          "effects": [
+            {
+              "flag": "livia_prece_propria",
+              "value": true
+            }
+          ],
+          "next": "r2b"
+        }
+      ]
+    },
+    {
+      "id": "r2a",
+      "type": "stage",
+      "update": [
+        {
+          "id": "livia",
+          "flame": 1
+        }
+      ],
+      "next": "d15a"
+    },
+    {
+      "id": "r2b",
+      "type": "stage",
+      "update": [
+        {
+          "id": "livia",
+          "flame": 1.2
+        }
+      ],
+      "next": "d15b"
+    },
+    {
+      "id": "d15a",
+      "type": "dialogue",
+      "text": "livia01.d15a",
+      "next": "c05"
+    },
+    {
+      "id": "d15b",
+      "type": "dialogue",
+      "text": "livia01.d15b",
+      "next": "c05"
+    },
+    {
+      "id": "c05",
+      "type": "choice",
+      "text": "livia01.c05",
+      "timeLimit": {
+        "seconds": 5,
+        "fallback": "low"
+      },
+      "choices": [
+        {
+          "id": "low",
+          "text": "livia01.c05.low",
+          "next": "r3a",
+          "effects": [
+            {
+              "flag": "ritual_cuidado",
+              "add": 1
+            }
+          ]
+        },
+        {
+          "id": "raise",
+          "text": "livia01.c05.raise",
+          "next": "r3b",
+          "effects": [
+            {
+              "flag": "livia_ergueu_calice",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r3a",
+      "type": "stage",
+      "update": [
+        {
+          "id": "livia",
+          "flame": 1.4
+        }
+      ],
+      "next": "d16a"
+    },
+    {
+      "id": "r3b",
+      "type": "stage",
+      "update": [
+        {
+          "id": "livia",
+          "pose": "flame",
+          "flame": 1.7
+        }
+      ],
+      "next": "d16b"
+    },
+    {
+      "id": "d16a",
+      "type": "dialogue",
+      "text": "livia01.d16a",
+      "next": "m_mark"
+    },
+    {
+      "id": "d16b",
+      "type": "dialogue",
+      "text": "livia01.d16b",
+      "next": "m_mark"
+    },
+    {
+      "id": "m_mark",
+      "type": "minigame",
+      "game": "reveal",
+      "params": {
+        "surface": "stone",
+        "surfaceArt": "closeup.altar.stone",
+        "hint": "livia01.mmark.hint",
+        "guided": true,
+        "limit": 12,
+        "targets": [
+          {
+            "id": "eye",
+            "x": 1000,
+            "y": 470,
+            "glyph": "eye",
+            "label": "livia01.mmark.eye",
+            "effects": [
+              {
+                "flag": "livia_viu_marca",
+                "value": true
+              }
+            ]
+          }
+        ]
+      },
+      "outcomes": [
+        {
+          "id": "all",
+          "label": "livia01.mmark.all",
+          "next": "d17"
+        },
+        {
+          "id": "none",
+          "next": "d17"
+        }
+      ]
+    },
+    {
+      "id": "d17",
+      "type": "dialogue",
+      "text": "livia01.d17",
+      "next": "d18"
+    },
+    {
+      "id": "d18",
+      "type": "dialogue",
+      "speaker": "livia",
+      "pose": "scared",
+      "flame": 0.8,
+      "expression": "worried",
+      "text": "livia01.d18",
+      "next": "s04"
+    },
+    {
+      "id": "s04",
+      "type": "stage",
+      "update": [
+        {
+          "id": "varrao",
+          "pose": "idle",
+          "x": 1700
+        }
+      ],
+      "next": "d19"
+    },
+    {
+      "id": "d19",
+      "type": "dialogue",
+      "text": "livia01.d19",
+      "next": "s05"
+    },
+    {
+      "id": "s05",
+      "type": "stage",
+      "update": [
+        {
+          "id": "varrao",
+          "x": 2500
+        },
+        {
+          "id": "vestal_b",
+          "x": 2240,
+          "facing": "right"
+        },
+        {
+          "id": "domicia",
+          "x": 2760,
+          "facing": "right"
+        },
+        {
+          "id": "livia",
+          "facing": "left"
+        }
+      ],
+      "next": "d20"
+    },
+    {
+      "id": "d20",
+      "type": "dialogue",
+      "speaker": "varrao",
+      "text": "livia01.d20",
+      "next": "d21"
+    },
+    {
+      "id": "d21",
+      "type": "dialogue",
+      "speaker": "varrao",
+      "text": "livia01.d21",
+      "next": "b_d21"
+    },
+    {
+      "id": "b_d21",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "livia_ergueu_calice"
+            }
+          ],
+          "next": "d21seen"
+        }
+      ],
+      "default": "c06"
+    },
+    {
+      "id": "d21seen",
+      "type": "dialogue",
+      "speaker": "varrao",
+      "text": "livia01.d21seen",
+      "next": "c06"
+    },
+    {
+      "id": "c06",
+      "type": "choice",
+      "speaker": "varrao",
+      "text": "livia01.c06",
+      "choices": [
+        {
+          "id": "truth",
+          "text": "livia01.c06.truth",
+          "thread": "cut",
+          "effects": [
+            {
+              "flag": "colegio_suspeita",
+              "add": 1
+            },
+            {
+              "relation": "livia:varrao",
+              "add": 1
+            },
+            {
+              "fate": "selo",
+              "add": -1
+            },
+            {
+              "flag": "livia_contou_ao_colegio",
+              "value": true
+            },
+            {
+              "flag": "colegio_alerta",
+              "add": 1
+            }
+          ],
+          "next": "d22a"
+        },
+        {
+          "id": "lie",
+          "text": "livia01.c06.lie",
+          "thread": "tie",
+          "effects": [
+            {
+              "relation": "domicia:livia",
+              "add": 1
+            },
+            {
+              "fate": "selo",
+              "add": 1
+            },
+            {
+              "flag": "livia_mentiu_ao_colegio",
+              "value": true
+            }
+          ],
+          "next": "d22b"
+        },
+        {
+          "id": "defer",
+          "text": "livia01.c06.defer",
+          "thread": "tangle",
+          "effects": [
+            {
+              "flag": "colegio_suspeita",
+              "add": 1
+            },
+            {
+              "relation": "livia:domicia",
+              "add": 1
+            },
+            {
+              "flag": "livia_deferiu_a_domicia",
+              "value": true
+            }
+          ],
+          "next": "d22c"
+        }
+      ]
+    },
+    {
+      "id": "d22a",
+      "type": "dialogue",
+      "speaker": "varrao",
+      "text": "livia01.d22a",
+      "next": "d23"
+    },
+    {
+      "id": "d22b",
+      "type": "dialogue",
+      "speaker": "varrao",
+      "text": "livia01.d22b",
+      "next": "b_d22b"
+    },
+    {
+      "id": "b_d22b",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "livia_ergueu_calice"
+            }
+          ],
+          "next": "d22bseen"
+        }
+      ],
+      "default": "d22b2"
+    },
+    {
+      "id": "d22bseen",
+      "type": "dialogue",
+      "speaker": "varrao",
+      "text": "livia01.d22bseen",
+      "effects": [
+        {
+          "flag": "colegio_suspeita",
+          "add": 1
+        }
+      ],
+      "next": "d22b2"
+    },
+    {
+      "id": "d22b2",
+      "type": "dialogue",
+      "text": "livia01.d22b2",
+      "next": "d23"
+    },
+    {
+      "id": "d22c",
+      "type": "dialogue",
+      "speaker": "domicia",
+      "text": "livia01.d22c",
+      "next": "d22c2"
+    },
+    {
+      "id": "d22c2",
+      "type": "dialogue",
+      "speaker": "varrao",
+      "text": "livia01.d22c2",
+      "next": "d23"
+    },
+    {
+      "id": "d23",
+      "type": "dialogue",
+      "text": "livia01.d23",
+      "next": "s06"
+    },
+    {
+      "id": "s06",
+      "type": "stage",
+      "update": [
+        {
+          "id": "varrao",
+          "remove": true
+        },
+        {
+          "id": "livia",
+          "pose": "idle",
+          "flame": 0.6,
+          "facing": "left"
+        },
+        {
+          "id": "domicia",
+          "x": 2800
+        }
+      ],
+      "next": "d24"
+    },
+    {
+      "id": "d24",
+      "type": "dialogue",
+      "speaker": "domicia",
+      "text": "livia01.d24",
+      "next": "b01"
+    },
+    {
+      "id": "b01",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "livia_mentiu_ao_colegio"
+            }
+          ],
+          "next": "d25b"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "livia_contou_ao_colegio"
+            }
+          ],
+          "next": "d25a"
+        }
+      ],
+      "default": "d25c"
+    },
+    {
+      "id": "d25a",
+      "type": "dialogue",
+      "speaker": "domicia",
+      "text": "livia01.d25a",
+      "next": "b02"
+    },
+    {
+      "id": "d25b",
+      "type": "dialogue",
+      "speaker": "domicia",
+      "text": "livia01.d25b",
+      "next": "b02"
+    },
+    {
+      "id": "d25c",
+      "type": "dialogue",
+      "speaker": "domicia",
+      "text": "livia01.d25c",
+      "next": "b02"
+    },
+    {
+      "id": "b02",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "livia_sabe_da_falta"
+            }
+          ],
+          "next": "d26b"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "livia_viu_medo_domicia"
+            }
+          ],
+          "next": "d26"
+        }
+      ],
+      "default": "end"
+    },
+    {
+      "id": "d26",
+      "type": "dialogue",
+      "text": "livia01.d26",
+      "next": "end"
+    },
+    {
+      "id": "d26b",
+      "type": "dialogue",
+      "text": "livia01.d26b",
+      "next": "end"
+    },
+    {
+      "id": "end",
+      "type": "end"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "caio",
+  "name": "char.caio.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": {
+      "art": "caio.pose.idle",
+      "ground": {
+        "x": 275,
+        "y": 980
+      },
+      "headPx": 109
+    }
+  },
+  "animation": {
+    "walk": {
+      "speed": 160,
+      "stepPeriod": 0.42,
+      "bob": 4,
+      "frames": [
+        "idle"
+      ]
+    }
+  },
+  "defaultExpression": "neutral",
+  "portraits": {
+    "neutral": "caio.portrait"
+  }
+}

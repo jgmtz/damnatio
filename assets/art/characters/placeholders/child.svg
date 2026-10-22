@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="1024" viewBox="0 0 600 1024">
+  <!-- PLACEHOLDER silhouette: Lívia as a child (7 years, no veil, hair tied back, short tunic). Facing right.
+       Ground (300,990), head 352-468 (same head size as adults; the character file scales her down). -->
+  <g stroke="#0c0907" stroke-width="5" stroke-linejoin="round">
+    <!-- tunic -->
+    <path d="M262 494 Q300 478 340 498 Q364 640 374 760 L384 900 L216 900 L228 760 Q238 640 262 494 Z" fill="#c8743a"/>
+    <!-- legs -->
+    <path d="M250 900 L248 978 L276 978 L280 900 Z M318 900 L326 978 L354 978 L346 900 Z" fill="#c8743a"/>
+    <!-- head -->
+    <path d="M268 384 Q300 352 340 364 Q362 382 364 414 L380 438 L364 444 Q366 462 350 468 Q320 476 292 462 Q264 440 266 402 Z" fill="#c8743a"/>
+    <!-- hair with a knot at the back -->
+    <path d="M264 410 Q262 362 304 350 Q346 342 360 378 Q330 372 304 384 Q288 394 284 428 Z" fill="#1a120c"/>
+    <circle cx="262" cy="392" r="22" fill="#1a120c"/>
+    <!-- front arm -->
+    <path d="M330 520 Q350 590 352 650 L364 680 L348 688 L334 656 Q322 600 314 530 Z" fill="#c8743a"/>
+    <!-- feet -->
+    <path d="M240 978 L240 990 L284 990 L278 978 Z M320 978 L322 990 L372 990 L362 978 Z" fill="#c8743a"/>
+  </g>
+  <g fill="none" stroke="#0c0907" stroke-width="3">
+    <path d="M248 640 Q300 630 360 644"/>
+    <path d="M272 660 Q268 780 252 890 M318 660 Q324 780 340 890"/>
+    <circle cx="344" cy="410" r="4" fill="#0c0907"/>
+  </g>
+</svg>

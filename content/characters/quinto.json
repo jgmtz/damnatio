@@ -1,0 +1,13 @@
+{
+  "id": "quinto",
+  "name": "char.quinto.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "fallen": { "art": "quinto.pose.fallen", "ground": { "x": 480, "y": 820 }, "headPx": 113 },
+    "idle": { "art": "quinto.pose.idle", "ground": { "x": 279, "y": 1000 }, "headPx": 113, "cup": { "x": 560, "y": 100, "scale": 0.9 } }
+  },
+  "animation": {
+    "walk": { "speed": 160, "stepPeriod": 0.42, "bob": 4, "frames": ["idle"] }
+  }
+}

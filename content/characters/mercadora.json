@@ -1,0 +1,30 @@
+{
+  "id": "mercadora",
+  "name": "char.mercadora.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": {
+      "art": "mercadora.pose.idle",
+      "ground": {
+        "x": 320,
+        "y": 977
+      },
+      "headPx": 111
+    }
+  },
+  "animation": {
+    "walk": {
+      "speed": 160,
+      "stepPeriod": 0.42,
+      "bob": 4,
+      "frames": [
+        "idle"
+      ]
+    }
+  },
+  "defaultExpression": "neutral",
+  "portraits": {
+    "neutral": "mercadora.portrait"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "livia_child",
+  "name": "char.livia_child.name",
+  "headPxOnStage": 46,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": {
+      "art": "livia_child.pose.idle",
+      "ground": {
+        "x": 452,
+        "y": 1145
+      },
+      "headPx": 179
+    },
+    "walk": {
+      "art": "livia_child.pose.walk",
+      "ground": {
+        "x": 380,
+        "y": 988
+      },
+      "headPx": 156
+    }
+  },
+  "animation": {
+    "walk": {
+      "speed": 140,
+      "stepPeriod": 0.36,
+      "bob": 4,
+      "frames": [
+        "walk",
+        "idle"
+      ]
+    }
+  }
+}

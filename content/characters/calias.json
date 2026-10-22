@@ -1,0 +1,13 @@
+{
+  "id": "calias",
+  "name": "char.calias.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": { "art": "calias.pose.idle", "ground": { "x": 312, "y": 993 }, "headPx": 126 },
+    "scratch": { "art": "calias.pose.scratch", "ground": { "x": 279, "y": 994 }, "headPx": 126 }
+  },
+  "animation": {
+    "walk": { "speed": 120, "stepPeriod": 0.42, "bob": 4, "frames": ["idle"] }
+  }
+}

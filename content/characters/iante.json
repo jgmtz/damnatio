@@ -1,0 +1,12 @@
+{
+  "id": "iante",
+  "name": "char.iante.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": { "art": "iante.pose.idle", "ground": { "x": 318, "y": 993 }, "headPx": 119 }
+  },
+  "animation": {
+    "walk": { "speed": 161, "stepPeriod": 0.42, "bob": 4, "frames": ["idle"] }
+  }
+}

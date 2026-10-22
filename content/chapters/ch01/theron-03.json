@@ -1,0 +1,688 @@
+{
+  "id": "theron-03",
+  "protagonist": "theron",
+  "title": "theron03.title",
+  "start": "s01",
+  "nodes": [
+    {
+      "id": "s01",
+      "type": "stage",
+      "background": "bg.villa",
+      "worldWidth": 1920,
+      "mode": "normal",
+      "characters": [
+        {
+          "id": "theron",
+          "pose": "leaning",
+          "x": 420,
+          "facing": "right"
+        },
+        {
+          "id": "caio",
+          "pose": "idle",
+          "x": 1420,
+          "facing": "left"
+        }
+      ],
+      "audio": {
+        "music": "villa_night"
+      },
+      "next": "e01"
+    },
+    {
+      "id": "e01",
+      "type": "exploration",
+      "character": "theron",
+      "width": 1920,
+      "start": 420,
+      "hint": "theron03.e01.hint",
+      "hotspots": [
+        {
+          "id": "mosaic",
+          "view": "fpv.theron.mosaic",
+          "x": 980,
+          "label": "theron03.h.mosaic",
+          "lines": [
+            "theron03.h.mosaic.1"
+          ],
+          "viewMood": "lamplit"
+        },
+        {
+          "id": "urn",
+          "view": "fpv.theron.urn",
+          "x": 600,
+          "label": "theron03.h.urn",
+          "lines": [
+            "theron03.h.urn.1"
+          ],
+          "effects": [
+            {
+              "flag": "theron_viu_urna",
+              "value": true
+            }
+          ],
+          "viewMood": "lamplit",
+          "viewGround": "ground.villa_night"
+        }
+      ],
+      "exits": [
+        {
+          "id": "host",
+          "from": 1150,
+          "to": 1920,
+          "next": "d01"
+        }
+      ]
+    },
+    {
+      "id": "d01",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d01",
+      "next": "c_pose"
+    },
+    {
+      "id": "c_pose",
+      "type": "choice",
+      "text": "theron03.c_pose",
+      "choices": [
+        {
+          "id": "provoke",
+          "text": "theron03.c_pose.provoke",
+          "effects": [
+            {
+              "flag": "theron_postura",
+              "value": "provocou"
+            }
+          ],
+          "next": "d_pose1"
+        },
+        {
+          "id": "silent",
+          "text": "theron03.c_pose.silent",
+          "effects": [
+            {
+              "flag": "theron_postura",
+              "value": "calou"
+            }
+          ],
+          "next": "d_pose2"
+        },
+        {
+          "id": "urn",
+          "text": "theron03.c_pose.urn",
+          "effects": [
+            {
+              "flag": "theron_postura",
+              "value": "urna"
+            },
+            {
+              "flag": "theron_viu_urna",
+              "value": true
+            }
+          ],
+          "next": "b_pose3"
+        }
+      ]
+    },
+    {
+      "id": "b_pose3",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "examined.theron-03.urn"
+            }
+          ],
+          "next": "d_pose3b"
+        }
+      ],
+      "default": "d_pose3"
+    },
+    {
+      "id": "d_pose3b",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_pose3b",
+      "next": "t01"
+    },
+    {
+      "id": "d_pose1",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_pose1",
+      "next": "t01"
+    },
+    {
+      "id": "d_pose2",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_pose2",
+      "next": "t01"
+    },
+    {
+      "id": "d_pose3",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_pose3",
+      "next": "t01"
+    },
+    {
+      "id": "t01",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron03.t01",
+      "next": "d02"
+    },
+    {
+      "id": "d02",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d02",
+      "next": "b_alert"
+    },
+    {
+      "id": "b_alert",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "colegio_alerta",
+              "min": 2
+            }
+          ],
+          "next": "d_alert"
+        }
+      ],
+      "default": "d03"
+    },
+    {
+      "id": "d_alert",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_alert",
+      "next": "d03"
+    },
+    {
+      "id": "d03",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d03",
+      "gift": "m_read",
+      "giftHint": "theron03.gh",
+      "next": "b_nerea"
+    },
+    {
+      "id": "m_read",
+      "type": "minigame",
+      "game": "threads",
+      "params": {
+        "hint": "theron03.mread.hint",
+        "personArt": "caio.pose.idle",
+        "threads": [],
+        "rising": 5
+      },
+      "outcomes": [
+        {
+          "id": "none",
+          "label": "theron03.mread.none",
+          "effects": [
+            {
+              "giftUse": "theron"
+            },
+            {
+              "flag": "theron_viu_caio",
+              "value": true
+            },
+            {
+              "flag": "laco",
+              "add": -1
+            }
+          ],
+          "next": "d_read"
+        }
+      ]
+    },
+    {
+      "id": "d_read",
+      "type": "dialogue",
+      "text": "theron03.d_read",
+      "next": "t_read"
+    },
+    {
+      "id": "t_read",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron03.t_read",
+      "next": "d_read2"
+    },
+    {
+      "id": "d_read2",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_read2",
+      "next": "b_nerea"
+    },
+    {
+      "id": "b_nerea",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "nerea_escondida"
+            },
+            {
+              "relation": "theron:nerea",
+              "min": 1
+            }
+          ],
+          "next": "d_threat_gone"
+        },
+        {
+          "conditions": [
+            {
+              "relation": "theron:nerea",
+              "min": 1
+            }
+          ],
+          "next": "d_threat"
+        }
+      ],
+      "default": "c01"
+    },
+    {
+      "id": "d_threat_gone",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_threat_gone",
+      "next": "c01"
+    },
+    {
+      "id": "d_threat",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_threat",
+      "effects": [
+        {
+          "flag": "nerea_ameacada",
+          "value": true
+        },
+        {
+          "flag": "nerea_perigo",
+          "add": 1
+        }
+      ],
+      "next": "t_threat"
+    },
+    {
+      "id": "t_threat",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron03.t_threat",
+      "next": "c01"
+    },
+    {
+      "id": "c01",
+      "type": "choice",
+      "speaker": "caio",
+      "text": "theron03.c01",
+      "timeLimit": {
+        "seconds": 15,
+        "fallback": "price"
+      },
+      "choices": [
+        {
+          "id": "price",
+          "text": "theron03.c01.price",
+          "effects": [
+            {
+              "flag": "theron_pagamento",
+              "value": "dobro"
+            }
+          ],
+          "next": "d_price"
+        },
+        {
+          "id": "urn",
+          "text": "theron03.c01.urn",
+          "next": "d_urn"
+        },
+        {
+          "id": "remember",
+          "text": "theron03.c01.remember",
+          "conditions": [
+            {
+              "giftUses": "theron",
+              "max": 1
+            }
+          ],
+          "showWhenLocked": true,
+          "next": "d_remember",
+          "lockedHint": "theron03.c01.remember.locked"
+        },
+        {
+          "id": "sanctuary",
+          "text": "theron03.c01.sanctuary",
+          "conditions": [
+            {
+              "flag": "theron_sabe_santuario"
+            }
+          ],
+          "effects": [
+            {
+              "flag": "theron_pagamento",
+              "value": "dobro"
+            }
+          ],
+          "next": "d_sanctuary"
+        }
+      ]
+    },
+    {
+      "id": "d_price",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_price",
+      "next": "b_c02"
+    },
+    {
+      "id": "d_urn",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_urn",
+      "next": "b_c02"
+    },
+    {
+      "id": "d_remember",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_remember",
+      "next": "b_c02"
+    },
+    {
+      "id": "d_sanctuary",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_sanctuary",
+      "next": "b_c02"
+    },
+    {
+      "id": "b_c02",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "any": [
+                {
+                  "flag": "iante_ajudada"
+                },
+                {
+                  "flag": "iante_enganada"
+                }
+              ]
+            }
+          ],
+          "next": "t_c02_known"
+        }
+      ],
+      "default": "t_c02"
+    },
+    {
+      "id": "t_c02_known",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron03.t_c02",
+      "second": "theron03.t_c02.known",
+      "next": "b_pose_echo"
+    },
+    {
+      "id": "t_c02",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron03.t_c02",
+      "second": "theron03.t_c02.second",
+      "next": "b_pose_echo"
+    },
+    {
+      "id": "b_pose_echo",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "theron_postura",
+              "is": "provocou"
+            }
+          ],
+          "next": "d_pose_echo_provocou"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "theron_postura",
+              "is": "calou"
+            }
+          ],
+          "next": "d_pose_echo_calou"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "theron_postura",
+              "is": "urna"
+            }
+          ],
+          "next": "d_pose_echo_urna"
+        }
+      ],
+      "default": "c02"
+    },
+    {
+      "id": "d_pose_echo_provocou",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_pose_echo.provocou",
+      "next": "c02"
+    },
+    {
+      "id": "d_pose_echo_calou",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_pose_echo.calou",
+      "next": "c02"
+    },
+    {
+      "id": "d_pose_echo_urna",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_pose_echo.urna",
+      "next": "c02"
+    },
+    {
+      "id": "d_ask_up",
+      "type": "dialogue",
+      "speaker": "theron",
+      "expression": "sardonic",
+      "text": "theron03.d_ask_up",
+      "next": "d_ask_up2"
+    },
+    {
+      "id": "d_ask_up2",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_ask_up2",
+      "next": "c02"
+    },
+    {
+      "id": "d_mosaic",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_mosaic",
+      "next": "c02"
+    },
+    {
+      "id": "d_smell",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_smell",
+      "next": "c02"
+    },
+    {
+      "id": "c02",
+      "type": "choice",
+      "speaker": "caio",
+      "text": "theron03.c02",
+      "choices": [
+        {
+          "id": "ask_up",
+          "text": "theron03.c02.ask_up",
+          "conditions": [
+            {
+              "flag": "theron_viu_caio"
+            },
+            {
+              "not": {
+                "flag": "theron_sabe_do_alto"
+              }
+            }
+          ],
+          "effects": [
+            {
+              "flag": "theron_sabe_do_alto",
+              "value": true
+            }
+          ],
+          "next": "d_ask_up"
+        },
+        {
+          "id": "mosaic",
+          "text": "theron03.c02.mosaic",
+          "conditions": [
+            {
+              "flag": "examined.theron-03.mosaic"
+            },
+            {
+              "not": {
+                "flag": "theron_sabe_do_alto"
+              }
+            }
+          ],
+          "effects": [
+            {
+              "flag": "theron_sabe_do_alto",
+              "value": true
+            }
+          ],
+          "next": "d_mosaic"
+        },
+        {
+          "id": "smell",
+          "text": "theron03.c02.smell",
+          "conditions": [
+            {
+              "flag": "examined.theron-03.urn"
+            },
+            {
+              "not": {
+                "flag": "theron_sabe_urna"
+              }
+            }
+          ],
+          "effects": [
+            {
+              "flag": "theron_sabe_urna",
+              "value": true
+            }
+          ],
+          "next": "d_smell"
+        },
+        {
+          "id": "accept",
+          "text": "theron03.c02.accept",
+          "thread": "cut",
+          "effects": [
+            {
+              "flag": "theron_contrato",
+              "value": "aceitou"
+            }
+          ],
+          "next": "d_accept"
+        },
+        {
+          "id": "double",
+          "text": "theron03.c02.double",
+          "thread": "tangle",
+          "effects": [
+            {
+              "flag": "theron_contrato",
+              "value": "traicao"
+            }
+          ],
+          "next": "d_double"
+        },
+        {
+          "id": "refuse",
+          "text": "theron03.c02.refuse",
+          "thread": "tie",
+          "effects": [
+            {
+              "flag": "theron_contrato",
+              "value": "recusou"
+            }
+          ],
+          "next": "d_refuse"
+        }
+      ]
+    },
+    {
+      "id": "d_accept",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_accept",
+      "next": "t_accept"
+    },
+    {
+      "id": "t_accept",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron03.t_accept",
+      "next": "end"
+    },
+    {
+      "id": "d_double",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_double",
+      "next": "t_double"
+    },
+    {
+      "id": "t_double",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron03.t_double",
+      "next": "end"
+    },
+    {
+      "id": "d_refuse",
+      "type": "dialogue",
+      "speaker": "caio",
+      "text": "theron03.d_refuse",
+      "next": "t_refuse"
+    },
+    {
+      "id": "t_refuse",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron03.t_refuse",
+      "next": "end"
+    },
+    {
+      "id": "end",
+      "type": "end"
+    }
+  ]
+}

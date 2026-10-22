@@ -1,0 +1,27 @@
+{
+  "id": "theron",
+  "name": "char.theron.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": { "art": "theron.pose.idle", "ground": { "x": 346, "y": 983 }, "headPx": 108 },
+    "walk": { "art": "theron.pose.walk", "ground": { "x": 348, "y": 957 }, "headPx": 108 },
+    "leaning": { "art": "theron.pose.leaning", "ground": { "x": 344, "y": 983 }, "headPx": 108 },
+    "peek": { "art": "theron.pose.peek", "ground": { "x": 340, "y": 915 }, "headPx": 108 },
+    "forget": { "art": "theron.pose.forget", "ground": { "x": 346, "y": 983 }, "headPx": 108 },
+    "cut": { "art": "theron.pose.cut", "ground": { "x": 346, "y": 983 }, "headPx": 108 },
+    "persuade": { "art": "theron.pose.persuade", "ground": { "x": 346, "y": 983 }, "headPx": 108 },
+    "draw": { "art": "theron.pose.draw", "ground": { "x": 347, "y": 983 }, "headPx": 108 }
+  },
+  "animation": {
+    "breathe": { "amplitude": 0.006, "period": 4.6 },
+    "walk": { "speed": 190, "stepPeriod": 0.42, "bob": 4, "frames": ["walk", "idle"] }
+  },
+  "defaultExpression": "serious",
+  "portraits": {
+    "serious": "theron.portrait.serious",
+    "sardonic": "theron.portrait.sardonic",
+    "tired": "theron.portrait.tired",
+    "shaken": "theron.portrait.shaken"
+  }
+}

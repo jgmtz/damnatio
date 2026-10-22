@@ -1,0 +1,534 @@
+{
+  "id": "asterion-04",
+  "protagonist": "asterion",
+  "title": "asterion04.title",
+  "start": "b_start",
+  "nodes": [
+    {
+      "id": "b_start",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "crossover": "livia-asterion" }], "next": "sl1" }],
+      "default": "sn1"
+    },
+
+    {
+      "id": "sl1",
+      "type": "stage",
+      "background": "bg.labyrinth.portals",
+      "worldWidth": 1920,
+      "mode": "dark",
+      "characters": [
+        { "id": "asterion", "pose": "listen", "x": 1250, "facing": "left" },
+        { "id": "livia", "pose": "flame", "x": 640, "facing": "right", "flame": 1.1 }
+      ],
+      "audio": { "music": "labyrinth" },
+      "next": "bl1"
+    },
+    {
+      "id": "bl1",
+      "type": "branch",
+      "cases": [
+        { "conditions": [{ "flag": "encontro_asterion", "is": "raise" }], "next": "tl_raise" },
+        { "conditions": [{ "flag": "encontro_asterion", "is": "still" }], "next": "tl_still" }
+      ],
+      "default": "tl_back"
+    },
+    {
+      "id": "tl_raise",
+      "type": "thought",
+      "man": "asterion04.tlraise.man",
+      "effects": [{ "flag": "fera", "add": -1 }],
+      "next": "dl1"
+    },
+    { "id": "tl_still", "type": "thought", "man": "asterion04.tlstill.man", "next": "dl1" },
+    {
+      "id": "tl_back",
+      "type": "thought",
+      "pose": "beast",
+      "man": "asterion04.tlback.man",
+      "beast": "asterion04.tlback.beast",
+      "effects": [{ "flag": "fera", "add": 1 }],
+      "next": "dl1"
+    },
+    { "id": "dl1", "type": "dialogue", "speaker": "livia", "expression": "worried", "text": "asterion04.dl1", "next": "sl2" },
+    {
+      "id": "sl2",
+      "type": "stage",
+      "update": [{ "id": "asterion", "pose": "idle" }, { "id": "mirto", "pose": "idle", "x": 1700, "facing": "left", "flame": 0.8 }],
+      "next": "dl2"
+    },
+    { "id": "dl2", "type": "dialogue", "speaker": "mirto", "text": "asterion04.dhook", "next": "bl_locked" },
+    {
+      "id": "bl_locked",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "flag": "nisio_avisado" }], "next": "dl_locked" }],
+      "default": "bl2"
+    },
+    { "id": "dl_locked", "type": "dialogue", "speaker": "mirto", "text": "asterion04.dlocked", "next": "bl2" },
+    {
+      "id": "bl2",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "dead": "domicia" }], "next": "dl3a" }],
+      "default": "dl3b"
+    },
+    { "id": "dl3a", "type": "dialogue", "speaker": "livia", "text": "asterion04.dl3a", "next": "dl4" },
+    { "id": "dl3b", "type": "dialogue", "speaker": "livia", "text": "asterion04.dl3b", "next": "dl4" },
+    { "id": "dl4", "type": "dialogue", "speaker": "mirto", "text": "asterion04.dkey", "next": "sl_run" },
+    {
+      "id": "sl_run",
+      "type": "stage",
+      "background": "bg.labyrinth.gallery",
+      "worldWidth": 3840,
+      "characters": [
+        { "id": "asterion", "pose": "walk", "x": 600, "facing": "right" },
+        { "id": "livia", "pose": "idle", "x": 380, "facing": "right", "flame": 1 },
+        { "id": "mirto", "pose": "idle", "x": 250, "facing": "right", "flame": 0.8 }
+      ],
+      "effects": [{ "flag": "fera", "add": 1 }],
+      "next": "el_run"
+    },
+    {
+      "id": "el_run",
+      "type": "exploration",
+      "character": "asterion",
+      "width": 3840,
+      "start": 600,
+      "hint": "asterion04.erun.hint",
+      "barks": [{"x":1600,"speaker":"livia","text":"asterion04.bark.livia"}],
+      "sounds": [
+        { "x": 150, "y": 620, "every": 0.7 },
+        { "x": 3500, "y": 560, "every": 2.4 }
+      ],
+      "scent": {
+        "trails": [
+          { "from": 600, "to": 3500, "kind": "path" },
+          { "from": 0, "to": 500, "kind": "danger" }
+        ],
+        "effects": [{ "giftUse": "asterion" }, { "flag": "fera", "add": 1 }]
+      },
+      "exits": [{ "id": "portals", "from": 3420, "to": 3840, "next": "sl_gate" }]
+    },
+    {
+      "id": "sl_gate",
+      "type": "stage",
+      "background": "bg.labyrinth.portals",
+      "worldWidth": 1920,
+      "characters": [
+        { "id": "asterion", "pose": "idle", "x": 1250, "facing": "left" },
+        { "id": "livia", "pose": "flame", "x": 760, "facing": "right", "flame": 1.2 },
+        { "id": "mirto", "pose": "idle", "x": 330, "facing": "right", "flame": 0.8 }
+      ],
+      "next": "dl_gate"
+    },
+    { "id": "dl_gate", "type": "dialogue", "text": "asterion04.dlgate", "next": "bl_flame" },
+    {
+      "id": "bl_flame",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "giftUses": "livia", "min": 1 }], "next": "dl_flame_strong" }],
+      "default": "dl_flame_weak"
+    },
+    {
+      "id": "dl_flame_strong",
+      "type": "dialogue",
+      "text": "asterion04.dlflamestrong",
+      "effects": [{ "giftUse": "livia" }],
+      "next": "dl_open"
+    },
+    {
+      "id": "dl_flame_weak",
+      "type": "dialogue",
+      "text": "asterion04.dlflameweak",
+      "effects": [{ "giftUse": "livia" }],
+      "next": "ml_hold"
+    },
+    {
+      "id": "ml_hold",
+      "type": "minigame",
+      "game": "restraint",
+      "params": { "hint": "asterion04.mlhold.hint", "seconds": 10, "strength": 0.8 },
+      "outcomes": [
+        { "id": "held", "label": "asterion04.mlhold.held", "next": "dl_open" },
+        { "id": "strained", "label": "asterion04.mlhold.strained", "next": "dl_open" },
+        {
+          "id": "lost",
+          "label": "asterion04.mlhold.lost",
+          "effects": [{ "flag": "fera", "add": 1 }],
+          "next": "dl_open"
+        }
+      ]
+    },
+    { "id": "dl_open", "type": "dialogue", "text": "asterion04.dopen", "next": "cl_final" },
+    {
+      "id": "cl_final",
+      "type": "choice",
+      "text": "asterion04.clfinal",
+      "choices": [
+        {
+          "id": "hand",
+          "text": "asterion04.clfinal.hand",
+          "thread": "tie",
+          "conditions": [{ "flag": "fera", "max": 3 }],
+          "showWhenLocked": true, "lockedHint": "asterion04.clfinal.hand.locked",
+          "next": "bl_hand"
+        },
+        {
+          "id": "close",
+          "text": "asterion04.clfinal.close",
+          "thread": "cut",
+          "conditions": [{ "flag": "fera", "max": 3 }],
+          "next": "bl_close"
+        },
+        {
+          "id": "alone",
+          "text": "asterion04.clfinal.alone",
+          "thread": "cut",
+          "voice": "beast",
+          "conditions": [{ "flag": "fera", "min": 4 }],
+          "next": "bl_close"
+        }
+      ]
+    },
+    {
+      "id": "bl_hand",
+      "type": "branch",
+      "cases": [
+        { "conditions": [{ "dead": "domicia" }], "next": "dl_goes" },
+        { "conditions": [{ "flag": "encontro_asterion", "is": "raise" }], "next": "dl_goes2" }
+      ],
+      "default": "dl_returns"
+    },
+    {
+      "id": "bl_close",
+      "type": "branch",
+      "cases": [
+        { "conditions": [{ "dead": "domicia" }], "next": "dl_arrested" },
+        { "conditions": [{ "flag": "encontro_asterion", "is": "raise" }], "next": "dl_returns_lie" }
+      ],
+      "default": "dl_returns"
+    },
+    {
+      "id": "dl_goes",
+      "type": "dialogue",
+      "speaker": "livia",
+      "text": "asterion04.dlgoes",
+      "effects": [{ "flag": "livia_desceu_ao_fundo", "value": true }, { "fate": "porta", "add": 1 }],
+      "next": "dl_goes_n"
+    },
+    {
+      "id": "dl_goes2",
+      "type": "dialogue",
+      "speaker": "livia",
+      "text": "asterion04.dlgoes2",
+      "effects": [{ "flag": "livia_desceu_ao_fundo", "value": true }, { "fate": "porta", "add": 1 }],
+      "next": "dl_goes_n"
+    },
+    { "id": "dl_goes_n", "type": "dialogue", "text": "asterion04.dlgoesn", "next": "bm" },
+    {
+      "id": "dl_arrested",
+      "type": "dialogue",
+      "text": "asterion04.dlarrested",
+      "effects": [{ "flag": "livia_presa", "value": true }],
+      "next": "fe_livia"
+    },
+    { "id": "fe_livia", "type": "fate_event", "thread": "tangle", "next": "bm" },
+    {
+      "id": "dl_returns",
+      "type": "dialogue",
+      "speaker": "livia",
+      "text": "asterion04.dlreturns",
+      "effects": [{ "flag": "livia_voltou_ao_templo", "value": true }, { "flag": "mirto_salvo", "value": true }],
+      "next": "dl_returns_n"
+    },
+    {
+      "id": "dl_returns_lie",
+      "type": "dialogue",
+      "speaker": "livia",
+      "text": "asterion04.dlreturnslie",
+      "effects": [{ "flag": "livia_voltou_ao_templo", "value": true }, { "flag": "mirto_salvo", "value": true }],
+      "next": "dl_returns_n"
+    },
+    { "id": "dl_returns_n", "type": "dialogue", "text": "asterion04.dlreturnsn", "next": "t_end_alone" },
+
+    {
+      "id": "sn1",
+      "type": "stage",
+      "background": "bg.labyrinth.chamber",
+      "worldWidth": 1920,
+      "mode": "dark",
+      "characters": [
+        { "id": "asterion", "pose": "listen", "x": 1100, "facing": "left" },
+        { "id": "mirto", "pose": "idle", "x": 400, "facing": "right", "flame": 0.8 }
+      ],
+      "audio": { "music": "labyrinth" },
+      "next": "bn1"
+    },
+    {
+      "id": "bn1",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "flag": "livia_viu_portais" }], "next": "tn_fled" }],
+      "default": "sn2"
+    },
+    { "id": "tn_fled", "type": "thought", "man": "asterion04.tnfled.man", "beast": "asterion04.tnfled.beast", "next": "sn2" },
+    { "id": "sn2", "type": "stage", "update": [{ "id": "mirto", "x": 800 }], "next": "dn1" },
+    { "id": "dn1", "type": "dialogue", "speaker": "mirto", "text": "asterion04.dhook", "next": "bn_locked" },
+    {
+      "id": "bn_locked",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "flag": "nisio_avisado" }], "next": "dn_locked" }],
+      "default": "bn2"
+    },
+    { "id": "dn_locked", "type": "dialogue", "speaker": "mirto", "text": "asterion04.dlocked", "next": "bn2" },
+    {
+      "id": "bn2",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "any": [{ "flag": "colegio_suspeita", "min": 2 }, { "flag": "colegio_alerta", "min": 3 }] }], "next": "dn2a" }],
+      "default": "dn2b"
+    },
+    { "id": "dn2a", "type": "dialogue", "speaker": "mirto", "text": "asterion04.dn2a", "next": "dn3" },
+    { "id": "dn2b", "type": "dialogue", "speaker": "mirto", "text": "asterion04.dn2b", "next": "dn3" },
+    { "id": "dn3", "type": "dialogue", "speaker": "mirto", "text": "asterion04.dkey", "next": "sn_run" },
+    {
+      "id": "sn_run",
+      "type": "stage",
+      "background": "bg.labyrinth.gallery",
+      "worldWidth": 3840,
+      "characters": [
+        { "id": "asterion", "pose": "walk", "x": 600, "facing": "right" },
+        { "id": "mirto", "pose": "idle", "x": 380, "facing": "right", "flame": 0.8 }
+      ],
+      "effects": [{ "flag": "fera", "add": 1 }],
+      "next": "en_run"
+    },
+    {
+      "id": "en_run",
+      "type": "exploration",
+      "character": "asterion",
+      "width": 3840,
+      "start": 600,
+      "hint": "asterion04.enrun.hint",
+      "barks": [{"x":1600,"speaker":"mirto","text":"asterion04.bark.mirto"}],
+      "sounds": [
+        { "x": 150, "y": 620, "every": 0.7 },
+        { "x": 3500, "y": 560, "every": 2.4 }
+      ],
+      "scent": {
+        "trails": [
+          { "from": 600, "to": 3500, "kind": "path" },
+          { "from": 0, "to": 500, "kind": "danger" }
+        ],
+        "effects": [{ "giftUse": "asterion" }, { "flag": "fera", "add": 1 }]
+      },
+      "exits": [{ "id": "portals", "from": 3420, "to": 3840, "next": "sn_gate" }]
+    },
+    {
+      "id": "sn_gate",
+      "type": "stage",
+      "background": "bg.labyrinth.portals",
+      "worldWidth": 1920,
+      "characters": [
+        { "id": "asterion", "pose": "idle", "x": 1250, "facing": "left" },
+        { "id": "mirto", "pose": "idle", "x": 900, "facing": "right", "flame": 0.8 }
+      ],
+      "next": "bn_nisio"
+    },
+    {
+      "id": "bn_nisio",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "flag": "nisio_fio_cortado" }], "next": "dn_gate_open" }],
+      "default": "dn_gate"
+    },
+    { "id": "dn_gate_open", "type": "dialogue", "text": "asterion04.dngateopen", "next": "bn_quinto" },
+    { "id": "dn_gate", "type": "dialogue", "text": "asterion04.dngate", "next": "bn_quinto" },
+    {
+      "id": "bn_quinto",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "flag": "quinto_ajudado" }], "next": "sn_quinto" }],
+      "default": "bn_recall"
+    },
+    {
+      "id": "sn_quinto",
+      "type": "stage",
+      "update": [
+        { "id": "quinto", "pose": "idle", "x": 200, "facing": "right", "flame": 0.9 },
+        { "id": "cacador", "pose": "walk", "x": 20, "facing": "right" }
+      ],
+      "next": "dn_quinto"
+    },
+    {
+      "id": "dn_quinto",
+      "type": "dialogue",
+      "text": "asterion04.dnquinto",
+      "effects": [{ "flag": "quinto_desviou", "value": true }],
+      "next": "sn_quinto2"
+    },
+    { "id": "sn_quinto2", "type": "stage", "update": [{ "id": "quinto", "remove": true }, { "id": "cacador", "remove": true }], "next": "bn_recall" },
+    {
+      "id": "bn_recall",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "relation": "mirto:asterion", "min": 1 }], "next": "tn_recall_a" }],
+      "default": "tn_recall_b"
+    },
+    { "id": "tn_recall_a", "type": "thought", "man": "asterion04.tnrecalla.man", "beast": "asterion04.tnrecall.beast", "next": "cn_final" },
+    { "id": "tn_recall_b", "type": "thought", "man": "asterion04.tnrecallb.man", "beast": "asterion04.tnrecall.beast", "next": "cn_final" },
+    {
+      "id": "cn_final",
+      "type": "choice",
+      "text": "asterion04.cnfinal",
+      "choices": [
+        {
+          "id": "take",
+          "text": "asterion04.cnfinal.take",
+          "thread": "tie",
+          "conditions": [{ "relation": "mirto:asterion", "min": 1 }, { "flag": "fera", "max": 3 }],
+          "showWhenLocked": true, "lockedHint": "asterion04.cnfinal.take.locked",
+          "effects": [{ "flag": "mirto_seguiu", "value": true }, { "fate": "porta", "add": 1 }],
+          "next": "dn_take"
+        },
+        {
+          "id": "send",
+          "text": "asterion04.cnfinal.send",
+          "thread": "cut",
+          "conditions": [{ "flag": "fera", "max": 3 }],
+          "showWhenLocked": true, "lockedHint": "asterion04.cnfinal.send.locked",
+          "next": "bn_send"
+        },
+        { "id": "fight", "text": "asterion04.cnfinal.fight", "thread": "tangle", "next": "mn_fight" }
+      ]
+    },
+    { "id": "dn_take", "type": "dialogue", "speaker": "mirto", "text": "asterion04.dntake", "next": "dn_take2" },
+    { "id": "dn_take2", "type": "dialogue", "text": "asterion04.dntake2", "next": "t_end_two" },
+    {
+      "id": "bn_send",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [{ "any": [{ "flag": "quinto_ajudado" }, { "not": { "flag": "colegio_sabe_do_mirto" } }] }],
+          "next": "dn_send_ok"
+        },
+        { "conditions": [{ "flag": "nisio_avisado" }], "next": "dn_send_father" },
+        { "conditions": [{ "flag": "colegio_alerta", "max": 2 }], "next": "dn_send_taken" }
+      ],
+      "default": "dn_send_dies"
+    },
+    {
+      "id": "dn_send_father",
+      "type": "dialogue",
+      "text": "asterion04.dnsendfather",
+      "effects": [{ "flag": "mirto_salvo", "value": true }, { "flag": "mirto_salvo_pelo_pai", "value": true }],
+      "next": "t_end_alone"
+    },
+    {
+      "id": "dn_send_taken",
+      "type": "dialogue",
+      "text": "asterion04.dnsendtaken",
+      "effects": [{ "flag": "mirto_preso", "value": true }],
+      "next": "fe_mirto_taken"
+    },
+    { "id": "fe_mirto_taken", "type": "fate_event", "thread": "tangle", "next": "t_end_alone" },
+    {
+      "id": "dn_send_ok",
+      "type": "dialogue",
+      "text": "asterion04.dnsendok",
+      "effects": [{ "flag": "mirto_salvo", "value": true }],
+      "next": "t_end_alone"
+    },
+    { "id": "dn_send_dies", "type": "dialogue", "text": "asterion04.dnsenddies", "next": "fe_mirto" },
+    { "id": "fe_mirto", "type": "fate_event", "thread": "cut", "effects": [{ "kill": "mirto" }], "next": "t_end_alone" },
+    {
+      "id": "mn_fight",
+      "type": "minigame",
+      "game": "restraint",
+      "params": { "hint": "asterion04.mnfight.hint", "seconds": 14, "strength": 1.4 },
+      "outcomes": [
+        {
+          "id": "held",
+          "label": "asterion04.mnfight.held",
+          "effects": [{ "flag": "fera", "add": 1 }, { "flag": "mirto_salvo", "value": true }],
+          "next": "dn_fight_held"
+        },
+        {
+          "id": "strained",
+          "label": "asterion04.mnfight.strained",
+          "effects": [{ "flag": "fera", "add": 1 }, { "flag": "mirto_salvo", "value": true }],
+          "next": "dn_fight_held"
+        },
+        {
+          "id": "lost",
+          "label": "asterion04.mnfight.lost",
+          "effects": [
+            { "flag": "fera", "add": 2 },
+            { "relation": "mirto:asterion", "add": -2 },
+            { "fate": "porta", "add": -2 },
+            { "flag": "mirto_viu_a_fera", "value": true }
+          ],
+          "next": "dn_fight_lost"
+        }
+      ]
+    },
+    { "id": "dn_fight_held", "type": "dialogue", "text": "asterion04.dnfightheld", "next": "t_end_alone" },
+    { "id": "dn_fight_lost", "type": "dialogue", "text": "asterion04.dnfightlost", "next": "fe_hunter" },
+    { "id": "fe_hunter", "type": "fate_event", "thread": "cut", "effects": [{ "kill": "cacador" }], "next": "t_end_alone" },
+
+    {
+      "id": "bm",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "relation": "mirto:asterion", "min": 1 }], "next": "dm_with" }],
+      "default": "bm_alone"
+    },
+    {
+      "id": "dm_with",
+      "type": "dialogue",
+      "text": "asterion04.dmwith",
+      "effects": [{ "flag": "mirto_seguiu", "value": true }],
+      "next": "bm_end"
+    },
+    {
+      "id": "bm_alone",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [{ "any": [{ "flag": "quinto_ajudado" }, { "not": { "flag": "colegio_sabe_do_mirto" } }] }],
+          "next": "dm_alone_ok"
+        },
+        { "conditions": [{ "flag": "nisio_avisado" }], "next": "dm_father" },
+        { "conditions": [{ "flag": "colegio_alerta", "max": 2 }], "next": "dm_taken" }
+      ],
+      "default": "dm_alone_dies"
+    },
+    {
+      "id": "dm_father",
+      "type": "dialogue",
+      "text": "asterion04.dnsendfather",
+      "effects": [{ "flag": "mirto_salvo", "value": true }, { "flag": "mirto_salvo_pelo_pai", "value": true }],
+      "next": "bm_end"
+    },
+    {
+      "id": "dm_taken",
+      "type": "dialogue",
+      "text": "asterion04.dnsendtaken",
+      "effects": [{ "flag": "mirto_preso", "value": true }],
+      "next": "fe_mirto_taken2"
+    },
+    { "id": "fe_mirto_taken2", "type": "fate_event", "thread": "tangle", "next": "bm_end" },
+    {
+      "id": "dm_alone_ok",
+      "type": "dialogue",
+      "text": "asterion04.dmaloneok",
+      "effects": [{ "flag": "mirto_salvo", "value": true }],
+      "next": "bm_end"
+    },
+    { "id": "dm_alone_dies", "type": "dialogue", "text": "asterion04.dnsenddies", "next": "fe_mirto2" },
+    { "id": "fe_mirto2", "type": "fate_event", "thread": "cut", "effects": [{ "kill": "mirto" }], "next": "bm_end" },
+    {
+      "id": "bm_end",
+      "type": "branch",
+      "cases": [{ "conditions": [{ "flag": "livia_presa" }], "next": "t_end_alone" }],
+      "default": "t_end_livia"
+    },
+
+    { "id": "t_end_livia", "type": "thought", "man": "asterion04.tendlivia.man", "next": "end" },
+    { "id": "t_end_two", "type": "thought", "man": "asterion04.tendtwo.man", "next": "end" },
+    { "id": "t_end_alone", "type": "thought", "man": "asterion04.tendalone.man", "beast": "asterion04.tendalone.beast", "next": "end" },
+    { "id": "end", "type": "end" }
+  ]
+}

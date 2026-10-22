@@ -1,0 +1,23 @@
+{
+  "id": "livia",
+  "name": "char.livia.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": { "art": "livia.pose.idle", "ground": { "x": 380, "y": 990 }, "headPx": 115, "cup": { "x": 578, "y": 279 } },
+    "walk": { "art": "livia.pose.walk", "ground": { "x": 340, "y": 985 }, "headPx": 115, "cup": { "x": 578, "y": 275 } },
+    "offering": { "art": "livia.pose.offering", "ground": { "x": 380, "y": 985 }, "headPx": 158, "cup": { "x": 620, "y": 463 } },
+    "flame": { "art": "livia.pose.flame", "ground": { "x": 355, "y": 990 }, "headPx": 106, "cup": { "x": 558, "y": 45 } },
+    "scared": { "art": "livia.pose.scared", "ground": { "x": 380, "y": 985 }, "headPx": 115, "cup": { "x": 452, "y": 358, "angle": 15 } }
+  },
+  "animation": {
+    "breathe": { "amplitude": 0.006, "period": 4.2 },
+    "walk": { "speed": 182, "stepPeriod": 0.42, "bob": 4, "frames": ["walk", "idle"] }
+  },
+  "defaultExpression": "serene",
+  "portraits": {
+    "serene": "livia.portrait.serene",
+    "determined": "livia.portrait.determined",
+    "worried": "livia.portrait.worried"
+  }
+}

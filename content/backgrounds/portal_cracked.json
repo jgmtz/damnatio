@@ -1,0 +1,14 @@
+{
+  "id": "bg.portal.cracked",
+  "floor": 0.8,
+  "repeat": false,
+  "ambient": 0.35,
+  "lights": [
+    {
+      "x": 960,
+      "y": 560,
+      "radius": 420,
+      "intensity": 0.5
+    }
+  ]
+}

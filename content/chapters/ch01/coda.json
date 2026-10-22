@@ -1,0 +1,158 @@
+{
+  "id": "coda",
+  "protagonist": "livia",
+  "interlude": true,
+  "title": "coda.title",
+  "start": "s01",
+  "nodes": [
+    {
+      "id": "s01",
+      "type": "stage",
+      "background": "bg.temple",
+      "worldWidth": 3840,
+      "mode": "night",
+      "characters": [
+        {
+          "id": "hearth",
+          "pose": "idle",
+          "x": 3250,
+          "flame": 1
+        }
+      ],
+      "audio": {
+        "music": "coda"
+      },
+      "next": "s02"
+    },
+    {
+      "id": "s02",
+      "type": "stage",
+      "update": [
+        {
+          "id": "livia",
+          "pose": "offering",
+          "x": 2980,
+          "facing": "right",
+          "flame": 0.8,
+          "conditions": [
+            {
+              "not": {
+                "any": [
+                  {
+                    "flag": "livia_presa"
+                  },
+                  {
+                    "flag": "livia_desceu_ao_fundo"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "claudia",
+          "pose": "idle",
+          "x": 2980,
+          "facing": "right",
+          "conditions": [
+            {
+              "not": {
+                "not": {
+                  "any": [
+                    {
+                      "flag": "livia_presa"
+                    },
+                    {
+                      "flag": "livia_desceu_ao_fundo"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "next": "d01"
+    },
+    {
+      "id": "d01",
+      "type": "dialogue",
+      "text": "coda.d01",
+      "next": "s03"
+    },
+    {
+      "id": "s03",
+      "type": "stage",
+      "update": [
+        {
+          "id": "hearth",
+          "flame": 0.25
+        }
+      ],
+      "next": "d02",
+      "audio": {
+        "sfx": "flame.waver"
+      }
+    },
+    {
+      "id": "d02",
+      "type": "dialogue",
+      "text": "coda.d02",
+      "next": "f01"
+    },
+    {
+      "id": "f01",
+      "type": "fate_event",
+      "thread": "tangle",
+      "next": "d03"
+    },
+    {
+      "id": "d03",
+      "type": "dialogue",
+      "text": "coda.d03",
+      "next": "s04"
+    },
+    {
+      "id": "s04",
+      "type": "stage",
+      "update": [
+        {
+          "id": "hearth",
+          "flame": 1
+        }
+      ],
+      "next": "d04"
+    },
+    {
+      "id": "d04",
+      "type": "dialogue",
+      "text": "coda.d04",
+      "next": "s05"
+    },
+    {
+      "id": "s05",
+      "type": "stage",
+      "background": "bg.portal.cracked",
+      "worldWidth": 1920,
+      "mode": "night",
+      "characters": [],
+      "next": "d05"
+    },
+    {
+      "id": "d05",
+      "type": "dialogue",
+      "text": "coda.d05",
+      "next": "d06"
+    },
+    {
+      "id": "d06",
+      "type": "dialogue",
+      "text": "coda.d06",
+      "next": "end"
+    },
+    {
+      "id": "end",
+      "type": "end"
+    }
+  ]
+}

@@ -1,0 +1,1642 @@
+/* Palette (GDD 8.2): terracotta, black, gold. */
+:root {
+  --black: #0c0907;
+  --black-soft: #17110d;
+  --terracotta: #c8743a;
+  --terracotta-dim: #8a4f28;
+  --gold: #d9b45a;
+  --ink: #f1e3cf;
+  --font-display: 'Cinzel', 'Trajan Pro', Georgia, serif;
+  --font-body: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+.hidden {
+  display: none !important;
+}
+
+#viewport {
+  position: fixed;
+  inset: 0;
+}
+
+/* --- Stage: fixed 1920x1080 logical size, scaled by JS --- */
+
+.stage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1080px;
+  transform-origin: 0 0;
+  overflow: hidden;
+  background: var(--black);
+  user-select: none;
+}
+
+.stage-background,
+.stage-characters,
+.stage-ui {
+  position: absolute;
+  inset: 0;
+}
+
+/* The frieze background is as wide as the world; JS slides it with the camera. */
+.stage-background {
+  right: auto;
+  height: 1080px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  will-change: transform;
+}
+
+/*
+ * Flashback (GDD 8.2): a faded memory. The same red-figure art, washed in sepia and haze, with the
+ * edges burning out. (Inverting the ink only suited the early silhouettes: on the real terracotta
+ * art it turned everything olive green.) Applied to the scene layers, not to the UI.
+ */
+.stage.flashback .stage-background,
+.stage.flashback .figure,
+.stage.flashback .inspect-view-image {
+  filter: sepia(0.75) saturate(0.7) brightness(1.08) contrast(0.88);
+}
+
+/* Fire stays fire in memories; only warmed and faded a little. */
+.stage.flashback .figure-flame,
+.stage.flashback .stage-fx,
+.stage.flashback .inspect-view-fx {
+  filter: sepia(0.35) saturate(1.1);
+}
+
+/* First-person scenes inside a memory share its faded colour (fire a little less faded). */
+.stage.flashback .minigame-layer {
+  filter: sepia(0.6) saturate(0.8) brightness(1.05) contrast(0.9);
+}
+
+.stage.flashback::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, rgba(255, 225, 170, 0.1) 0%, rgba(255, 225, 170, 0.04) 45%, transparent 60%),
+    radial-gradient(ellipse at center, transparent 50%, rgba(45, 25, 8, 0.55) 82%, rgba(20, 10, 3, 0.9) 100%);
+  z-index: 1;
+}
+
+/* UI always above scene effects such as the flashback vignette. */
+.stage-ui {
+  z-index: 2;
+}
+
+/* Figures get z-indexes for depth; isolate them so they never rise above the UI or the vase bands. */
+.stage-characters {
+  isolation: isolate;
+}
+
+.stage-fx {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* On a dark band, so it reads over the pale white-ground scenes (Théron) as well as the dark ones. */
+.explore-hint {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 80px;
+  width: max-content;
+  max-width: 1600px;
+  padding: 8px 28px;
+  text-align: center;
+  font-size: 28px;
+  font-style: italic;
+  color: var(--gold);
+  text-shadow: 0 2px 6px #000;
+  background: rgba(12, 9, 7, 0.72);
+  pointer-events: none;
+}
+
+/* Greek key (meander) bands framing the panel like a vase frieze. */
+.vase-band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background-color: var(--black);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath d='M0 42 H42 V6 H10 V34 H34 V14 H18 V26 H26' fill='none' stroke='%23c8743a' stroke-width='4'/%3E%3C/svg%3E");
+  background-size: 48px 48px;
+  background-repeat: repeat-x;
+  border-color: var(--terracotta);
+  border-style: solid;
+  border-width: 0;
+}
+
+.vase-band-top {
+  top: 0;
+  border-bottom-width: 4px;
+}
+
+.vase-band-bottom {
+  bottom: 0;
+  border-top-width: 4px;
+}
+
+/* Positioned entirely by transform (src/ui/figure.ts). */
+.figure,
+.figure-flame {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* --- Dialogue --- */
+
+.dialogue-box {
+  position: absolute;
+  left: 240px;
+  right: 240px;
+  /* Sits on the floor band, below the characters' feet (GROUND_Y = 860). */
+  bottom: 50px;
+  min-height: 160px;
+  padding: 20px 48px 26px;
+  /* A dark clay tablet: warm gradient, faint engraved hatching, double incised border. */
+  background:
+    repeating-linear-gradient(115deg, rgba(200, 116, 58, 0.035) 0 2px, transparent 2px 9px),
+    linear-gradient(180deg, rgba(36, 22, 14, 0.94), rgba(16, 10, 7, 0.96));
+  border: 2px solid var(--terracotta);
+  box-shadow:
+    inset 0 0 0 6px rgba(16, 10, 7, 0.9),
+    inset 0 0 0 7px rgba(200, 116, 58, 0.45),
+    0 12px 40px rgba(0, 0, 0, 0.6);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Small meander ornaments on the tablet's upper corners. */
+.dialogue-box::before,
+.dialogue-box::after {
+  content: '';
+  position: absolute;
+  top: -14px;
+  width: 120px;
+  height: 14px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='14' viewBox='0 0 24 14'%3E%3Cpath d='M0 12 H20 V2 H6 V8 H14' fill='none' stroke='%23c8743a' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+}
+
+.dialogue-box::before {
+  left: 24px;
+}
+
+.dialogue-box::after {
+  right: 24px;
+}
+
+/* Expression medallion (GDD 8.5): rises above the box on its left side. */
+.dialogue-box.with-portrait {
+  padding-left: 290px;
+}
+
+.dialogue-portrait {
+  position: absolute;
+  left: 24px;
+  bottom: 0;
+  height: 330px;
+  pointer-events: none;
+}
+
+.dialogue-speaker {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 26px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-shadow: 0 0 12px rgba(255, 170, 70, 0.35);
+  min-height: 1em;
+  margin-bottom: 6px;
+}
+
+.dialogue-text {
+  font-size: 36px;
+  line-height: 1.3;
+  color: #f4e6d0;
+}
+
+.dialogue-box.narration .dialogue-text {
+  font-style: italic;
+  color: #dcc9ad;
+}
+
+.dialogue-hint {
+  position: absolute;
+  right: 28px;
+  bottom: 14px;
+  color: var(--gold);
+  font-size: 24px;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* --- Choices --- */
+
+.choices {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* A line said while walking (ExplorationNode.barks): a speech balloon over the speaker, the walk goes on. */
+.bark {
+  position: absolute;
+  z-index: 3;
+  max-width: 560px;
+  padding: 12px 22px 14px;
+  transform: translate(-50%, -100%);
+  font: italic 30px/1.25 var(--font-text, 'Cormorant Garamond', Georgia, serif);
+  color: #f1e3cf;
+  background: rgba(12, 9, 7, 0.82);
+  border: 1px solid rgba(200, 116, 58, 0.6);
+  border-radius: 14px;
+  pointer-events: none;
+  text-align: center;
+  animation: thought-in 0.35s ease-out;
+}
+
+/* The tail points down at the speaker. */
+.bark::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  transform: translateX(-50%);
+  border: 12px solid transparent;
+  border-bottom: 0;
+  border-top-color: rgba(12, 9, 7, 0.82);
+}
+
+/* A locked choice says why, in a short line under its text (Choice.lockedHint). */
+.choice-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.choice-lock {
+  font-size: 24px;
+  font-style: italic;
+  color: #c98a6a;
+  opacity: 0.95;
+}
+
+/* ChoiceNode.panel = "high": above the heads, so someone seated on the floor stays in view. */
+.choices.high {
+  bottom: auto;
+  top: 150px;
+}
+
+/* Room above everyone's heads (ChoiceList.show headroom): the options go there instead of over the bodies. */
+.choices.above {
+  bottom: auto;
+  top: 96px;
+}
+
+.choices.above .choice-list {
+  gap: 6px;
+}
+
+.choices.above .choice {
+  padding: 7px 26px;
+  font-size: 29px;
+  line-height: 1.2;
+}
+
+.choices.above .choice-lock {
+  font-size: 22px;
+}
+
+.choice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 1100px;
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 16px 30px;
+  font: inherit;
+  font-size: 34px;
+  text-align: left;
+  color: var(--ink);
+  background:
+    linear-gradient(90deg, rgba(200, 116, 58, 0.12), transparent 40%),
+    linear-gradient(180deg, rgba(30, 19, 12, 0.95), rgba(14, 9, 6, 0.96));
+  border: 1px solid var(--terracotta-dim);
+  border-left: 4px solid var(--terracotta);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.choice:hover:not(:disabled),
+.choice:focus-visible {
+  border-color: var(--gold);
+  border-left-color: var(--gold);
+  color: #fff;
+  outline: none;
+  transform: translateX(8px);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.5),
+    0 0 22px rgba(255, 170, 70, 0.25);
+}
+
+/* Locked: the option itself is faded and struck through; the reason under it stays readable. */
+.choice:disabled {
+  cursor: default;
+}
+
+.choice:disabled .choice-key,
+.choice:disabled .choice-body > span:first-child {
+  opacity: 0.4;
+  text-decoration: line-through;
+}
+
+/* Number in a small golden ring, like a stamped seal. */
+.choice-key {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--gold);
+}
+
+/* Timer drawn as a golden wick burning toward its end. */
+.choice-timer {
+  position: relative;
+  width: 1100px;
+  height: 16px;
+  background: linear-gradient(rgba(217, 180, 90, 0.12), rgba(217, 180, 90, 0.12)) center / 100% 2px no-repeat;
+}
+
+.choice-timer-fill {
+  height: 100%;
+  background: var(--yarn, linear-gradient(var(--gold), var(--gold))) repeat-x left center / auto 16px;
+  transform-origin: left center;
+}
+
+.choice-timer-ember {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border-radius: 50%;
+  background: #ffb347;
+  box-shadow: 0 0 10px 4px rgba(255, 138, 42, 0.8);
+  animation: ember-flicker 0.25s ease-in-out infinite alternate;
+}
+
+@keyframes ember-flicker {
+  to {
+    transform: scale(0.75);
+    opacity: 0.8;
+  }
+}
+
+/* --- Gift, examine prompts, minigames --- */
+
+.gift-hint,
+.inspect-prompt {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 26px;
+  font: inherit;
+  font-size: 26px;
+  font-style: italic;
+  color: var(--gold);
+  background: rgba(12, 9, 7, 0.85);
+  border: 1px solid var(--terracotta-dim);
+  cursor: pointer;
+}
+
+/* Sits just above the dialogue box, on the right, where the eye already is. */
+.gift-hint {
+  left: auto;
+  right: 250px;
+  bottom: 236px;
+  transform: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 18px rgba(255, 170, 70, 0.35);
+  animation: gift-glow 1.6s ease-in-out infinite;
+}
+
+@keyframes gift-glow {
+  50% {
+    box-shadow: 0 0 4px rgba(255, 170, 70, 0.1);
+    color: #fff1c8;
+  }
+}
+
+.inspect-prompt {
+  top: 140px;
+}
+
+.minigame-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  cursor: crosshair;
+}
+
+/* Night: the temple asleep, cold and dark (stealth scenes). */
+.stage.night .stage-background,
+.stage.night .figure {
+  filter: brightness(0.72) saturate(0.75) hue-rotate(-12deg);
+}
+
+/* --- Atmosphere layers and scene transitions --- */
+
+.stage-under {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Scenery objects ride along with the background (they share its camera transform). */
+.stage-props {
+  position: absolute;
+  inset: 0;
+}
+
+.prop {
+  position: absolute;
+  transform-origin: 0 0;
+  pointer-events: none;
+}
+
+/*
+ * Scene change: a frozen copy of the old scene (Stage.playTransition) dissolves over the new one,
+ * dimming a little on the way so the two images don't mix into mud. No cut, no flash.
+ */
+.scene-transition {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.scene-transition.play {
+  animation: scene-dissolve 1.6s ease-in-out forwards;
+}
+
+@keyframes scene-dissolve {
+  0% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  40% {
+    opacity: 0.85;
+    filter: brightness(0.7);
+  }
+  100% {
+    opacity: 0;
+    filter: brightness(0.6);
+  }
+}
+
+/* Minigames and first-person views ease in and out instead of popping. */
+.minigame-layer:not(.hidden) {
+  animation: layer-in 0.7s ease-out;
+}
+
+.minigame-layer.leaving {
+  opacity: 0;
+  transition: opacity 0.6s ease-in;
+  pointer-events: none;
+}
+
+@keyframes layer-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* --- Threads screen --- */
+
+.overlay.threads .overlay-panel {
+  width: 1300px;
+  max-height: 960px;
+}
+
+.threads-list {
+  width: 100%;
+  max-height: 700px;
+  overflow-y: auto;
+  text-align: left;
+  font-size: 24px;
+}
+
+.overlay h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 34px;
+  color: var(--terracotta);
+  letter-spacing: 0.06em;
+}
+
+.credits-list {
+  max-height: 560px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+.credits-list a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(214, 170, 90, 0.35);
+}
+
+.credits-list a:hover {
+  color: var(--gold);
+}
+
+.threads-fragment {
+  margin: 18px 0 6px;
+  font-family: var(--font-display);
+  font-weight: normal;
+  font-size: 28px;
+  color: var(--terracotta);
+}
+
+.thread-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 6px 0;
+  border-left: 3px solid rgba(217, 180, 90, 0.35);
+  padding-left: 16px;
+  margin-left: 8px;
+}
+
+.thread-row.marked {
+  border-left-color: var(--gold);
+}
+
+.thread-row.cut {
+  border-left: 3px dashed #a33;
+  color: #e0a090;
+}
+
+.thread-knot {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  margin-top: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+}
+
+.thread-row.marked .thread-knot {
+  background: var(--gold);
+}
+
+/* --- First-person view of an examined object (src/ui/inspectView.ts) --- */
+
+.inspect-view {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #070403;
+  animation: inspect-in 0.4s ease-out;
+}
+
+.inspect-view.leaving {
+  opacity: 0;
+  transition: opacity 0.35s ease-in;
+}
+
+.inspect-view-image,
+.inspect-view-fx {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* While looking at something, the walking hints and prompts step aside. */
+.inspect-view:not(.hidden) ~ .explore-hint,
+.inspect-view:not(.hidden) ~ .inspect-prompt,
+.inspect-view:not(.hidden) ~ .gift-hint {
+  visibility: hidden;
+}
+
+/* The edges fall into shadow, like a look that narrows. */
+.inspect-view-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(4, 2, 1, 0.75) 100%);
+  z-index: 1;
+}
+
+.inspect-view-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Glows, flames and dust: light added on top (above the vignette, so a torch near the edge shines). */
+.inspect-view-fx {
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+.inspect-view-image,
+.inspect-view-ground {
+  object-fit: cover;
+}
+
+.inspect-view-ground {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* The light the picture is seen in (Hotspot.viewMood), so a pale painting fits its scene. */
+.inspect-view-mood {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Night: dimmed and cooled, a little moonlight from above. */
+.inspect-view.mood-night .inspect-view-image,
+.inspect-view.mood-night .inspect-view-ground {
+  filter: brightness(0.36) saturate(0.4) contrast(1.25);
+}
+
+.inspect-view.mood-night .inspect-view-mood {
+  background:
+    radial-gradient(ellipse at 50% 55%, transparent 25%, rgba(2, 4, 12, 0.7) 95%),
+    rgba(10, 18, 46, 0.5);
+}
+
+/* An interior at night: warm and dim, as if by an oil lamp off to one side. */
+.inspect-view.mood-lamplit .inspect-view-image,
+.inspect-view.mood-lamplit .inspect-view-ground {
+  filter: brightness(0.62) sepia(0.45) saturate(1.05) contrast(1.08);
+}
+
+.inspect-view.mood-lamplit .inspect-view-mood {
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(255, 170, 80, 0.16) 0%, transparent 55%),
+    rgba(30, 16, 6, 0.3);
+}
+
+/* Underground: only what his own faint light reaches; the edges are lost. */
+.inspect-view.mood-dark .inspect-view-image,
+.inspect-view.mood-dark .inspect-view-ground {
+  filter: brightness(0.68) contrast(1.1);
+}
+
+.inspect-view.mood-dark .inspect-view-mood {
+  background: radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(3, 2, 1, 0.78) 90%);
+}
+
+/* A ground painted in the scene's own light (Hotspot.viewGround) is not darkened again: only the
+   cut-out object is toned down to sit in it, and the edges close in softly. */
+.inspect-view.has-ground .inspect-view-ground {
+  filter: none;
+}
+
+.inspect-view.has-ground.mood-night .inspect-view-image {
+  filter: brightness(0.62) saturate(0.7) contrast(1.05);
+}
+
+.inspect-view.has-ground.mood-lamplit .inspect-view-image {
+  filter: brightness(0.85) sepia(0.2);
+}
+
+.inspect-view.has-ground .inspect-view-mood {
+  background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(2, 3, 8, 0.55) 100%);
+}
+
+.inspect-view-frame {
+  position: absolute;
+  inset: 0;
+}
+
+/* Coming slowly closer while the lines are read. */
+.inspect-view-frame.approach {
+  animation: inspect-approach 14s ease-out forwards;
+}
+
+@keyframes inspect-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes inspect-approach {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+/* --- Asterion's thoughts: two voices written over the scene (src/ui/thoughts.ts) --- */
+
+.thought-catcher {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.thought {
+  position: absolute;
+  z-index: 4;
+  width: 840px;
+  transform: translate(-50%, -100%);
+  text-align: center;
+  pointer-events: none;
+}
+
+/* The man: whole sentences, incised gold, like the letters Calias taught him. */
+.thought-man {
+  font: italic 40px/1.25 var(--font-text, 'Cormorant Garamond', Georgia, serif);
+  color: #f0cf7a;
+  letter-spacing: 0.02em;
+  text-shadow:
+    0 0 2px #000,
+    0 2px 10px rgba(0, 0, 0, 0.95),
+    0 0 26px rgba(255, 170, 60, 0.25);
+  animation: thought-in 0.6s ease-out;
+}
+
+/* The beast: broken words, scratched in rust red, never quite still. */
+.thought-beast {
+  margin-top: 10px;
+  font: 600 42px/1.1 var(--font-display, Cinzel, Georgia, serif);
+  text-transform: lowercase;
+  letter-spacing: 0.18em;
+  color: #c8442a;
+  text-shadow:
+    0 0 2px #000,
+    0 2px 10px rgba(0, 0, 0, 0.95),
+    0 0 18px rgba(200, 40, 20, 0.45);
+  animation:
+    thought-in 0.25s ease-out,
+    beast-shake 0.18s steps(2) infinite;
+}
+
+.thought.level-beast .thought-man {
+  font-size: 30px;
+  opacity: 0.28;
+  text-decoration: line-through rgba(200, 68, 42, 0.7);
+}
+
+.thought.level-beast .thought-beast {
+  font-size: 58px;
+}
+
+.thought.level-mixed .thought-beast {
+  font-size: 36px;
+}
+
+@keyframes thought-in {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+  }
+}
+
+@keyframes beast-shake {
+  50% {
+    transform: translate(1px, -1px) rotate(-0.4deg);
+  }
+}
+
+/* A choice written by the beast. */
+.choice.beast {
+  color: #ff9b80;
+  font-family: var(--font-display, Cinzel, Georgia, serif);
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  border-left-color: #9c2a1c;
+}
+
+/* --- Thread map (end of each fragment) --- */
+
+.overlay.pathmap-screen {
+  background: radial-gradient(ellipse at center, #1a110b 0%, #070403 75%);
+}
+
+.overlay.pathmap-screen .overlay-panel {
+  width: 1800px;
+  padding: 28px 40px;
+  gap: 14px;
+}
+
+.pathmap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.pathmap-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.pathmap-header h2 {
+  font-size: 42px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pathmap-percent {
+  flex: none;
+  margin-left: 24px;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: 26px;
+  color: var(--terracotta);
+}
+
+.pathmap-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 26px;
+  justify-content: center;
+  font-size: 21px;
+  color: rgba(241, 227, 207, 0.75);
+}
+
+.pathmap-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pathmap-swatch {
+  width: 64px;
+  height: 32px;
+}
+
+/* The map's window: drag to move, wheel to zoom (src/ui/pathMap.ts moves the sheet). */
+.pathmap-view {
+  position: relative;
+  width: 100%;
+  height: 740px;
+  overflow: hidden;
+  border: 1px solid var(--terracotta-dim);
+  background: #0d0906;
+  cursor: grab;
+  background-size: cover;
+  background-position: center;
+  touch-action: none;
+  user-select: none;
+}
+
+.pathmap-view.dragging {
+  cursor: grabbing;
+}
+
+.pathmap-sheet {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  transform-origin: 0 0;
+}
+
+.pathmap-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pathmap-controls {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 5;
+}
+
+.pathmap-zoom {
+  width: 52px;
+  height: 52px;
+  font: 600 30px/1 var(--font-display);
+  color: var(--ink);
+  background: rgba(20, 13, 9, 0.92);
+  border: 1px solid var(--terracotta-dim);
+  cursor: pointer;
+}
+
+.pathmap-zoom:hover {
+  border-color: var(--gold);
+  color: #fff;
+}
+
+/* Thread ornaments sit on top of the boxes (a knot tied on the box's edge). */
+.pathmap-canvas.over {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.pathmap-option,
+.pathmap-end {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  font-size: 19px;
+  line-height: 1.15;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(34, 22, 14, 0.96), rgba(16, 10, 7, 0.96));
+  border: 1px solid rgba(166, 92, 54, 0.45);
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    color 0.4s ease;
+}
+
+.pathmap-option.known {
+  color: rgba(241, 227, 207, 0.62);
+}
+
+.pathmap-option.unknown {
+  color: rgba(241, 227, 207, 0.3);
+  font-family: var(--font-display);
+  font-size: 40px;
+  border-style: dashed;
+  background: rgba(14, 9, 6, 0.9);
+}
+
+/* This playthrough: lights up when the drawn thread reaches it. */
+.pathmap-option.run {
+  color: rgba(241, 227, 207, 0.75);
+}
+
+.pathmap-option.run.reached,
+.pathmap-end.run.reached {
+  color: #fff4dc;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 26px rgba(255, 170, 70, 0.35);
+}
+
+.pathmap-end {
+  width: 180px;
+  height: 56px;
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  color: rgba(241, 227, 207, 0.5);
+}
+
+.pathmap-end.unknown {
+  border-style: dashed;
+}
+
+.pathmap-hint {
+  font-size: 20px;
+  font-style: italic;
+  color: rgba(241, 227, 207, 0.45);
+}
+
+/* Language switch on the title screen. */
+.language-button {
+  margin-top: 26px;
+  padding: 6px 0;
+  font: inherit;
+  font-size: 24px;
+  color: rgba(241, 227, 207, 0.6);
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(217, 180, 90, 0.35);
+  cursor: pointer;
+}
+
+.language-button:hover,
+.language-button:focus-visible {
+  color: var(--gold);
+  outline: none;
+}
+
+/* --- Overlay --- */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+/* Title: the temple at night shows through; the text sits on the dark left side. */
+.overlay.title-screen {
+  justify-content: flex-start;
+  background: linear-gradient(90deg, rgba(6, 4, 2, 0.95) 0%, rgba(6, 4, 2, 0.75) 38%, rgba(6, 4, 2, 0.05) 75%);
+}
+
+.overlay.title-screen .overlay-panel {
+  align-items: flex-start;
+  text-align: left;
+  margin-left: 140px;
+  width: 820px;
+}
+
+.overlay.title-screen .menu-button {
+  min-width: 420px;
+  text-align: left;
+}
+
+/* Cards between fragments: a dark panel with a vignette. */
+.overlay.card,
+.overlay.chapter-end {
+  background: radial-gradient(ellipse at center, #1a110b 0%, #070403 70%);
+}
+
+/* End of the chapter: what remained, then the 12 maps in a grid (a single column ran off the screen). */
+.overlay.chapter-end .overlay-panel {
+  width: 1500px;
+  max-height: 1000px;
+  padding: 36px 56px;
+  gap: 14px;
+  overflow-y: auto;
+}
+
+.chapter-summary-title {
+  margin: 0;
+  font-family: var(--font-display, Cinzel, Georgia, serif);
+  font-size: 30px;
+  color: var(--gold, #d8b25a);
+}
+
+.chapter-summary {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  columns: 2;
+  column-gap: 48px;
+  font-size: 28px;
+  line-height: 1.35;
+  text-align: left;
+  width: 100%;
+}
+
+.chapter-summary li {
+  break-inside: avoid;
+  margin-bottom: 10px;
+  padding-left: 22px;
+  text-indent: -22px;
+}
+
+.chapter-summary li::before {
+  content: '— ';
+  color: var(--terracotta, #c8743a);
+}
+
+.chapter-maps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+.chapter-maps .menu-button {
+  min-width: 0;
+  width: 100%;
+  font-size: 24px;
+  padding: 10px 12px;
+}
+
+.chapter-end-actions {
+  display: flex;
+  gap: 18px;
+}
+
+.overlay-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 900px;
+  padding: 56px;
+  text-align: center;
+  font-size: 32px;
+}
+
+.overlay h1,
+.overlay h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 24px rgba(255, 160, 60, 0.35);
+}
+
+.overlay h1 {
+  font-size: 96px;
+  line-height: 1.05;
+}
+
+.overlay h2 {
+  font-size: 60px;
+}
+
+.overlay p {
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 30px;
+  font-style: italic;
+  color: var(--terracotta);
+  margin-bottom: 44px;
+}
+
+/* A thin golden thread with a knot under card titles. */
+.card-title {
+  margin-bottom: 8px !important;
+}
+
+.card-title::after {
+  content: '';
+  display: block;
+  width: 360px;
+  margin: 18px auto 0;
+  height: 20px;
+  background:
+    radial-gradient(circle at center, var(--gold) 0 7px, #4a2a10 8px, transparent 9px),
+    var(--yarn, linear-gradient(var(--gold), var(--gold))) repeat-x left center / auto 20px;
+  opacity: 0.9;
+}
+
+.menu-button {
+  min-width: 480px;
+  padding: 14px 32px;
+  font: inherit;
+  font-size: 32px;
+  color: var(--ink);
+  background: linear-gradient(180deg, rgba(30, 19, 12, 0.85), rgba(14, 9, 6, 0.9));
+  border: 1px solid var(--terracotta-dim);
+  border-left: 4px solid var(--terracotta);
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.menu-button:hover:not(:disabled),
+.menu-button:focus-visible {
+  border-color: var(--gold);
+  border-left-color: var(--gold);
+  color: #fff;
+  outline: none;
+  transform: translateX(6px);
+  box-shadow: 0 0 22px rgba(255, 170, 70, 0.22);
+}
+
+.menu-button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.save-code {
+  width: 100%;
+  font-family: monospace;
+  font-size: 20px;
+  color: var(--ink);
+  background: var(--black-soft);
+  border: 2px solid var(--terracotta-dim);
+  padding: 12px;
+  resize: none;
+  word-break: break-all;
+}
+
+.error {
+  color: #e0664a;
+}
+
+/* --- Dev --- */
+
+/* --- In-game debugger (F2). Outside the scaled stage: real pixels, always readable. --- */
+
+.debug-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 420px;
+  overflow-y: auto;
+  padding: 10px 12px 40px;
+  box-sizing: border-box;
+  font: 13px/1.35 system-ui, sans-serif;
+  color: #e8dcc8;
+  background: rgba(12, 9, 7, 0.96);
+  border-left: 2px solid #8a4a2c;
+  z-index: 10;
+}
+
+.debug-title {
+  font-weight: 700;
+  font-size: 15px;
+  color: #d9b45a;
+  margin-bottom: 4px;
+}
+
+.debug-here {
+  margin-bottom: 8px;
+  color: #b8f5b0;
+  font-family: monospace;
+}
+
+.debug-panel details {
+  margin: 6px 0;
+  border-top: 1px solid #3a2a20;
+  padding-top: 6px;
+}
+
+.debug-panel summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #f0c890;
+  margin-bottom: 6px;
+}
+
+.debug-panel select,
+.debug-panel textarea {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 6px;
+  font: 12px monospace;
+  color: #e8dcc8;
+  background: #1c140f;
+  border: 1px solid #5a3a28;
+}
+
+.debug-panel textarea.error {
+  border-color: #e05040;
+}
+
+.debug-row {
+  display: flex;
+  gap: 6px;
+}
+
+.debug-button,
+.debug-node {
+  display: block;
+  width: 100%;
+  margin: 2px 0;
+  padding: 4px 8px;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: #241a13;
+  border: 1px solid #4a3224;
+  cursor: pointer;
+}
+
+.debug-row .debug-button {
+  text-align: center;
+}
+
+.debug-button:hover,
+.debug-node:hover:not(:disabled) {
+  border-color: #d9b45a;
+  background: #33241a;
+}
+
+.debug-node:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.debug-node.current {
+  border-color: #b8f5b0;
+  background: #1f2a1a;
+}
+
+.debug-node-id {
+  display: block;
+  font-family: monospace;
+  font-size: 11px;
+  color: #c9a070;
+}
+
+.debug-node.type-choice .debug-node-id,
+.debug-node.type-minigame .debug-node-id,
+.debug-node.type-exploration .debug-node-id {
+  color: #ffd36a;
+  font-weight: 700;
+}
+
+.debug-node-text {
+  display: block;
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.debug-nodes {
+  max-height: 46vh;
+  overflow-y: auto;
+}
+
+.debug-help {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-bottom: 4px;
+}
+
+.debug-state {
+  max-height: 40vh;
+  overflow: auto;
+  margin: 0;
+  font-size: 11px;
+  color: #b8f5b0;
+}
+
+/*
+ * --- Ceramic frames (pedidos-de-arte 4.10) ---
+ * The painted panels replace the smooth CSS boxes: the dialogue box is a black-glazed plaque with
+ * Greek-key bands; choices and menu buttons are small black plaques; on the thread map, the steps
+ * of this playthrough turn into terracotta plaques. The panels stretch through border-image (the
+ * bands repeat, the middle stretches).
+ */
+.dialogue-box {
+  background: none;
+  border-style: solid;
+  border-width: 32px 14px;
+  border-image: url('../../assets/art/ui/painel_meandro.png') 44 10 44 10 fill / 32px 14px round stretch;
+  box-shadow: none;
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.6));
+  padding: 4px 40px 10px;
+}
+
+.dialogue-box::before,
+.dialogue-box::after {
+  display: none;
+}
+
+.choice,
+.menu-button {
+  background: none;
+  border-style: solid;
+  border-width: 14px 12px;
+  border-image: url('../../assets/art/ui/painel_negro.png') 38 10 38 10 fill / 14px 12px round stretch;
+  box-shadow: none;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.55));
+}
+
+.choice:hover:not(:disabled),
+.choice:focus-visible,
+.menu-button:hover:not(:disabled),
+.menu-button:focus-visible {
+  border-image-source: url('../../assets/art/ui/painel_negro.png');
+  box-shadow: none;
+  filter: drop-shadow(0 0 14px rgba(255, 170, 70, 0.45)) brightness(1.15);
+}
+
+.choice.beast {
+  filter: drop-shadow(0 0 10px rgba(156, 42, 28, 0.6)) hue-rotate(-12deg) saturate(1.4);
+}
+
+.pathmap-option,
+.pathmap-end {
+  background: none;
+  border-style: solid;
+  border-width: 12px 8px;
+  border-image: url('../../assets/art/ui/painel_negro.png') 38 10 38 10 fill / 12px 8px round stretch;
+  padding: 2px 10px;
+}
+
+.pathmap-option.unknown,
+.pathmap-end.unknown {
+  opacity: 0.55;
+  border-style: solid;
+}
+
+/* This playthrough, once the thread reaches it: a terracotta plaque, written in black. */
+.pathmap-option.run.reached,
+.pathmap-end.run.reached {
+  border-style: solid;
+  border-width: 12px 8px;
+  border-image: url('../../assets/art/ui/painel_terracota.png') 46 10 46 10 fill / 12px 8px round stretch;
+  color: #1a0d06;
+  font-weight: 600;
+  box-shadow: none;
+  filter: drop-shadow(0 0 16px rgba(255, 170, 70, 0.4));
+}
+
+/* --- Decisions with construction (docs/design/proposta-decisoes.md) --- */
+
+/* "The world took note": a thread crosses the top of the scene for a moment (Stage.echo). */
+.echo-thread {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 104px;
+  height: 40px;
+  z-index: 2;
+  pointer-events: none;
+  background: var(--yarn) repeat-x center / auto 100%;
+  opacity: 0;
+  transform-origin: left center;
+  animation: echo-pass 2.4s ease-in-out forwards;
+}
+
+.echo-tie {
+  filter: brightness(1.9) saturate(1.3) drop-shadow(0 0 6px rgba(255, 214, 120, 0.95)) drop-shadow(0 0 18px rgba(255, 190, 80, 0.7));
+}
+
+.echo-fray {
+  filter: sepia(0.6) saturate(2.2) hue-rotate(-30deg) brightness(1.3) drop-shadow(0 0 10px rgba(200, 60, 30, 0.8));
+  animation-name: echo-fray;
+}
+
+.echo-alert {
+  filter: grayscale(1) brightness(1.6) contrast(1.3) drop-shadow(0 0 10px rgba(220, 220, 230, 0.7));
+}
+
+@keyframes echo-pass {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  35% {
+    opacity: 0.85;
+    transform: scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+}
+
+/* A bond wearing thin: the thread comes apart from the right. */
+@keyframes echo-fray {
+  0% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+  25% {
+    opacity: 0.8;
+    transform: scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(0.15);
+  }
+}
+
+/* Théron's name flickers when the world lets go of a little more of him (F8). */
+.dialogue-speaker.flicker {
+  animation: name-flicker 1.4s steps(6) 1;
+}
+
+@keyframes name-flicker {
+  0%,
+  100% {
+    visibility: visible;
+  }
+  20%,
+  60% {
+    visibility: hidden;
+  }
+}
+
+/* A pause of weight before the options of a marked choice: the scene closes in, then they appear. */
+.weight-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 45%, transparent 35%, rgba(8, 5, 3, 0.62) 100%);
+  animation: veil-in 0.7s ease-in forwards;
+}
+
+.weight-veil.out {
+  animation: veil-out 0.8s ease-out forwards;
+}
+
+@keyframes veil-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes veil-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* The second voice of a thought (Lívia: Domícia's voice; Théron: the hero he was). */
+.thought-second {
+  margin-top: 14px;
+  font: italic 34px/1.25 var(--font-text, 'Cormorant Garamond', Georgia, serif);
+  color: #b8c8d8;
+  text-align: right;
+  text-shadow:
+    0 0 2px #000,
+    0 2px 10px rgba(0, 0, 0, 0.95);
+  animation: thought-in 0.6s ease-out;
+}
+
+/* Théron's scenes are pale (white-ground vases): his thoughts sit on a dark band to stay readable. */
+.thought.voice-theron {
+  width: auto;
+  max-width: 900px;
+  padding: 14px 30px 16px;
+  background: rgba(12, 9, 7, 0.72);
+  border-radius: 6px;
+}
+
+.thought.voice-theron .thought-second {
+  color: #e8c98a;
+}
+
+/* Théron's inner voice: pale ink of the white-ground vases, dry and sideways, never glowing. */
+.thought.voice-theron .thought-man {
+  font: italic 38px/1.25 var(--font-text, 'Cormorant Garamond', Georgia, serif);
+  color: #ece6da;
+  letter-spacing: 0.01em;
+  text-shadow:
+    0 0 2px #000,
+    0 2px 10px rgba(0, 0, 0, 0.95);
+}

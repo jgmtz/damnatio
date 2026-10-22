@@ -1,0 +1,13 @@
+{
+  "id": "cacador",
+  "name": "char.cacador.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": { "art": "cacador.pose.idle", "ground": { "x": 570, "y": 633 }, "headPx": 70 },
+    "walk": { "art": "cacador.pose.walk", "ground": { "x": 570, "y": 631 }, "headPx": 70 }
+  },
+  "animation": {
+    "walk": { "speed": 170, "stepPeriod": 0.42, "bob": 4, "frames": ["walk", "idle"] }
+  }
+}

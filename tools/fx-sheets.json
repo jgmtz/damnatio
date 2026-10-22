@@ -1,0 +1,238 @@
+{
+  "sheets": [
+    {
+      "id": "fx.flame.cup",
+      "src": "originais/efeitos/fx_chama_calice.png",
+      "dest": "assets/art/fx/chama_calice.png",
+      "grid": [
+        3,
+        3
+      ],
+      "inset": 6,
+      "alpha": "black",
+      "anchor": "bottom"
+    },
+    {
+      "id": "fx.flame.altar",
+      "src": "originais/efeitos/fx_fogo_altar.png",
+      "dest": "assets/art/fx/fogo_altar.png",
+      "grid": [
+        3,
+        2
+      ],
+      "inset": 6,
+      "alpha": "black",
+      "anchor": "bottom"
+    },
+    {
+      "id": "fx.flame.small",
+      "src": "originais/efeitos/fx_chama_pequena.png",
+      "dest": "assets/art/fx/chama_pequena.png",
+      "grid": [
+        3,
+        2
+      ],
+      "inset": 6,
+      "alpha": "black",
+      "anchor": "bottom"
+    },
+    {
+      "id": "fx.embers",
+      "src": "originais/efeitos/fx_brasas.png",
+      "dest": "assets/art/fx/brasas.png",
+      "grid": [
+        3,
+        3
+      ],
+      "inset": 4,
+      "alpha": "black",
+      "anchor": "center",
+      "threshold": 30
+    },
+    {
+      "id": "fx.smoke",
+      "src": "originais/efeitos/fx_fumaca.png",
+      "dest": "assets/art/fx/fumaca.png",
+      "grid": [
+        4,
+        1
+      ],
+      "inset": 6,
+      "alpha": "luma",
+      "anchor": "bottom"
+    },
+    {
+      "id": "fx.signs",
+      "src": "originais/efeitos/fx_sinais_png.jpg",
+      "dest": "assets/art/fx/sinais.png",
+      "grid": [
+        3,
+        2
+      ],
+      "inset": 8,
+      "alpha": "luma",
+      "anchor": "center"
+    },
+    {
+      "id": "fx.hatch.light",
+      "src": "originais/efeitos/fx_hachura_leve.png",
+      "dest": "assets/art/fx/hachura_leve.png",
+      "grid": [
+        1,
+        1
+      ],
+      "alpha": "ink",
+      "anchor": "none",
+      "scale": 0.5
+    },
+    {
+      "id": "fx.hatch.medium",
+      "src": "originais/efeitos/fx_hachura_media.png",
+      "dest": "assets/art/fx/hachura_media.png",
+      "grid": [
+        1,
+        1
+      ],
+      "alpha": "ink",
+      "anchor": "none",
+      "scale": 0.5
+    },
+    {
+      "id": "fx.hatch.dense",
+      "src": "originais/efeitos/fx_hachura_densa.png",
+      "dest": "assets/art/fx/hachura_densa.png",
+      "grid": [
+        1,
+        1
+      ],
+      "alpha": "ink",
+      "anchor": "none",
+      "scale": 0.5
+    },
+    {
+      "id": "fx.cracks",
+      "src": "originais/efeitos/fx_rachaduras.png",
+      "dest": "assets/art/fx/rachaduras.png",
+      "grid": [
+        1,
+        1
+      ],
+      "alpha": "ink",
+      "anchor": "none"
+    },
+    {
+      "id": "fx.letters",
+      "src": "originais/efeitos/fx_letras_entalhadas.png",
+      "dest": "assets/art/fx/letras.png",
+      "grid": [
+        4,
+        3
+      ],
+      "alpha": "groove",
+      "anchor": "none"
+    },
+    {
+      "id": "thread.frames.tie",
+      "src": "originais/fios/fio_no_quadros.png",
+      "dest": "assets/art/threads/fio_no_quadros.png",
+      "grid": [
+        3,
+        3
+      ],
+      "alpha": "black",
+      "anchor": "thread",
+      "threshold": 34,
+      "lineRadius": 2,
+      "minHole": 12,
+      "feather": 34,
+      "modulate": {
+        "hue": 5,
+        "brightness": 1.04
+      }
+    },
+    {
+      "id": "thread.frames.tangle",
+      "src": "originais/fios/fio_emaranhado_quadros.png",
+      "dest": "assets/art/threads/fio_emaranhado_quadros.png",
+      "grid": [
+        4,
+        4
+      ],
+      "alpha": "black",
+      "anchor": "thread",
+      "threshold": 34,
+      "lineRadius": 2,
+      "minHole": 12,
+      "feather": 30,
+      "modulate": {
+        "hue": 5,
+        "brightness": 1.04
+      },
+      "prefer": [
+        {
+          "src": "originais/fio_emaranhado_12.jpg",
+          "grid": [
+            4,
+            3
+          ]
+        },
+        {
+          "src": [
+            "originais/fio_emaranhado_a.jpg",
+            "originais/fio_emaranhado_b.jpg"
+          ],
+          "grid": [
+            3,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "thread.frames.cut",
+      "src": [
+        "originais/fios/fio_tesoura_a.png",
+        "originais/fios/fio_tesoura_b.png"
+      ],
+      "dest": "assets/art/threads/fio_tesoura_quadros.png",
+      "grid": [
+        3,
+        2
+      ],
+      "alpha": "black",
+      "anchor": "thread",
+      "threshold": 26,
+      "lineRadius": 2,
+      "minHole": 12,
+      "feather": 34,
+      "modulate": {
+        "hue": 5,
+        "brightness": 1.04
+      },
+      "prefer": [
+        {
+          "src": [
+            "originais/fio_tesoura_a.jpg",
+            "originais/fio_tesoura_b.jpg"
+          ],
+          "grid": [
+            3,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fx.marks",
+      "src": "originais/efeitos/fx_marcas.png",
+      "dest": "assets/art/fx/marcas.png",
+      "grid": [
+        3,
+        1
+      ],
+      "inset": 4,
+      "alpha": "luma",
+      "anchor": "center"
+    }
+  ]
+}

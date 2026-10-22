@@ -1,0 +1,42 @@
+{
+  "id": "nerea",
+  "name": "char.nerea.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": {
+      "art": "nerea.pose.idle",
+      "ground": {
+        "x": 294,
+        "y": 968
+      },
+      "headPx": 113
+    },
+    "mend": {
+      "art": "nerea.pose.mend",
+      "ground": {
+        "x": 300,
+        "y": 877
+      },
+      "headPx": 150
+    },
+    "scared": {
+      "art": "nerea.pose.scared",
+      "ground": {
+        "x": 303,
+        "y": 967
+      },
+      "headPx": 113
+    }
+  },
+  "animation": {
+    "walk": {
+      "speed": 160,
+      "stepPeriod": 0.42,
+      "bob": 4,
+      "frames": [
+        "idle"
+      ]
+    }
+  }
+}

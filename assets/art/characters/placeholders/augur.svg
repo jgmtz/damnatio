@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="1024" viewBox="0 0 600 1024">
+  <!-- PLACEHOLDER silhouette: augur of the Collegium (toga, curved lituus staff). Facing right. Ground (300,990), head 112-228. -->
+  <g stroke="#0c0907" stroke-width="5" stroke-linejoin="round">
+    <!-- lituus: staff with a curled top, held in front -->
+    <path d="M404 600 L404 160 Q404 118 440 118 Q470 118 470 146 Q470 170 446 170" fill="none" stroke="#d9b45a" stroke-width="9"/>
+    <!-- toga body, wider at the shoulders -->
+    <path d="M232 262 Q300 230 370 262 Q392 420 398 600 Q404 800 412 975 L196 975 Q198 780 206 600 Q214 420 232 262 Z" fill="#c8743a"/>
+    <!-- toga sinus: diagonal drape over the chest -->
+    <path d="M236 270 Q330 330 380 470 L364 520 Q300 380 222 320 Z" fill="#b0622e"/>
+    <!-- head with short dark hair and beard -->
+    <path d="M266 150 Q296 112 340 120 Q364 138 366 172 L382 198 L366 204 Q368 222 352 230 Q320 240 290 226 Q262 204 264 166 Z" fill="#c8743a"/>
+    <path d="M262 168 Q262 118 304 110 Q346 104 362 140 Q330 132 300 142 Q282 150 278 182 Z" fill="#1a120c"/>
+    <path d="M300 222 Q330 244 356 228 L352 238 Q326 254 298 236 Z" fill="#1a120c"/>
+    <!-- front arm holding the staff -->
+    <path d="M346 290 Q384 300 404 320 L412 340 L396 346 L380 330 Q350 320 330 312 Z" fill="#c8743a"/>
+    <!-- feet -->
+    <path d="M232 975 L232 990 L296 990 L286 975 Z M322 975 L326 990 L398 990 L384 975 Z" fill="#c8743a"/>
+  </g>
+  <g fill="none" stroke="#0c0907" stroke-width="3">
+    <path d="M250 520 Q244 760 232 962 M300 520 Q300 760 300 965 M350 540 Q364 760 380 962"/>
+    <circle cx="344" cy="168" r="4" fill="#0c0907"/>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+{
+  "id": "claudia",
+  "name": "char.claudia.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": { "art": "claudia.pose.idle", "ground": { "x": 356, "y": 984 }, "headPx": 122 },
+    "sleep": { "art": "claudia.pose.sleep", "ground": { "x": 507, "y": 539 }, "headPx": 180 }
+  },
+  "animation": {
+    "walk": { "speed": 182, "stepPeriod": 0.42, "bob": 4, "frames": ["idle"] }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "guard2",
+  "name": "char.guard2.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": {
+      "art": "guard2.pose.idle",
+      "ground": {
+        "x": 493,
+        "y": 1236
+      },
+      "headPx": 134
+    }
+  },
+  "animation": {
+    "walk": {
+      "speed": 150,
+      "stepPeriod": 0.42,
+      "bob": 4,
+      "frames": [
+        "idle"
+      ]
+    }
+  }
+}

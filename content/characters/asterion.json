@@ -1,0 +1,19 @@
+{
+  "id": "asterion",
+  "name": "char.asterion.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": { "art": "asterion.pose.idle", "ground": { "x": 474, "y": 988 }, "headPx": 91 },
+    "walk": { "art": "asterion.pose.walk", "ground": { "x": 450, "y": 985 }, "headPx": 91 },
+    "hide": { "art": "asterion.pose.hide", "ground": { "x": 492, "y": 988 }, "headPx": 91 },
+    "listen": { "art": "asterion.pose.listen", "ground": { "x": 474, "y": 988 }, "headPx": 91 },
+    "reach": { "art": "asterion.pose.reach", "ground": { "x": 497, "y": 978 }, "headPx": 91 },
+    "beast": { "art": "asterion.pose.beast", "ground": { "x": 415, "y": 987 }, "headPx": 91 },
+    "charge": { "art": "asterion.pose.charge", "ground": { "x": 500, "y": 973 }, "headPx": 91 }
+  },
+  "animation": {
+    "breathe": { "amplitude": 0.012, "period": 3.2 },
+    "walk": { "speed": 150, "stepPeriod": 0.5, "bob": 7, "frames": ["walk", "idle"] }
+  }
+}

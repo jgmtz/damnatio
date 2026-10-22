@@ -1,0 +1,204 @@
+{
+  "id": "prologue",
+  "protagonist": "livia",
+  "interlude": true,
+  "title": "prologue.title",
+  "start": "s01",
+  "nodes": [
+    {
+      "id": "s01",
+      "type": "stage",
+      "background": "bg.temple",
+      "worldWidth": 3840,
+      "mode": "night",
+      "characters": [
+        {
+          "id": "hearth",
+          "pose": "idle",
+          "x": 3250,
+          "flame": 1
+        }
+      ],
+      "audio": {
+        "music": "prologue"
+      },
+      "next": "d01"
+    },
+    {
+      "id": "d01",
+      "type": "dialogue",
+      "text": "prologue.d01",
+      "next": "m_vase"
+    },
+    {
+      "id": "m_vase",
+      "type": "minigame",
+      "game": "vase",
+      "params": {
+        "guided": true,
+        "hint": "prologue.vase.hint",
+        "speaker": "prologue.vase.speaker",
+        "faces": [
+          {
+            "art": "prologue.face.city",
+            "text": "prologue.face.city"
+          },
+          {
+            "art": "prologue.face.flame",
+            "text": "prologue.face.flame"
+          },
+          {
+            "art": "prologue.face.monster",
+            "text": "prologue.face.monster"
+          },
+          {
+            "art": "prologue.face.vestals",
+            "text": "prologue.face.vestals"
+          }
+        ]
+      },
+      "outcomes": [
+        {
+          "id": "done",
+          "next": "d02"
+        }
+      ]
+    },
+    {
+      "id": "d02",
+      "type": "dialogue",
+      "text": "prologue.d02",
+      "next": "m_threads"
+    },
+    {
+      "id": "m_threads",
+      "type": "minigame",
+      "game": "threads",
+      "params": {
+        "guided": true,
+        "hint": "prologue.threads.hint",
+        "ghostHint": "prologue.threads.ghost",
+        "chest": {
+          "x": 960,
+          "y": 500
+        },
+        "threads": [
+          {
+            "id": "vestal",
+            "label": "prologue.thread.vestal",
+            "angle": 200,
+            "allow": [
+              "tie"
+            ]
+          },
+          {
+            "id": "monster",
+            "label": "prologue.thread.monster",
+            "angle": 340,
+            "allow": [
+              "tie"
+            ]
+          },
+          {
+            "id": "loose",
+            "label": "prologue.thread.loose",
+            "angle": 115,
+            "allow": [
+              "cut"
+            ]
+          },
+          {
+            "id": "erased",
+            "label": "",
+            "angle": 60,
+            "allow": [],
+            "ghost": true
+          }
+        ],
+        "ties": [
+          [
+            "vestal",
+            "monster"
+          ]
+        ]
+      },
+      "outcomes": [
+        {
+          "id": "tie:vestal+monster",
+          "label": "prologue.m_threads.tie",
+          "next": "d_tie"
+        },
+        {
+          "id": "cut:loose",
+          "label": "prologue.m_threads.cut",
+          "next": "d_cut"
+        },
+        {
+          "id": "none",
+          "label": "prologue.m_threads.none",
+          "next": "d_none"
+        }
+      ]
+    },
+    {
+      "id": "d_tie",
+      "type": "dialogue",
+      "text": "prologue.d_tie",
+      "next": "d03"
+    },
+    {
+      "id": "d_cut",
+      "type": "dialogue",
+      "text": "prologue.d_cut",
+      "next": "d03"
+    },
+    {
+      "id": "d_none",
+      "type": "dialogue",
+      "text": "prologue.d_none",
+      "next": "d03"
+    },
+    {
+      "id": "d03",
+      "type": "dialogue",
+      "text": "prologue.d03",
+      "next": "s02"
+    },
+    {
+      "id": "s02",
+      "type": "stage",
+      "update": [
+        {
+          "id": "hearth",
+          "flame": 0.35
+        }
+      ],
+      "next": "d04",
+      "audio": {
+        "music": null,
+        "sfx": "flame.waver"
+      }
+    },
+    {
+      "id": "d04",
+      "type": "dialogue",
+      "text": "prologue.d04",
+      "next": "s03"
+    },
+    {
+      "id": "s03",
+      "type": "stage",
+      "update": [
+        {
+          "id": "hearth",
+          "flame": 1
+        }
+      ],
+      "next": "end"
+    },
+    {
+      "id": "end",
+      "type": "end"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "asterion_young",
+  "name": "char.asterion_young.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "charge": { "art": "asterion_young.pose.charge", "ground": { "x": 284, "y": 894 }, "headPx": 119 },
+    "idle": { "art": "asterion_young.pose.idle", "ground": { "x": 515, "y": 987 }, "headPx": 119 }
+  },
+  "animation": {
+    "walk": { "speed": 140, "stepPeriod": 0.42, "bob": 4, "frames": ["idle"] }
+  }
+}

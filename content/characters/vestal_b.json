@@ -1,0 +1,34 @@
+{
+  "id": "vestal_b",
+  "name": "char.vestal.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": {
+      "art": "vestal_b.pose.idle",
+      "ground": {
+        "x": 346,
+        "y": 989
+      },
+      "headPx": 117
+    },
+    "sleep": {
+      "art": "vestal_b.pose.sleep",
+      "ground": {
+        "x": 510,
+        "y": 497
+      },
+      "headPx": 126
+    }
+  },
+  "animation": {
+    "walk": {
+      "speed": 168,
+      "stepPeriod": 0.42,
+      "bob": 4,
+      "frames": [
+        "idle"
+      ]
+    }
+  }
+}

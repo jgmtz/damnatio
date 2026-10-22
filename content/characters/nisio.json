@@ -1,0 +1,34 @@
+{
+  "id": "nisio",
+  "name": "char.nisio.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": {
+      "art": "nisio.pose.idle",
+      "ground": {
+        "x": 278,
+        "y": 980
+      },
+      "headPx": 113
+    },
+    "scared": {
+      "art": "nisio.pose.scared",
+      "ground": {
+        "x": 248,
+        "y": 970
+      },
+      "headPx": 113
+    }
+  },
+  "animation": {
+    "walk": {
+      "speed": 160,
+      "stepPeriod": 0.42,
+      "bob": 4,
+      "frames": [
+        "idle"
+      ]
+    }
+  }
+}

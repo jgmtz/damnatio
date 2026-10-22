@@ -1,0 +1,26 @@
+{
+  "id": "quinto_wg",
+  "name": "char.quinto.name",
+  "headPxOnStage": 60,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": {
+      "art": "quinto_wg.pose.idle",
+      "ground": {
+        "x": 262,
+        "y": 996
+      },
+      "headPx": 108
+    }
+  },
+  "animation": {
+    "walk": {
+      "speed": 160,
+      "stepPeriod": 0.42,
+      "bob": 4,
+      "frames": [
+        "idle"
+      ]
+    }
+  }
+}

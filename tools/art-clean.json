@@ -1,0 +1,1015 @@
+{
+  "threshold": 48,
+  "lineRadius": 5,
+  "minHoleArea": 200,
+  "files": [
+    {
+      "src": "originais/personagens/livia/livia_base_parada.png",
+      "dest": "assets/art/characters/livia/poses/livia_base_parada.png"
+    },
+    {
+      "src": "originais/personagens/livia/livia_base_caminhada.png",
+      "dest": "assets/art/characters/livia/poses/livia_base_caminhada.png"
+    },
+    {
+      "src": "originais/personagens/livia/livia_pose_oferenda.jpg",
+      "dest": "assets/art/characters/livia/poses/livia_pose_oferenda.png"
+    },
+    {
+      "src": "originais/personagens/livia/livia_pose_chama.jpg",
+      "dest": "assets/art/characters/livia/poses/livia_pose_chama.png"
+    },
+    {
+      "src": "originais/personagens/livia/livia_pose_assustada.png",
+      "dest": "assets/art/characters/livia/poses/livia_pose_assustada.png"
+    },
+    {
+      "src": "originais/personagens/livia/livia_retrato_serena.jpg",
+      "dest": "assets/art/characters/livia/portraits/livia_retrato_serena.png",
+      "holes": false
+    },
+    {
+      "src": "originais/personagens/livia/livia_retrato_determinada.jpg",
+      "dest": "assets/art/characters/livia/portraits/livia_retrato_determinada.png",
+      "holes": false
+    },
+    {
+      "src": "originais/personagens/livia/livia_retrato_preocupada.jpg",
+      "dest": "assets/art/characters/livia/portraits/livia_retrato_preocupada.png",
+      "holes": false
+    },
+    {
+      "src": "originais/personagens/livia/livia_crianca.jpg",
+      "dest": "assets/art/characters/livia/child/livia_crianca.png"
+    },
+    {
+      "src": "originais/personagens/domicia/domicia.jpg",
+      "dest": "assets/art/characters/domicia/domicia_parada.png"
+    },
+    {
+      "src": "originais/personagens/guard/guarda_colegio.jpg",
+      "dest": "assets/art/characters/guard/guarda_parado.png"
+    },
+    {
+      "src": "originais/personagens/theron/theron_parado.jpg",
+      "dest": "assets/art/characters/theron/poses/theron_parado.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/theron/theron_andando.jpg",
+      "dest": "assets/art/characters/theron/poses/theron_andando.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/theron/theron_encostado.jpg",
+      "dest": "assets/art/characters/theron/poses/theron_encostado.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/theron/theron_espreitar.jpg",
+      "dest": "assets/art/characters/theron/poses/theron_espreitar.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/theron/theron_esquecimento.jpg",
+      "dest": "assets/art/characters/theron/poses/theron_esquecimento.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/theron/theron_fio_cortado.jpg",
+      "dest": "assets/art/characters/theron/poses/theron_fio_cortado.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/theron/theron_persuasao.jpg",
+      "dest": "assets/art/characters/theron/poses/theron_persuasao.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/theron/theron_sacar_espada.jpg",
+      "dest": "assets/art/characters/theron/poses/theron_sacar_espada.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/theron/theron_busto_serio.jpg",
+      "dest": "assets/art/characters/theron/portraits/theron_busto_serio.png",
+      "background": "auto",
+      "holes": false
+    },
+    {
+      "src": "originais/personagens/theron/theron_busto_sardonico.jpg",
+      "dest": "assets/art/characters/theron/portraits/theron_busto_sardonico.png",
+      "background": "auto",
+      "holes": false
+    },
+    {
+      "src": "originais/personagens/theron/theron_busto_cansado.jpg",
+      "dest": "assets/art/characters/theron/portraits/theron_busto_cansado.png",
+      "background": "auto",
+      "holes": false
+    },
+    {
+      "src": "originais/personagens/theron/theron_busto_abalado.jpg",
+      "dest": "assets/art/characters/theron/portraits/theron_busto_abalado.png",
+      "background": "auto",
+      "holes": false
+    },
+    {
+      "src": "originais/personagens/asterion/asterion_parado.jpg",
+      "dest": "assets/art/characters/asterion/poses/asterion_parado.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/asterion/asterion_andando.jpg",
+      "dest": "assets/art/characters/asterion/poses/asterion_andando.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/asterion/asterion_esconder.jpg",
+      "dest": "assets/art/characters/asterion/poses/asterion_esconder.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/asterion/asterion_escutar_farejar.jpg",
+      "dest": "assets/art/characters/asterion/poses/asterion_escutar_farejar.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/asterion/asterion_estendendo_mao.jpg",
+      "dest": "assets/art/characters/asterion/poses/asterion_estendendo_mao.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/asterion/asterion_fera.jpg",
+      "dest": "assets/art/characters/asterion/poses/asterion_fera.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/asterion/asterion_investida.jpg",
+      "dest": "assets/art/characters/asterion/poses/asterion_investida.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/objetos/coluna_dorica.jpg",
+      "dest": "assets/art/props/temple/coluna_dorica.png"
+    },
+    {
+      "src": "originais/objetos/portao.jpg",
+      "dest": "assets/art/props/temple/portao.png"
+    },
+    {
+      "src": "originais/objetos/nicho.jpg",
+      "dest": "assets/art/props/temple/nicho.png",
+      "holes": false
+    },
+    {
+      "src": "originais/objetos/altar_de_vesta.jpg",
+      "dest": "assets/art/props/temple/altar_de_vesta.png"
+    },
+    {
+      "src": "originais/objetos/lamparina_tripe.jpg",
+      "dest": "assets/art/props/temple/lamparina_tripe.png"
+    },
+    {
+      "src": "originais/objetos/oleo.jpg",
+      "dest": "assets/art/props/oleo.png",
+      "holes": false
+    },
+    {
+      "src": "originais/cenarios/brickwall.jpg",
+      "dest": "assets/art/backgrounds/temple_wall.jpg",
+      "copy": true,
+      "brightness": 0.5
+    },
+    {
+      "src": "originais/cenarios/porto.jpg",
+      "dest": "assets/art/backgrounds/porto.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/cenarios/galeria_sob_templo.jpg",
+      "dest": "assets/art/backgrounds/galeria.jpg",
+      "copy": true,
+      "brightness": 0.75
+    },
+    {
+      "src": "originais/closes/marca_altar.jpg",
+      "dest": "assets/art/closeups/marca_altar.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/closes/livro_votos.jpg",
+      "dest": "assets/art/closeups/livro_votos.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/closes/manto.jpg",
+      "dest": "assets/art/closeups/manto.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/closes/escadas.jpg",
+      "dest": "assets/art/closeups/escadas.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/closes/braseiro_interior.jpg",
+      "dest": "assets/art/closeups/braseiro.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/closes/asterion_escuro.jpg",
+      "dest": "assets/art/closeups/asterion_escuro.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/closes/asterion_escuro.jpg",
+      "dest": "assets/art/closeups/asterion_recorte.png",
+      "darkFigure": true
+    },
+    {
+      "src": "originais/personagens/mirto/mirto_parado.jpg",
+      "dest": "assets/art/characters/mirto/mirto_parado.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/mirto/mirto_andando.jpg",
+      "dest": "assets/art/characters/mirto/mirto_andando.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/mirto/mirto_assustado.jpg",
+      "dest": "assets/art/characters/mirto/mirto_assustado.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/mirto/mirto_pao.jpg",
+      "dest": "assets/art/characters/mirto/mirto_pao.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/calias/calias_parado.jpg",
+      "dest": "assets/art/characters/calias/calias_parado.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/calias/calias_riscando.jpg",
+      "dest": "assets/art/characters/calias/calias_riscando.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/quinto/quinto_parado.jpg",
+      "dest": "assets/art/characters/quinto/quinto_parado.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/quinto/quinto_caido.jpg",
+      "dest": "assets/art/characters/quinto/quinto_caido.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/cacador/cacador_andando.jpg",
+      "dest": "assets/art/characters/cacador/cacador_andando.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/cacador/cacador_parado.jpg",
+      "dest": "assets/art/characters/cacador/cacador_parado.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/asterion_young/asterion_jovem_parado.jpg",
+      "dest": "assets/art/characters/asterion_young/asterion_jovem_parado.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/asterion_young/asterion_jovem_investida.jpg",
+      "dest": "assets/art/characters/asterion_young/asterion_jovem_investida.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/primeira-pessoa/asterion/asterion_dedo.jpg",
+      "dest": "assets/art/firstperson/asterion/asterion_dedo.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/primeira-pessoa/asterion/asterion_mao_aberta.jpg",
+      "dest": "assets/art/firstperson/asterion/asterion_mao_aberta.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/claudia/claudia_parada.jpg",
+      "dest": "assets/art/characters/claudia/claudia_parada.png"
+    },
+    {
+      "src": "originais/personagens/claudia/claudia_dormindo.jpg",
+      "dest": "assets/art/characters/claudia/claudia_dormindo.png"
+    },
+    {
+      "src": "originais/personagens/varrao/varrao_parado.jpg",
+      "dest": "assets/art/characters/varrao/varrao_parado.png"
+    },
+    {
+      "src": "originais/personagens/varrao/varrao_Escrevendo.jpg",
+      "dest": "assets/art/characters/varrao/varrao_escrevendo.png"
+    },
+    {
+      "src": "originais/personagens/iante/iante_parada.jpg",
+      "dest": "assets/art/characters/iante/iante_parada.png"
+    },
+    {
+      "src": "originais/personagens/vestal/vestal_a.jpg",
+      "dest": "assets/art/characters/vestal/vestal_a.png"
+    },
+    {
+      "src": "originais/personagens/vestal/vestal_b.jpg",
+      "dest": "assets/art/characters/vestal/vestal_b.png"
+    },
+    {
+      "src": "originais/personagens/augur_old/algure_velho.jpg",
+      "dest": "assets/art/characters/augur_old/augure_velho.png"
+    },
+    {
+      "src": "originais/primeira-pessoa/livia/livia_braco_segurando.jpg",
+      "dest": "assets/art/firstperson/livia/livia_braco_segurando.png"
+    },
+    {
+      "src": "originais/primeira-pessoa/livia/livia_menina_braco.jpg",
+      "dest": "assets/art/firstperson/livia/livia_menina_braco.png"
+    },
+    {
+      "src": "originais/primeira-pessoa/livia/calice.jpg",
+      "dest": "assets/art/firstperson/livia/calice.png"
+    },
+    {
+      "src": "originais/fios/fio_sagrado_tira.jpg",
+      "dest": "assets/art/threads/fio_sagrado_tira.png",
+      "keepRows": [
+        350,
+        418
+      ]
+    },
+    {
+      "src": "originais/fios/fio_no_atado.jpg",
+      "dest": "assets/art/threads/fio_no_atado.png",
+      "modulate": {
+        "hue": 5,
+        "brightness": 1.04
+      }
+    },
+    {
+      "src": "originais/fios/fio_corte.jpg",
+      "dest": "assets/art/threads/fio_corte.png",
+      "modulate": {
+        "hue": 5,
+        "brightness": 1.04
+      }
+    },
+    {
+      "src": "originais/fios/fio_emaranhado.jpg",
+      "dest": "assets/art/threads/fio_emaranhado.png",
+      "modulate": {
+        "hue": 5,
+        "brightness": 1.04
+      }
+    },
+    {
+      "src": "originais/fios/fio_fuso.jpg",
+      "dest": "assets/art/threads/fio_fuso.png",
+      "modulate": {
+        "hue": 5,
+        "brightness": 1.04
+      }
+    },
+    {
+      "src": "originais/fios/fio_pontas_rompidas.jpg",
+      "dest": "assets/art/threads/fio_pontas_rompidas.png",
+      "modulate": {
+        "hue": 5,
+        "brightness": 1.04
+      }
+    },
+    {
+      "src": "originais/fios/fio_centelhas.jpg",
+      "dest": "assets/art/threads/fio_centelhas.png"
+    },
+    {
+      "src": "originais/fios/mapa_fundo_fios.jpg",
+      "dest": "assets/art/threads/mapa_fundo.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/closes/altar_canto.jpg",
+      "dest": "assets/art/closeups/altar_canto.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/closes/parede_letras.jpg",
+      "dest": "assets/art/closeups/parede_letras.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/cenarios/labirinto_camara.jpg",
+      "dest": "assets/art/backgrounds/labirinto_camara.jpg",
+      "copy": true,
+      "mirrorTile": true
+    },
+    {
+      "src": "originais/cenarios/labirinto_galeria.jpg",
+      "dest": "assets/art/backgrounds/labirinto_galeria.jpg",
+      "copy": true,
+      "mirrorTile": true
+    },
+    {
+      "src": "originais/cenarios/labirinto_portais_frente.jpg",
+      "dest": "assets/art/backgrounds/labirinto_portais_frente.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/closes/labirinto_portais_escada.jpg",
+      "dest": "assets/art/closeups/labirinto_portais_escada.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/cenarios/labirinto_arquivo_calias.jpg",
+      "dest": "assets/art/backgrounds/labirinto_arquivo_calias.jpg",
+      "copy": true,
+      "mirrorTile": true
+    },
+    {
+      "src": "originais/vistas/livia/vista_livia_lamparina_torta.jpg",
+      "dest": "assets/art/views/livia/vista_livia_lamparina_torta.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/livia/vista_livia_lamparina_inclinada.jpg",
+      "dest": "assets/art/views/livia/vista_livia_lamparina_inclinada.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/livia/vista_livia_pao_lamparina.jpg",
+      "dest": "assets/art/views/livia/vista_livia_pao_lamparina.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/livia/vista_livia_portao.jpg",
+      "dest": "assets/art/views/livia/vista_livia_portao.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/livia/vista_livia_anfora.jpg",
+      "dest": "assets/art/views/livia/vista_livia_anfora.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/livia/vista_menina_anfora.jpg",
+      "dest": "assets/art/views/livia/vista_menina_anfora.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/livia/vista_menina_fenda.jpg",
+      "dest": "assets/art/views/livia/vista_menina_fenda.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/asterion/vista_asterion_parede.jpg",
+      "dest": "assets/art/views/asterion/vista_asterion_parede.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/asterion/vista_asterion_cama.jpg",
+      "dest": "assets/art/views/asterion/vista_asterion_cama.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/livia/vista_livia_tabuinha.jpg",
+      "dest": "assets/art/views/livia/vista_livia_tabuinha.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/livia/vista_livia_fenda.jpg",
+      "dest": "assets/art/views/livia/vista_livia_fenda.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/asterion/vista_asterion_punho.jpg",
+      "dest": "assets/art/views/asterion/vista_asterion_punho.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/interface/ui_ceramica.png",
+      "dest": "assets/art/ui/painel_meandro.png",
+      "copy": true,
+      "extract": {
+        "left": 33,
+        "top": 86,
+        "width": 700,
+        "height": 234
+      }
+    },
+    {
+      "src": "originais/interface/ui_ceramica.png",
+      "dest": "assets/art/ui/painel_negro.png",
+      "copy": true,
+      "extract": {
+        "left": 156,
+        "top": 404,
+        "width": 452,
+        "height": 216
+      }
+    },
+    {
+      "src": "originais/interface/ui_ceramica.png",
+      "dest": "assets/art/ui/painel_terracota.png",
+      "copy": true,
+      "extract": {
+        "left": 156,
+        "top": 712,
+        "width": 452,
+        "height": 211
+      }
+    },
+    {
+      "src": "originais/vistas/asterion/vista_asterion_osso.png",
+      "dest": "assets/art/views/asterion/vista_asterion_osso.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/personagens/vestal/vestal_a_dormindo.png",
+      "dest": "assets/art/characters/vestal/vestal_a_dormindo.png"
+    },
+    {
+      "src": "originais/personagens/vestal/vestal_b_dormindo.png",
+      "dest": "assets/art/characters/vestal/vestal_b_dormindo.png"
+    },
+    {
+      "src": "originais/personagens/livia/livia_crianca_andando.png",
+      "dest": "assets/art/characters/livia/child/livia_crianca_andando.png"
+    },
+    {
+      "src": "originais/primeira-pessoa/livia/livia_maos_anfora.png",
+      "dest": "assets/art/firstperson/livia/livia_mao_anfora_base.png",
+      "background": "auto",
+      "extract": {
+        "left": 0,
+        "top": 0,
+        "width": 690,
+        "height": 768
+      },
+      "paper": true
+    },
+    {
+      "src": "originais/primeira-pessoa/livia/livia_maos_anfora.png",
+      "dest": "assets/art/firstperson/livia/livia_mao_anfora_gargalo.png",
+      "background": "auto",
+      "extract": {
+        "left": 760,
+        "top": 0,
+        "width": 616,
+        "height": 768
+      },
+      "paper": true
+    },
+    {
+      "src": "originais/primeira-pessoa/livia/livia_mao_costas_aberta.png",
+      "dest": "assets/art/firstperson/livia/livia_mao_costas_aberta.png",
+      "background": "auto",
+      "paper": true
+    },
+    {
+      "src": "originais/primeira-pessoa/livia/livia_mao_calice.png",
+      "dest": "assets/art/firstperson/livia/livia_mao_calice.png",
+      "background": "auto",
+      "paper": true
+    },
+    {
+      "src": "originais/primeira-pessoa/livia/livia_punho_costas.png",
+      "dest": "assets/art/firstperson/livia/livia_punho_costas.png",
+      "background": "auto",
+      "paper": true
+    },
+    {
+      "src": "originais/primeira-pessoa/asterion/asterion_menino_Dedo.png",
+      "dest": "assets/art/firstperson/asterion/asterion_menino_dedo.png",
+      "background": "auto",
+      "paper": true
+    },
+    {
+      "src": "originais/cenarios/labirinto_corredor.png",
+      "dest": "assets/art/backgrounds/labirinto_corredor.jpg",
+      "copy": true,
+      "mirrorTile": true
+    },
+    {
+      "src": "originais/personagens/guard2/guarda_colegio_flashback.png",
+      "dest": "assets/art/characters/guard2/guarda_flashback.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/vistas/asterion/vista_asterion_tabuinha.png",
+      "dest": "assets/art/views/asterion/vista_asterion_tabuinha.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/asterion/vista_asterion_caco.png",
+      "dest": "assets/art/views/asterion/vista_asterion_caco.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/asterion/vista_asterion_co.jpg",
+      "dest": "assets/art/views/asterion/vista_asterion_corrente.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/asterion_dedo_unha.jpg",
+      "dest": "assets/art/firstperson/asterion/asterion_dedo_unha.png",
+      "background": "auto",
+      "paper": true
+    },
+    {
+      "src": "originais/asterion_menino_dedo_unha.jpg",
+      "dest": "assets/art/firstperson/asterion_menino_dedo_unha.png",
+      "background": "auto",
+      "paper": true
+    },
+    {
+      "src": "originais/primeira-pessoa/asterion/asterion_dedo_novo.png",
+      "dest": "assets/art/firstperson/asterion/asterion_dedo_unha.png",
+      "background": "auto",
+      "paper": true
+    },
+    {
+      "src": "originais/primeira-pessoa/asterion/asterion_mao_tensa.png",
+      "dest": "assets/art/firstperson/asterion/asterion_mao_tensa.png",
+      "background": "auto",
+      "paper": true
+    },
+    {
+      "src": "originais/primeira-pessoa/livia/livia_mao_aberta.jpg",
+      "dest": "assets/art/firstperson/livia/livia_mao_aberta_longa.png",
+      "background": "auto",
+      "paper": true
+    },
+    {
+      "src": "originais/objetos/portao_aberto.png",
+      "dest": "assets/art/props/temple/portao_aberto.png"
+    },
+    {
+      "src": "originais/personagens/nerea/nerea_remendando.jpg",
+      "dest": "assets/art/characters/nerea/nerea_remendando.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/nerea/nerea_parada.jpeg",
+      "dest": "assets/art/characters/nerea/nerea_parada.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/nerea/nerea_assustada.jpeg",
+      "dest": "assets/art/characters/nerea/nerea_assustada.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/market/bibulo_parado.jpeg",
+      "dest": "assets/art/characters/market/bibulo_parado.png",
+      "background": "auto",
+      "tolerance": 26
+    },
+    {
+      "src": "originais/personagens/market/bibulo_busto.jpeg",
+      "dest": "assets/art/characters/market/bibulo_busto.png",
+      "background": "auto",
+      "holes": false
+    },
+    {
+      "src": "originais/personagens/market/mercadora_parada.jpeg",
+      "dest": "assets/art/characters/market/mercadora_parada.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/market/mercadora_busto.jpeg",
+      "dest": "assets/art/characters/market/mercadora_busto.png",
+      "background": "auto",
+      "holes": false
+    },
+    {
+      "src": "originais/personagens/market/escriba_parado.jpeg",
+      "dest": "assets/art/characters/market/escriba_parado.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/personagens/market/escriba_busto.jpeg",
+      "dest": "assets/art/characters/market/escriba_busto.png",
+      "background": "auto",
+      "holes": false
+    },
+    {
+      "src": "originais/cenarios/porto_mercado.jpeg",
+      "dest": "assets/art/backgrounds/porto_mercado.jpg",
+      "copy": true,
+      "mirrorTile": true
+    },
+    {
+      "src": "originais/cenarios/casa_nisio.jpeg",
+      "dest": "assets/art/backgrounds/casa_nisio.jpg",
+      "copy": true,
+      "mirrorTile": true
+    },
+    {
+      "src": "originais/cenarios/vila_patricio.jpeg",
+      "dest": "assets/art/backgrounds/vila_patricio.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/cenarios/tunel_ondas.jpeg",
+      "dest": "assets/art/backgrounds/tunel_ondas.jpg",
+      "copy": true,
+      "mirrorTile": true
+    },
+    {
+      "src": "originais/primeira-pessoa/theron/theron_mao_aberta.jpeg",
+      "dest": "assets/art/firstperson/theron/theron_mao_aberta.png",
+      "background": "auto",
+      "holes": false
+    },
+    {
+      "src": "originais/primeira-pessoa/theron/theron_lamina.jpeg",
+      "dest": "assets/art/firstperson/theron/theron_lamina.png",
+      "background": "auto",
+      "holes": false
+    },
+    {
+      "src": "originais/primeira-pessoa/theron/theron_copos.jpeg",
+      "dest": "assets/art/firstperson/theron/theron_mesa.jpg",
+      "copy": true,
+      "patches": [
+        {
+          "from": {
+            "left": 395,
+            "top": 335,
+            "width": 145,
+            "height": 167
+          },
+          "to": {
+            "left": 305,
+            "top": 133
+          }
+        },
+        {
+          "from": {
+            "left": 470,
+            "top": 333,
+            "width": 155,
+            "height": 177
+          },
+          "to": {
+            "left": 440,
+            "top": 133
+          }
+        },
+        {
+          "from": {
+            "left": 400,
+            "top": 335,
+            "width": 145,
+            "height": 167
+          },
+          "to": {
+            "left": 575,
+            "top": 133
+          },
+          "flop": true
+        }
+      ]
+    },
+    {
+      "src": "originais/primeira-pessoa/theron/theron_copos.jpeg",
+      "dest": "assets/art/firstperson/theron/theron_copo.png",
+      "extract": {
+        "left": 445,
+        "top": 138,
+        "width": 135,
+        "height": 152
+      },
+      "saturated": 0.42
+    },
+    {
+      "src": "originais/personagens/nisio/nisio_parado.jpeg",
+      "dest": "assets/art/characters/nisio/nisio_parado.png",
+      "background": "auto",
+      "holes": false,
+      "tolerance": 20
+    },
+    {
+      "src": "originais/personagens/nisio/nisio_assustado.jpeg",
+      "dest": "assets/art/characters/nisio/nisio_assustado.png",
+      "background": "auto",
+      "holes": false,
+      "tolerance": 20
+    },
+    {
+      "src": "originais/personagens/caio/caio_parado.jpeg",
+      "dest": "assets/art/characters/caio/caio_parado.png",
+      "background": "auto",
+      "holes": false,
+      "tolerance": 20
+    },
+    {
+      "src": "originais/personagens/caio/caio_busto.jpeg",
+      "dest": "assets/art/characters/caio/caio_busto.png",
+      "cutAtBottom": true,
+      "background": "auto",
+      "holes": false,
+      "tolerance": 20
+    },
+    {
+      "src": "originais/personagens/iante/iante_fundo_branco.jpeg",
+      "dest": "assets/art/characters/iante/iante_fundo_branco.png",
+      "background": "auto",
+      "holes": false,
+      "tolerance": 20
+    },
+    {
+      "src": "originais/personagens/quinto/quinto_fundo_branco.jpeg",
+      "dest": "assets/art/characters/quinto/quinto_fundo_branco.png",
+      "background": "auto"
+    },
+    {
+      "src": "originais/vistas/theron/vista_theron_dente.jpg",
+      "dest": "assets/art/views/theron/vista_theron_dente.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/theron/vista_theron_bibulo.jpg",
+      "dest": "assets/art/views/theron/vista_theron_bibulo.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/theron/vista_theron_mercadora.jpeg",
+      "dest": "assets/art/views/theron/vista_theron_mercadora.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/theron/vista_theron_chaves.jpg",
+      "dest": "assets/art/views/theron/vista_theron_chaves.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/theron/vista_theron_pao.jpg",
+      "dest": "assets/art/views/theron/vista_theron_pao.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/theron/vista_theron_carta.jpeg",
+      "dest": "assets/art/views/theron/vista_theron_carta.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/theron/vista_theron_urna.jpeg",
+      "dest": "assets/art/views/theron/vista_theron_urna.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/theron/vista_theron_mosaico.jpg",
+      "dest": "assets/art/views/theron/vista_theron_mosaico.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/theron/vista_theron_rede.jpg",
+      "dest": "assets/art/views/theron/vista_theron_rede.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/theron/vista_theron_ondas.jpeg",
+      "dest": "assets/art/views/theron/vista_theron_ondas.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/theron/vista_theron_escriba.jpeg",
+      "dest": "assets/art/views/theron/vista_theron_escriba.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/primeira-pessoa/theron/theron_cinto.jpg",
+      "dest": "assets/art/firstperson/theron/theron_cinto.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/livia/vista_livia_augure.jpeg",
+      "dest": "assets/art/views/livia/vista_livia_augure.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/livia/vista_livia_tabuinha_aberta.jpeg",
+      "dest": "assets/art/views/livia/vista_livia_tabuinha_augure.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/prologo/vaso_Face_cidade.jpeg",
+      "dest": "assets/art/prologue/vaso_face_cidade.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/prologo/vaso_face_chama.jpeg",
+      "dest": "assets/art/prologue/vaso_face_chama.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/prologo/vaso_face_monstro.jpeg",
+      "dest": "assets/art/prologue/vaso_face_monstro.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/prologo/vaso_face_vestais.jpeg",
+      "dest": "assets/art/prologue/vaso_face_vestais.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/cenarios/vista_portal_rachado.jpeg",
+      "dest": "assets/art/backgrounds/portal_rachado.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/chao/chao_cais_noite.jpeg",
+      "dest": "assets/art/views/chao/chao_cais_noite.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/chao/chao_vila_noite.jpeg",
+      "dest": "assets/art/views/chao/chao_vila_noite.jpg",
+      "copy": true
+    },
+    {
+      "src": "originais/vistas/theron/theron_rede_recorte.jpg",
+      "dest": "assets/art/views/theron/theron_rede_recorte.png",
+      "background": "auto",
+      "paper": true,
+      "tolerance": 30
+    },
+    {
+      "src": "originais/vistas/theron/theron_urna_recorte.jpeg",
+      "dest": "assets/art/views/theron/theron_urna_recorte.png",
+      "background": "auto",
+      "paper": true,
+      "tolerance": 30
+    },
+    {
+      "src": "originais/personagens/caio/caio_busto.jpeg",
+      "dest": "assets/art/characters/caio/caio_retrato.png",
+      "background": "auto",
+      "holes": false,
+      "cutAtBottom": true,
+      "extract": {
+        "left": 239,
+        "top": 80,
+        "width": 600,
+        "height": 740
+      },
+      "tolerance": 20
+    },
+    {
+      "src": "originais/personagens/market/bibulo_busto.jpeg",
+      "dest": "assets/art/characters/market/bibulo_retrato.png",
+      "background": "auto",
+      "holes": false,
+      "cutAtBottom": true,
+      "extract": {
+        "left": 185,
+        "top": 48,
+        "width": 600,
+        "height": 740
+      }
+    },
+    {
+      "src": "originais/personagens/market/mercadora_busto.jpeg",
+      "dest": "assets/art/characters/market/mercadora_retrato.png",
+      "background": "auto",
+      "holes": false,
+      "cutAtBottom": true,
+      "extract": {
+        "left": 185,
+        "top": 60,
+        "width": 600,
+        "height": 740
+      }
+    },
+    {
+      "src": "originais/personagens/market/escriba_busto.jpeg",
+      "dest": "assets/art/characters/market/escriba_retrato.png",
+      "background": "auto",
+      "holes": false,
+      "cutAtBottom": true,
+      "extract": {
+        "left": 239,
+        "top": 44,
+        "width": 600,
+        "height": 740
+      }
+    },
+    {
+      "src": "originais/primeira-pessoa/theron/theron_mesa_sem_maos.jpg",
+      "dest": "assets/art/firstperson/theron/theron_mesa_sem_maos.jpg",
+      "copy": true
+    }
+  ]
+}

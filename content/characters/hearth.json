@@ -1,0 +1,14 @@
+{
+  "id": "hearth",
+  "name": "char.hearth.name",
+  "headPxOnStage": 92,
+  "shadow": false,
+  "defaultPose": "idle",
+  "poses": {
+    "idle": { "art": "prop.hearth", "ground": { "x": 50, "y": 300 }, "headPx": 92, "cup": { "x": 50, "y": 8, "scale": 1.6, "kind": "altar" } }
+  },
+  "animation": {
+    "breathe": { "amplitude": 0, "period": 1 },
+    "walk": { "speed": 0, "stepPeriod": 1, "bob": 0, "frames": ["idle"] }
+  }
+}

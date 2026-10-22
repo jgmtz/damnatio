@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="1024" viewBox="0 0 600 1024">
+  <!-- PLACEHOLDER silhouette: elder Vestal (Domícia). Facing right. Ground (300,990), head 112-228. -->
+  <g stroke="#0c0907" stroke-width="5" stroke-linejoin="round">
+    <!-- veil falling behind, to the knees -->
+    <path d="M262 120 Q300 92 342 112 Q360 150 352 200 L330 250 Q250 300 228 520 Q214 640 236 760 L170 760 Q160 560 196 360 Q214 220 262 120 Z" fill="#a85c2c"/>
+    <!-- robe -->
+    <path d="M250 256 Q300 236 352 262 Q380 420 392 600 Q404 800 420 975 L190 975 Q196 780 214 600 Q226 420 250 256 Z" fill="#c8743a"/>
+    <!-- head -->
+    <path d="M268 140 Q300 110 340 122 Q362 140 364 172 L380 196 L364 204 Q366 222 350 228 Q320 236 292 222 Q264 200 266 160 Z" fill="#c8743a"/>
+    <!-- veil over the head -->
+    <path d="M256 128 Q300 86 350 108 Q342 120 326 124 Q290 126 276 150 Q262 190 268 250 L240 262 Q236 180 256 128 Z" fill="#a85c2c"/>
+    <!-- front arm -->
+    <path d="M336 290 Q362 380 356 470 L382 520 L366 532 L334 482 Q326 390 318 300 Z" fill="#c8743a"/>
+    <!-- feet -->
+    <path d="M232 975 L232 990 L296 990 L286 975 Z M322 975 L326 990 L398 990 L384 975 Z" fill="#c8743a"/>
+  </g>
+  <g fill="none" stroke="#0c0907" stroke-width="3">
+    <path d="M240 432 Q300 418 372 436"/>
+    <path d="M262 470 Q256 700 232 960 M300 460 Q300 700 300 965 M338 466 Q352 700 372 962"/>
+    <circle cx="342" cy="168" r="4" fill="#0c0907"/>
+  </g>
+</svg>

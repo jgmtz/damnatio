@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="1024" viewBox="0 0 600 1024">
+  <!-- PLACEHOLDER (white-ground, Théron's fragments): woman. Facing right. Ground (300,990), head 112-228. -->
+  <g stroke="#1a1410" stroke-width="5" stroke-linejoin="round" fill="#efe7d6">
+    <path d="M246 250 Q300 228 354 252 Q372 420 384 600 Q398 800 412 975 L188 975 Q202 800 214 600 Q226 420 246 250 Z"/>
+    <path d="M272 142 Q304 112 342 124 Q366 144 366 178 L382 202 L366 208 Q366 226 350 230 Q320 236 294 222 Q268 200 270 164 Z"/>
+    <path d="M246 975 L246 990 L300 990 L292 975 Z M318 975 L322 990 L380 990 L368 975 Z"/>
+  </g>
+  <g fill="none" stroke="#1a1410" stroke-width="2.5" opacity="0.7">
+    <path d="M270 420 Q264 700 250 950 M318 420 Q322 700 330 955"/>
+    <circle cx="344" cy="172" r="4" fill="#1a1410"/>
+  </g>
+</svg>

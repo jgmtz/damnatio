@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="1024" viewBox="0 0 600 1024">
+  <!-- PLACEHOLDER silhouette: guard of the Collegium (crested helmet, spear, short tunic). Facing right. Ground (300,990), head 112-228. -->
+  <g stroke="#0c0907" stroke-width="5" stroke-linejoin="round">
+    <!-- spear -->
+    <path d="M410 990 L410 120" fill="none" stroke="#d9b45a" stroke-width="8"/>
+    <path d="M398 120 L410 60 L422 120 Z" fill="#d9b45a"/>
+    <!-- cloak behind -->
+    <path d="M250 260 Q200 420 210 700 L250 700 Q260 480 290 280 Z" fill="#8a4f28"/>
+    <!-- tunic and cuirass -->
+    <path d="M244 254 Q300 236 356 258 Q372 420 376 560 L392 690 L210 690 L226 560 Q232 420 244 254 Z" fill="#c8743a"/>
+    <!-- legs -->
+    <path d="M246 690 L244 975 L282 975 L290 690 Z M314 690 L326 975 L364 975 L352 690 Z" fill="#c8743a"/>
+    <!-- head -->
+    <path d="M270 148 Q302 116 342 128 Q364 146 366 178 L382 202 L366 208 Q368 226 352 232 Q322 240 294 226 Q266 204 268 166 Z" fill="#c8743a"/>
+    <!-- helmet with crest -->
+    <path d="M262 176 Q258 110 310 104 Q356 100 368 150 L330 150 Q300 152 290 196 Z" fill="#1a120c"/>
+    <path d="M240 120 Q300 40 372 96 L360 110 Q300 70 254 132 Z" fill="#a33a20"/>
+    <!-- arm on the spear -->
+    <path d="M336 290 Q372 330 402 360 L414 378 L398 388 L380 372 Q348 340 322 310 Z" fill="#c8743a"/>
+    <!-- feet -->
+    <path d="M236 975 L236 990 L290 990 L282 975 Z M322 975 L326 990 L388 990 L374 975 Z" fill="#c8743a"/>
+  </g>
+  <g fill="none" stroke="#0c0907" stroke-width="3">
+    <path d="M232 470 Q300 456 370 470 M228 560 Q300 548 378 562"/>
+    <circle cx="344" cy="176" r="4" fill="#0c0907"/>
+  </g>
+</svg>

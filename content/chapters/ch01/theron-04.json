@@ -1,0 +1,2732 @@
+{
+  "id": "theron-04",
+  "protagonist": "theron",
+  "title": "theron04.title",
+  "start": "s01",
+  "nodes": [
+    {
+      "id": "s01",
+      "type": "stage",
+      "background": "bg.port",
+      "worldWidth": 1920,
+      "mode": "night",
+      "characters": [
+        {
+          "id": "theron",
+          "pose": "leaning",
+          "x": 520,
+          "facing": "right"
+        },
+        {
+          "id": "iante_wg",
+          "pose": "idle",
+          "x": 1480,
+          "facing": "left"
+        }
+      ],
+      "update": [
+        {
+          "id": "escriba",
+          "pose": "idle",
+          "x": 1840,
+          "facing": "left",
+          "conditions": [
+            {
+              "any": [
+                {
+                  "flag": "escriba_enganado"
+                },
+                {
+                  "flag": "colegio_alerta",
+                  "min": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "audio": {
+        "music": "port_night"
+      },
+      "next": "d01"
+    },
+    {
+      "id": "d01",
+      "type": "dialogue",
+      "text": "theron04.d01",
+      "next": "b_escriba"
+    },
+    {
+      "id": "b_escriba",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "escriba_enganado",
+              "is": true
+            }
+          ],
+          "next": "t_escriba"
+        }
+      ],
+      "default": "b_contract"
+    },
+    {
+      "id": "t_escriba",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron04.t_escriba",
+      "effects": [
+        {
+          "flag": "escriba_no_porto",
+          "value": true
+        }
+      ],
+      "next": "b_contract"
+    },
+    {
+      "id": "b_contract",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "theron_contrato",
+              "is": "recusou"
+            }
+          ],
+          "next": "d_rival"
+        }
+      ],
+      "default": "b_livia"
+    },
+    {
+      "id": "d_rival",
+      "type": "dialogue",
+      "text": "theron04.d_rival",
+      "next": "c_rival"
+    },
+    {
+      "id": "c_rival",
+      "type": "choice",
+      "text": "theron04.c_rival",
+      "choices": [
+        {
+          "id": "first",
+          "text": "theron04.c_rival.first",
+          "thread": "tie",
+          "effects": [
+            {
+              "flag": "theron_protege_iante",
+              "value": true
+            },
+            {
+              "flag": "laco",
+              "add": 1
+            }
+          ],
+          "next": "d_first"
+        },
+        {
+          "id": "watch",
+          "text": "theron04.c_rival.watch",
+          "thread": "cut",
+          "next": "d_watch"
+        }
+      ]
+    },
+    {
+      "id": "d_first",
+      "type": "dialogue",
+      "text": "theron04.d_first",
+      "next": "b_livia"
+    },
+    {
+      "id": "d_watch",
+      "type": "dialogue",
+      "text": "theron04.d_watch",
+      "effects": [
+        {
+          "flag": "iante_chave",
+          "value": "rival"
+        }
+      ],
+      "next": "t_watch"
+    },
+    {
+      "id": "t_watch",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron04.t_watch",
+      "next": "tunnel"
+    },
+    {
+      "id": "b_livia",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "theron_nomeado"
+            }
+          ],
+          "next": "t_livia_named"
+        },
+        {
+          "conditions": [
+            {
+              "crossover": "livia-theron"
+            }
+          ],
+          "next": "t_livia"
+        }
+      ],
+      "default": "d02"
+    },
+    {
+      "id": "t_livia",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron04.t_livia",
+      "next": "b_livia_ember"
+    },
+    {
+      "id": "t_livia_named",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron04.t_livia_named",
+      "second": "theron04.t_livia_named.second",
+      "next": "b_livia_ember"
+    },
+    {
+      "id": "b_livia_ember",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "livia_brasa_com_theron"
+            }
+          ],
+          "next": "t_livia_ember"
+        }
+      ],
+      "default": "d02"
+    },
+    {
+      "id": "t_livia_ember",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron04.t_livia_ember",
+      "next": "d02"
+    },
+    {
+      "id": "d02",
+      "type": "dialogue",
+      "speaker": "iante_wg",
+      "text": "theron04.d02",
+      "next": "b_promise"
+    },
+    {
+      "id": "b_promise",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "livia_esperou_iante"
+            }
+          ],
+          "next": "d02_kept"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "livia_prometeu_peregrina"
+            },
+            {
+              "crossover": "livia-theron"
+            }
+          ],
+          "next": "d02_missed"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "livia_prometeu_peregrina"
+            }
+          ],
+          "next": "d02_broken"
+        }
+      ],
+      "default": "e01"
+    },
+    {
+      "id": "d02_missed",
+      "type": "dialogue",
+      "speaker": "iante_wg",
+      "text": "theron04.d02_missed",
+      "next": "e01"
+    },
+    {
+      "id": "d02_broken",
+      "type": "dialogue",
+      "speaker": "iante_wg",
+      "text": "theron04.d02_broken",
+      "next": "e01"
+    },
+    {
+      "id": "d02_kept",
+      "type": "dialogue",
+      "speaker": "iante_wg",
+      "text": "theron04.d02_kept",
+      "next": "e01"
+    },
+    {
+      "id": "e01",
+      "type": "exploration",
+      "character": "theron",
+      "width": 1920,
+      "start": 520,
+      "hint": "theron04.e01.hint",
+      "hotspots": [
+        {
+          "id": "net",
+          "view": "fpv.theron.net",
+          "x": 820,
+          "label": "theron04.h.net",
+          "lines": [
+            "theron04.h.net.1",
+            "theron04.h.net.2"
+          ],
+          "effects": [
+            {
+              "flag": "item_rede_nerea",
+              "value": true
+            }
+          ],
+          "viewGround": "ground.quay_night"
+        },
+        {
+          "id": "belt",
+          "view": "fp.theron.belt",
+          "x": 1290,
+          "label": "theron04.h.belt",
+          "lines": [
+            "theron04.h.belt.1"
+          ],
+          "viewGlow": [
+            {
+              "x": 0.9,
+              "y": 0.1,
+              "r": 0.1
+            }
+          ]
+        }
+      ],
+      "exits": [
+        {
+          "id": "iante",
+          "from": 1360,
+          "to": 1920,
+          "next": "b_knows"
+        }
+      ]
+    },
+    {
+      "id": "b_knows",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "iante_ajudada"
+            }
+          ],
+          "next": "d03_helped"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "iante_enganada"
+            }
+          ],
+          "next": "d03_conned"
+        }
+      ],
+      "default": "d03"
+    },
+    {
+      "id": "d03",
+      "type": "dialogue",
+      "speaker": "iante_wg",
+      "text": "theron04.d03",
+      "gift": "s_gift",
+      "giftHint": "theron04.gh",
+      "next": "b_ember"
+    },
+    {
+      "id": "d03_helped",
+      "type": "dialogue",
+      "speaker": "iante_wg",
+      "text": "theron04.d03_helped",
+      "effects": [
+        {
+          "relation": "iante:theron",
+          "add": 1
+        }
+      ],
+      "gift": "s_gift",
+      "giftHint": "theron04.gh",
+      "next": "b_ember"
+    },
+    {
+      "id": "d03_conned",
+      "type": "dialogue",
+      "speaker": "iante_wg",
+      "text": "theron04.d03_conned",
+      "effects": [
+        {
+          "flag": "iante_desconfia",
+          "value": true
+        }
+      ],
+      "gift": "s_gift",
+      "giftHint": "theron04.gh",
+      "next": "b_ember"
+    },
+    {
+      "id": "b_ember",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "livia_brasa_com_theron"
+            },
+            {
+              "not": {
+                "flag": "iante_brasa"
+              }
+            }
+          ],
+          "next": "c_ember"
+        }
+      ],
+      "default": "c01"
+    },
+    {
+      "id": "c_ember",
+      "type": "choice",
+      "text": "theron04.c_ember",
+      "choices": [
+        {
+          "id": "give",
+          "text": "theron04.c_ember.give",
+          "effects": [
+            {
+              "flag": "iante_brasa",
+              "value": true
+            },
+            {
+              "relation": "iante:theron",
+              "add": 1
+            },
+            {
+              "flag": "laco",
+              "add": 1
+            }
+          ],
+          "next": "d_ember"
+        },
+        {
+          "id": "keep",
+          "text": "theron04.c_ember.keep",
+          "effects": [
+            {
+              "flag": "theron_guardou_brasa",
+              "value": true
+            }
+          ],
+          "next": "c01"
+        }
+      ]
+    },
+    {
+      "id": "d_ember",
+      "type": "dialogue",
+      "speaker": "iante_wg",
+      "text": "theron04.d_ember",
+      "next": "d_ember2"
+    },
+    {
+      "id": "d_ember2",
+      "type": "dialogue",
+      "text": "theron04.d_ember2",
+      "next": "c01"
+    },
+    {
+      "id": "c01",
+      "type": "choice",
+      "text": "theron04.c01",
+      "gift": "s_gift",
+      "giftHint": "theron04.gh",
+      "choices": [
+        {
+          "id": "steal",
+          "text": "theron04.c01.steal",
+          "next": "b_steal"
+        },
+        {
+          "id": "ask",
+          "text": "theron04.c01.ask",
+          "conditions": [
+            {
+              "any": [
+                {
+                  "giftUses": "theron",
+                  "max": 2
+                },
+                {
+                  "flag": "iante_ajudada"
+                },
+                {
+                  "flag": "iante_brasa"
+                }
+              ]
+            },
+            {
+              "not": {
+                "flag": "iante_enganada"
+              }
+            }
+          ],
+          "showWhenLocked": true,
+          "effects": [
+            {
+              "flag": "iante_chave",
+              "value": "pedida"
+            },
+            {
+              "relation": "iante:theron",
+              "add": 1
+            },
+            {
+              "flag": "laco",
+              "add": 1
+            }
+          ],
+          "next": "d_ask",
+          "lockedHint": "theron04.c01.ask.locked"
+        }
+      ]
+    },
+    {
+      "id": "b_steal",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "iante_desconfia"
+            }
+          ],
+          "next": "m_steal_wary"
+        }
+      ],
+      "default": "m_steal"
+    },
+    {
+      "id": "m_steal",
+      "type": "minigame",
+      "game": "shells",
+      "params": {
+        "mode": "belt",
+        "beltArt": "fp.theron.belt",
+        "beltY": 590,
+        "hint": "theron04.msteal.hint",
+        "rounds": 3,
+        "watchful": 0.55,
+        "markArt": "iante_wg.pose.idle"
+      },
+      "outcomes": [
+        {
+          "id": "clean",
+          "label": "theron04.msteal.clean",
+          "effects": [
+            {
+              "flag": "iante_chave",
+              "value": "roubada"
+            }
+          ],
+          "next": "d_stolen"
+        },
+        {
+          "id": "sloppy",
+          "label": "theron04.msteal.sloppy",
+          "effects": [
+            {
+              "flag": "iante_chave",
+              "value": "roubada"
+            },
+            {
+              "flag": "iante_desconfia",
+              "value": true
+            }
+          ],
+          "next": "d_sloppy"
+        },
+        {
+          "id": "caught",
+          "label": "theron04.msteal.caught",
+          "effects": [
+            {
+              "flag": "iante_chave",
+              "value": "arrancada"
+            },
+            {
+              "relation": "iante:theron",
+              "add": -2
+            }
+          ],
+          "next": "d_caught"
+        }
+      ]
+    },
+    {
+      "id": "m_steal_wary",
+      "type": "minigame",
+      "game": "shells",
+      "params": {
+        "mode": "belt",
+        "beltArt": "fp.theron.belt",
+        "beltY": 590,
+        "hint": "theron04.msteal.hint_wary",
+        "rounds": 3,
+        "watchful": 0.8,
+        "markArt": "iante_wg.pose.idle"
+      },
+      "outcomes": [
+        {
+          "id": "clean",
+          "label": "theron04.msteal.clean",
+          "effects": [
+            {
+              "flag": "iante_chave",
+              "value": "roubada"
+            }
+          ],
+          "next": "d_stolen"
+        },
+        {
+          "id": "sloppy",
+          "label": "theron04.msteal.sloppy",
+          "effects": [
+            {
+              "flag": "iante_chave",
+              "value": "roubada"
+            }
+          ],
+          "next": "d_sloppy_wary"
+        },
+        {
+          "id": "caught",
+          "label": "theron04.msteal.caught",
+          "effects": [
+            {
+              "flag": "iante_chave",
+              "value": "arrancada"
+            },
+            {
+              "relation": "iante:theron",
+              "add": -2
+            }
+          ],
+          "next": "d_caught"
+        }
+      ]
+    },
+    {
+      "id": "d_stolen",
+      "type": "dialogue",
+      "text": "theron04.d_stolen",
+      "next": "tunnel"
+    },
+    {
+      "id": "d_sloppy",
+      "type": "dialogue",
+      "speaker": "iante_wg",
+      "text": "theron04.d_sloppy",
+      "next": "tunnel"
+    },
+    {
+      "id": "d_sloppy_wary",
+      "type": "dialogue",
+      "speaker": "iante_wg",
+      "text": "theron04.d_sloppy_wary",
+      "next": "tunnel"
+    },
+    {
+      "id": "d_caught",
+      "type": "dialogue",
+      "text": "theron04.d_caught",
+      "next": "t_caught"
+    },
+    {
+      "id": "t_caught",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron04.t_caught",
+      "next": "tunnel"
+    },
+    {
+      "id": "d_ask",
+      "type": "dialogue",
+      "speaker": "iante_wg",
+      "text": "theron04.d_ask",
+      "next": "d_ask2"
+    },
+    {
+      "id": "d_ask2",
+      "type": "dialogue",
+      "text": "theron04.d_ask2",
+      "next": "tunnel"
+    },
+    {
+      "id": "s_gift",
+      "type": "stage",
+      "update": [
+        {
+          "id": "theron",
+          "pose": "cut"
+        }
+      ],
+      "next": "b_grief"
+    },
+    {
+      "id": "b_grief",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "laco",
+              "min": 4
+            }
+          ],
+          "next": "t_bound"
+        }
+      ],
+      "default": "m_grief"
+    },
+    {
+      "id": "t_bound",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron04.t_bound",
+      "next": "m_grief_bound"
+    },
+    {
+      "id": "m_grief",
+      "type": "minigame",
+      "game": "threads",
+      "params": {
+        "hint": "theron04.mgrief.hint",
+        "personArt": "iante_wg.pose.idle",
+        "threads": [
+          {
+            "id": "luto",
+            "label": "theron04.thread.luto",
+            "angle": -50,
+            "allow": [
+              "cut",
+              "loosen",
+              "tie"
+            ]
+          },
+          {
+            "id": "chave",
+            "label": "theron04.thread.chave",
+            "angle": 160,
+            "allow": [
+              "cut",
+              "loosen"
+            ]
+          },
+          {
+            "id": "esperanca",
+            "label": "theron04.thread.esperanca",
+            "angle": 60,
+            "allow": [
+              "cut",
+              "loosen",
+              "tie"
+            ]
+          }
+        ],
+        "ties": [
+          [
+            "esperanca",
+            "luto"
+          ]
+        ]
+      },
+      "outcomes": [
+        {
+          "id": "cut:chave",
+          "label": "theron04.mgrief.cut_chave",
+          "effects": [
+            {
+              "giftUse": "theron"
+            },
+            {
+              "flag": "iante_chave",
+              "value": "fio_cortado"
+            },
+            {
+              "flag": "laco",
+              "add": -1
+            }
+          ],
+          "next": "d_cut_chave"
+        },
+        {
+          "id": "loosen:chave",
+          "label": "theron04.mgrief.loosen_chave",
+          "effects": [
+            {
+              "giftUse": "theron"
+            },
+            {
+              "flag": "iante_chave",
+              "value": "pedida"
+            },
+            {
+              "flag": "laco",
+              "add": -1
+            }
+          ],
+          "next": "d_loosen_chave"
+        },
+        {
+          "id": "cut:luto",
+          "label": "theron04.mgrief.cut_luto",
+          "effects": [
+            {
+              "giftUse": "theron"
+            },
+            {
+              "flag": "iante_chave",
+              "value": "fio_cortado"
+            },
+            {
+              "flag": "iante_sem_luto",
+              "value": true
+            },
+            {
+              "flag": "laco",
+              "add": -1
+            }
+          ],
+          "next": "d_cut_luto"
+        },
+        {
+          "id": "loosen:luto",
+          "label": "theron04.mgrief.loosen_luto",
+          "effects": [
+            {
+              "giftUse": "theron"
+            },
+            {
+              "flag": "iante_chave",
+              "value": "pedida"
+            },
+            {
+              "relation": "iante:theron",
+              "add": 1
+            },
+            {
+              "flag": "laco",
+              "add": -1
+            }
+          ],
+          "next": "d_loosen_luto"
+        },
+        {
+          "id": "cut:esperanca",
+          "label": "theron04.mgrief.cut_esperanca",
+          "effects": [
+            {
+              "giftUse": "theron"
+            },
+            {
+              "flag": "iante_chave",
+              "value": "fio_cortado"
+            },
+            {
+              "flag": "iante_sem_esperanca",
+              "value": true
+            },
+            {
+              "flag": "laco",
+              "add": -1
+            }
+          ],
+          "next": "d_cut_esperanca"
+        },
+        {
+          "id": "loosen:esperanca",
+          "label": "theron04.mgrief.loosen_esperanca",
+          "effects": [
+            {
+              "giftUse": "theron"
+            },
+            {
+              "flag": "laco",
+              "add": -1
+            }
+          ],
+          "next": "d_loosen_esperanca"
+        },
+        {
+          "id": "tie:esperanca+luto",
+          "label": "theron04.mgrief.tie",
+          "effects": [
+            {
+              "giftUse": "theron"
+            },
+            {
+              "flag": "iante_chave",
+              "value": "pedida"
+            },
+            {
+              "flag": "iante_luto_atado",
+              "value": true
+            },
+            {
+              "flag": "laco",
+              "add": -1
+            }
+          ],
+          "next": "d_tie"
+        },
+        {
+          "id": "none",
+          "label": "theron04.mgrief.none",
+          "next": "d_none"
+        }
+      ]
+    },
+    {
+      "id": "m_grief_bound",
+      "type": "minigame",
+      "game": "threads",
+      "params": {
+        "hint": "theron04.mgrief.hint_bound",
+        "personArt": "iante_wg.pose.idle",
+        "threads": [
+          {
+            "id": "luto",
+            "label": "theron04.thread.luto",
+            "angle": -50,
+            "allow": [
+              "loosen",
+              "tie"
+            ]
+          },
+          {
+            "id": "chave",
+            "label": "theron04.thread.chave",
+            "angle": 160,
+            "allow": [
+              "cut",
+              "loosen"
+            ]
+          },
+          {
+            "id": "esperanca",
+            "label": "theron04.thread.esperanca",
+            "angle": 60,
+            "allow": [
+              "loosen",
+              "tie"
+            ]
+          }
+        ],
+        "ties": [
+          [
+            "esperanca",
+            "luto"
+          ]
+        ]
+      },
+      "outcomes": [
+        {
+          "id": "cut:chave",
+          "label": "theron04.mgrief.cut_chave",
+          "effects": [
+            {
+              "giftUse": "theron"
+            },
+            {
+              "flag": "iante_chave",
+              "value": "fio_cortado"
+            },
+            {
+              "flag": "laco",
+              "add": -1
+            }
+          ],
+          "next": "d_cut_chave"
+        },
+        {
+          "id": "loosen:chave",
+          "label": "theron04.mgrief.loosen_chave",
+          "effects": [
+            {
+              "giftUse": "theron"
+            },
+            {
+              "flag": "iante_chave",
+              "value": "pedida"
+            },
+            {
+              "flag": "laco",
+              "add": -1
+            }
+          ],
+          "next": "d_loosen_chave"
+        },
+        {
+          "id": "loosen:luto",
+          "label": "theron04.mgrief.loosen_luto",
+          "effects": [
+            {
+              "giftUse": "theron"
+            },
+            {
+              "flag": "iante_chave",
+              "value": "pedida"
+            },
+            {
+              "relation": "iante:theron",
+              "add": 1
+            },
+            {
+              "flag": "laco",
+              "add": -1
+            }
+          ],
+          "next": "d_loosen_luto"
+        },
+        {
+          "id": "loosen:esperanca",
+          "label": "theron04.mgrief.loosen_esperanca",
+          "effects": [
+            {
+              "giftUse": "theron"
+            },
+            {
+              "flag": "laco",
+              "add": -1
+            }
+          ],
+          "next": "d_loosen_esperanca"
+        },
+        {
+          "id": "tie:esperanca+luto",
+          "label": "theron04.mgrief.tie",
+          "effects": [
+            {
+              "giftUse": "theron"
+            },
+            {
+              "flag": "iante_chave",
+              "value": "pedida"
+            },
+            {
+              "flag": "iante_luto_atado",
+              "value": true
+            },
+            {
+              "flag": "laco",
+              "add": -1
+            }
+          ],
+          "next": "d_tie"
+        },
+        {
+          "id": "none",
+          "label": "theron04.mgrief.none",
+          "next": "d_none"
+        }
+      ]
+    },
+    {
+      "id": "d_cut_chave",
+      "type": "dialogue",
+      "speaker": "iante_wg",
+      "text": "theron04.d_cut_chave",
+      "next": "s_price"
+    },
+    {
+      "id": "d_loosen_chave",
+      "type": "dialogue",
+      "speaker": "iante_wg",
+      "text": "theron04.d_loosen_chave",
+      "next": "s_price"
+    },
+    {
+      "id": "d_cut_luto",
+      "type": "dialogue",
+      "speaker": "iante_wg",
+      "text": "theron04.d_cut_luto",
+      "next": "s_price"
+    },
+    {
+      "id": "d_loosen_luto",
+      "type": "dialogue",
+      "speaker": "iante_wg",
+      "text": "theron04.d_loosen_luto",
+      "next": "s_price"
+    },
+    {
+      "id": "d_cut_esperanca",
+      "type": "dialogue",
+      "speaker": "iante_wg",
+      "text": "theron04.d_cut_esperanca",
+      "next": "s_price"
+    },
+    {
+      "id": "d_loosen_esperanca",
+      "type": "dialogue",
+      "speaker": "iante_wg",
+      "text": "theron04.d_loosen_esperanca",
+      "next": "b_steal"
+    },
+    {
+      "id": "d_tie",
+      "type": "dialogue",
+      "speaker": "iante_wg",
+      "text": "theron04.d_tie",
+      "next": "s_price"
+    },
+    {
+      "id": "d_none",
+      "type": "dialogue",
+      "text": "theron04.d_none",
+      "next": "b_steal"
+    },
+    {
+      "id": "s_price",
+      "type": "stage",
+      "update": [
+        {
+          "id": "theron",
+          "pose": "forget"
+        }
+      ],
+      "next": "d_price"
+    },
+    {
+      "id": "d_price",
+      "type": "dialogue",
+      "speaker": "iante_wg",
+      "text": "theron04.d_price",
+      "next": "t_price"
+    },
+    {
+      "id": "t_price",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron04.t_price",
+      "next": "tunnel"
+    },
+    {
+      "id": "tunnel",
+      "type": "stage",
+      "background": "bg.tunnel.waves",
+      "worldWidth": 2600,
+      "mode": "dark",
+      "characters": [
+        {
+          "id": "theron",
+          "pose": "idle",
+          "x": 300,
+          "facing": "right"
+        }
+      ],
+      "audio": {
+        "music": "galleries"
+      },
+      "next": "b_key"
+    },
+    {
+      "id": "b_key",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "iante_chave",
+              "is": "rival"
+            }
+          ],
+          "next": "d_nokey"
+        }
+      ],
+      "default": "d_tunnel"
+    },
+    {
+      "id": "d_nokey",
+      "type": "dialogue",
+      "text": "theron04.d_nokey",
+      "next": "d_tunnel"
+    },
+    {
+      "id": "d_tunnel",
+      "type": "dialogue",
+      "text": "theron04.d_tunnel",
+      "next": "b_quinto"
+    },
+    {
+      "id": "b_quinto",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "alive": "quinto"
+            }
+          ],
+          "next": "s_quinto"
+        }
+      ],
+      "default": "e_tunnel"
+    },
+    {
+      "id": "s_quinto",
+      "type": "stage",
+      "update": [
+        {
+          "id": "quinto_wg",
+          "pose": "idle",
+          "x": 1300,
+          "facing": "left"
+        }
+      ],
+      "next": "c_tunnel"
+    },
+    {
+      "id": "c_tunnel",
+      "type": "choice",
+      "text": "theron04.c_tunnel",
+      "choices": [
+        {
+          "id": "sneak",
+          "text": "theron04.c_tunnel.sneak",
+          "next": "e_tunnel_guard"
+        },
+        {
+          "id": "bribe",
+          "text": "theron04.c_tunnel.bribe",
+          "conditions": [
+            {
+              "not": {
+                "flag": "iante_ajudada"
+              }
+            }
+          ],
+          "showWhenLocked": true,
+          "effects": [
+            {
+              "flag": "quinto_subornado",
+              "value": true
+            }
+          ],
+          "next": "b_bribe",
+          "lockedHint": "theron04.c_tunnel.bribe.locked"
+        }
+      ]
+    },
+    {
+      "id": "b_bribe",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "quinto_ferido"
+            }
+          ],
+          "next": "d_bribe_hurt"
+        }
+      ],
+      "default": "d_bribe"
+    },
+    {
+      "id": "d_bribe_hurt",
+      "type": "dialogue",
+      "speaker": "quinto_wg",
+      "text": "theron04.d_bribe_hurt",
+      "next": "s_bribe_out"
+    },
+    {
+      "id": "d_bribe",
+      "type": "dialogue",
+      "speaker": "quinto_wg",
+      "text": "theron04.d_bribe",
+      "next": "s_bribe_out"
+    },
+    {
+      "id": "s_bribe_out",
+      "type": "stage",
+      "update": [
+        {
+          "id": "quinto_wg",
+          "remove": true
+        }
+      ],
+      "next": "e_tunnel"
+    },
+    {
+      "id": "e_tunnel_guard",
+      "type": "exploration",
+      "character": "theron",
+      "width": 2600,
+      "start": 300,
+      "hint": "theron04.etunnelguard.hint",
+      "hotspots": [
+        {
+          "id": "waves",
+          "view": "fpv.theron.waves",
+          "x": 760,
+          "label": "theron04.h.waves",
+          "lines": [
+            "theron04.h.waves.1"
+          ]
+        }
+      ],
+      "watchers": [
+        {
+          "id": "quinto_wg",
+          "range": 300,
+          "asleep": true
+        }
+      ],
+      "caught": {
+        "label": "theron04.etunnelguard.caught",
+        "next": "d_quinto"
+      },
+      "exits": [
+        {
+          "id": "portals",
+          "from": 2300,
+          "to": 2600,
+          "label": "theron04.etunnelguard.passed",
+          "next": "portals"
+        }
+      ]
+    },
+    {
+      "id": "d_quinto",
+      "type": "dialogue",
+      "speaker": "quinto_wg",
+      "text": "theron04.d_quinto",
+      "next": "d_quinto2"
+    },
+    {
+      "id": "d_quinto2",
+      "type": "dialogue",
+      "speaker": "theron",
+      "text": "theron04.d_quinto2",
+      "next": "s_quinto_out"
+    },
+    {
+      "id": "s_quinto_out",
+      "type": "stage",
+      "update": [
+        {
+          "id": "quinto_wg",
+          "remove": true
+        }
+      ],
+      "next": "t_quinto"
+    },
+    {
+      "id": "t_quinto",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron04.t_quinto",
+      "next": "e_tunnel"
+    },
+    {
+      "id": "e_tunnel",
+      "type": "exploration",
+      "character": "theron",
+      "width": 2600,
+      "hint": "theron04.etunnel.hint",
+      "hotspots": [
+        {
+          "id": "waves",
+          "view": "fpv.theron.waves",
+          "x": 1500,
+          "label": "theron04.h.waves",
+          "lines": [
+            "theron04.h.waves.1"
+          ]
+        }
+      ],
+      "exits": [
+        {
+          "id": "portals",
+          "from": 2300,
+          "to": 2600,
+          "next": "portals"
+        }
+      ]
+    },
+    {
+      "id": "portals",
+      "type": "stage",
+      "background": "bg.labyrinth.portals",
+      "worldWidth": 1920,
+      "mode": "dark",
+      "characters": [
+        {
+          "id": "theron",
+          "pose": "idle",
+          "x": 700,
+          "facing": "right"
+        }
+      ],
+      "next": "d_portals"
+    },
+    {
+      "id": "d_portals",
+      "type": "dialogue",
+      "text": "theron04.d_portals",
+      "next": "b_asterion"
+    },
+    {
+      "id": "b_asterion",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "crossover": "livia-asterion"
+            }
+          ],
+          "next": "d_trace"
+        },
+        {
+          "conditions": [
+            {
+              "crossover": "livia-theron"
+            }
+          ],
+          "next": "d_trace_empty"
+        }
+      ],
+      "default": "d_asterion"
+    },
+    {
+      "id": "d_trace_empty",
+      "type": "dialogue",
+      "text": "theron04.d_trace_empty",
+      "next": "b_contract2"
+    },
+    {
+      "id": "d_trace",
+      "type": "dialogue",
+      "text": "theron04.d_trace",
+      "next": "b_contract2"
+    },
+    {
+      "id": "d_asterion",
+      "type": "dialogue",
+      "text": "theron04.d_asterion",
+      "effects": [
+        {
+          "crossover": "asterion-theron"
+        },
+        {
+          "flag": "theron_entrega_tunel",
+          "value": true
+        }
+      ],
+      "next": "d_asterion2"
+    },
+    {
+      "id": "d_asterion2",
+      "type": "dialogue",
+      "text": "theron04.d_asterion2",
+      "next": "s_ast"
+    },
+    {
+      "id": "s_ast",
+      "type": "stage",
+      "background": "bg.labyrinth.chamber",
+      "worldWidth": 1920,
+      "mode": "dark",
+      "characters": [
+        {
+          "id": "asterion",
+          "pose": "listen",
+          "x": 760,
+          "facing": "right"
+        }
+      ],
+      "next": "t_ast1",
+      "audio": {
+        "music": "bronze"
+      }
+    },
+    {
+      "id": "t_ast1",
+      "type": "thought",
+      "speaker": "asterion",
+      "man": "theron04.t_ast1.man",
+      "beast": "theron04.t_ast1.beast",
+      "next": "e_ast"
+    },
+    {
+      "id": "e_ast",
+      "type": "exploration",
+      "character": "asterion",
+      "width": 1920,
+      "start": 760,
+      "hint": "theron04.e_ast.hint",
+      "scent": {
+        "trails": [
+          {
+            "from": 1900,
+            "to": 1500,
+            "kind": "person"
+          }
+        ]
+      },
+      "exits": [
+        {
+          "id": "gate",
+          "from": 1600,
+          "to": 1920,
+          "next": "t_ast2"
+        }
+      ]
+    },
+    {
+      "id": "t_ast2",
+      "type": "thought",
+      "speaker": "asterion",
+      "pose": "idle",
+      "man": "theron04.t_ast2.man",
+      "beast": "theron04.t_ast2.beast",
+      "next": "s_ast_back"
+    },
+    {
+      "id": "s_ast_back",
+      "type": "stage",
+      "background": "bg.labyrinth.portals",
+      "worldWidth": 1920,
+      "mode": "dark",
+      "characters": [
+        {
+          "id": "theron",
+          "pose": "idle",
+          "x": 700,
+          "facing": "right"
+        }
+      ],
+      "next": "c_door",
+      "audio": {
+        "music": "galleries"
+      }
+    },
+    {
+      "id": "c_door",
+      "type": "choice",
+      "text": "theron04.c_door",
+      "gift": "g_ast",
+      "giftHint": "theron04.gh_ast",
+      "choices": [
+        {
+          "id": "tell",
+          "text": "theron04.c_door.tell",
+          "thread": "tie",
+          "conditions": [
+            {
+              "flag": "nisio_fio_cortado"
+            }
+          ],
+          "effects": [
+            {
+              "flag": "asterion_conhece_theron",
+              "value": "batida"
+            },
+            {
+              "flag": "laco",
+              "add": 1
+            }
+          ],
+          "next": "d_tell"
+        },
+        {
+          "id": "silent",
+          "text": "theron04.c_door.silent",
+          "thread": "cut",
+          "effects": [
+            {
+              "flag": "asterion_conhece_theron",
+              "value": "silencio"
+            }
+          ],
+          "next": "d_silent"
+        }
+      ]
+    },
+    {
+      "id": "g_ast",
+      "type": "stage",
+      "effects": [
+        {
+          "giftUse": "theron"
+        },
+        {
+          "flag": "laco",
+          "add": -1
+        },
+        {
+          "flag": "theron_viu_fio_asterion",
+          "value": true
+        }
+      ],
+      "update": [
+        {
+          "id": "theron",
+          "pose": "cut"
+        }
+      ],
+      "next": "d_g_ast"
+    },
+    {
+      "id": "d_g_ast",
+      "type": "dialogue",
+      "text": "theron04.d_g_ast",
+      "next": "b_g_ast"
+    },
+    {
+      "id": "b_g_ast",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "dead": "mirto"
+            }
+          ],
+          "next": "d_g_dead"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "mirto_seguiu"
+            }
+          ],
+          "next": "d_g_with"
+        }
+      ],
+      "default": "d_g_alive"
+    },
+    {
+      "id": "d_g_dead",
+      "type": "dialogue",
+      "text": "theron04.d_g_dead",
+      "next": "c_door2"
+    },
+    {
+      "id": "d_g_with",
+      "type": "dialogue",
+      "text": "theron04.d_g_with",
+      "next": "c_door2"
+    },
+    {
+      "id": "d_g_alive",
+      "type": "dialogue",
+      "text": "theron04.d_g_alive",
+      "next": "c_door2"
+    },
+    {
+      "id": "c_door2",
+      "type": "choice",
+      "text": "theron04.c_door",
+      "choices": [
+        {
+          "id": "tell",
+          "text": "theron04.c_door.tell",
+          "thread": "tie",
+          "conditions": [
+            {
+              "flag": "nisio_fio_cortado"
+            }
+          ],
+          "effects": [
+            {
+              "flag": "asterion_conhece_theron",
+              "value": "batida"
+            },
+            {
+              "flag": "laco",
+              "add": 1
+            }
+          ],
+          "next": "d_tell"
+        },
+        {
+          "id": "alive",
+          "text": "theron04.c_door.alive",
+          "thread": "tie",
+          "conditions": [
+            {
+              "flag": "theron_viu_fio_asterion"
+            },
+            {
+              "alive": "mirto"
+            }
+          ],
+          "effects": [
+            {
+              "flag": "asterion_conhece_theron",
+              "value": "batida"
+            },
+            {
+              "flag": "laco",
+              "add": 1
+            }
+          ],
+          "next": "d_alive"
+        },
+        {
+          "id": "sorry",
+          "text": "theron04.c_door.sorry",
+          "thread": "tie",
+          "conditions": [
+            {
+              "flag": "theron_viu_fio_asterion"
+            },
+            {
+              "dead": "mirto"
+            }
+          ],
+          "effects": [
+            {
+              "flag": "asterion_conhece_theron",
+              "value": "batida"
+            },
+            {
+              "flag": "laco",
+              "add": 1
+            }
+          ],
+          "next": "d_sorry"
+        },
+        {
+          "id": "silent",
+          "text": "theron04.c_door.silent",
+          "thread": "cut",
+          "effects": [
+            {
+              "flag": "asterion_conhece_theron",
+              "value": "silencio"
+            }
+          ],
+          "next": "d_silent"
+        }
+      ]
+    },
+    {
+      "id": "d_tell",
+      "type": "dialogue",
+      "text": "theron04.d_tell",
+      "next": "b_contract2",
+      "audio": {
+        "sfx": "bronze.knock"
+      }
+    },
+    {
+      "id": "d_alive",
+      "type": "dialogue",
+      "text": "theron04.d_alive",
+      "next": "b_contract2",
+      "audio": {
+        "sfx": "bronze.knock"
+      }
+    },
+    {
+      "id": "d_sorry",
+      "type": "dialogue",
+      "text": "theron04.d_sorry",
+      "next": "b_contract2",
+      "audio": {
+        "sfx": "bronze.knock"
+      }
+    },
+    {
+      "id": "d_silent",
+      "type": "dialogue",
+      "text": "theron04.d_silent",
+      "next": "b_contract2"
+    },
+    {
+      "id": "b_contract2",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "theron_contrato",
+              "is": "recusou"
+            }
+          ],
+          "next": "d_refused_end"
+        }
+      ],
+      "default": "b_urn"
+    },
+    {
+      "id": "d_refused_end",
+      "type": "dialogue",
+      "text": "theron04.d_refused_end",
+      "effects": [
+        {
+          "flag": "theron_urna",
+          "value": "outro"
+        }
+      ],
+      "next": "b_alert"
+    },
+    {
+      "id": "b_urn",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "theron_sabe_do_alto"
+            }
+          ],
+          "next": "t_urn_up"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "theron_sabe_urna"
+            }
+          ],
+          "next": "t_urn_smell"
+        }
+      ],
+      "default": "t_urn"
+    },
+    {
+      "id": "t_urn_up",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron04.t_urn_up",
+      "second": "theron04.t_urn.second",
+      "next": "c_urn"
+    },
+    {
+      "id": "t_urn",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron04.t_urn",
+      "second": "theron04.t_urn.second",
+      "next": "c_urn"
+    },
+    {
+      "id": "t_urn_smell",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron04.t_urn_smell",
+      "second": "theron04.t_urn.second",
+      "next": "c_urn"
+    },
+    {
+      "id": "c_urn",
+      "type": "choice",
+      "text": "theron04.c_urn",
+      "choices": [
+        {
+          "id": "deliver",
+          "text": "theron04.c_urn.deliver",
+          "thread": "cut",
+          "effects": [
+            {
+              "flag": "theron_urna",
+              "value": "entregue"
+            }
+          ],
+          "next": "d_deliver"
+        },
+        {
+          "id": "break",
+          "text": "theron04.c_urn.break",
+          "thread": "tangle",
+          "effects": [
+            {
+              "flag": "theron_urna",
+              "value": "quebrada"
+            }
+          ],
+          "next": "d_break"
+        },
+        {
+          "id": "return",
+          "text": "theron04.c_urn.return",
+          "thread": "tie",
+          "effects": [
+            {
+              "flag": "theron_urna",
+              "value": "devolvida"
+            },
+            {
+              "flag": "iante_chave_devolvida",
+              "value": true
+            },
+            {
+              "flag": "laco",
+              "add": 1
+            }
+          ],
+          "next": "d_return"
+        }
+      ]
+    },
+    {
+      "id": "d_deliver",
+      "type": "dialogue",
+      "text": "theron04.d_deliver",
+      "next": "b_wait_a"
+    },
+    {
+      "id": "b_wait_a",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "iante_chave",
+              "is": "pedida"
+            }
+          ],
+          "next": "d_wait_a"
+        }
+      ],
+      "default": "b_alert"
+    },
+    {
+      "id": "d_wait_a",
+      "type": "dialogue",
+      "text": "theron04.d_wait",
+      "effects": [
+        {
+          "flag": "laco",
+          "add": -2
+        }
+      ],
+      "next": "b_alert"
+    },
+    {
+      "id": "d_break",
+      "type": "dialogue",
+      "text": "theron04.d_break",
+      "next": "b_wait_b"
+    },
+    {
+      "id": "b_wait_b",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "iante_chave",
+              "is": "pedida"
+            }
+          ],
+          "next": "d_wait_b"
+        }
+      ],
+      "default": "b_revenge"
+    },
+    {
+      "id": "d_wait_b",
+      "type": "dialogue",
+      "text": "theron04.d_wait",
+      "effects": [
+        {
+          "flag": "laco",
+          "add": -2
+        }
+      ],
+      "next": "b_revenge"
+    },
+    {
+      "id": "d_return",
+      "type": "dialogue",
+      "text": "theron04.d_return",
+      "next": "b_revenge"
+    },
+    {
+      "id": "b_revenge",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "nerea_ameacada"
+            }
+          ],
+          "next": "s_revenge"
+        }
+      ],
+      "default": "b_alert"
+    },
+    {
+      "id": "s_revenge",
+      "type": "stage",
+      "update": [],
+      "effects": [
+        {
+          "flag": "nerea_perigo",
+          "add": 1
+        },
+        {
+          "flag": "caio_vinganca",
+          "value": true
+        }
+      ],
+      "next": "b_alert"
+    },
+    {
+      "id": "b_alert",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "colegio_alerta",
+              "min": 3
+            }
+          ],
+          "next": "s_alert"
+        }
+      ],
+      "default": "b_livia_warn"
+    },
+    {
+      "id": "s_alert",
+      "type": "stage",
+      "update": [],
+      "effects": [
+        {
+          "flag": "nerea_perigo",
+          "add": 1
+        }
+      ],
+      "next": "b_livia_warn"
+    },
+    {
+      "id": "b_livia_warn",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "nerea_avisada_por_livia"
+            }
+          ],
+          "next": "s_livia_warn"
+        }
+      ],
+      "default": "b_market"
+    },
+    {
+      "id": "s_livia_warn",
+      "type": "stage",
+      "update": [],
+      "effects": [
+        {
+          "flag": "nerea_perigo",
+          "add": -1
+        }
+      ],
+      "next": "b_market"
+    },
+    {
+      "id": "b_market",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "nerea_escondida"
+            }
+          ],
+          "next": "s_nerea_fled"
+        }
+      ],
+      "default": "s_market"
+    },
+    {
+      "id": "s_nerea_fled",
+      "type": "stage",
+      "background": "bg.port.market",
+      "worldWidth": 1920,
+      "mode": "night",
+      "characters": [
+        {
+          "id": "theron",
+          "pose": "idle",
+          "x": 900,
+          "facing": "right"
+        }
+      ],
+      "effects": [
+        {
+          "flag": "nerea_fugiu",
+          "value": true
+        }
+      ],
+      "next": "d_fled"
+    },
+    {
+      "id": "d_fled",
+      "type": "dialogue",
+      "text": "theron04.d_fled",
+      "next": "t_fled"
+    },
+    {
+      "id": "t_fled",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron04.t_fled",
+      "next": "end"
+    },
+    {
+      "id": "s_market",
+      "type": "stage",
+      "background": "bg.port.market",
+      "worldWidth": 1920,
+      "mode": "night",
+      "characters": [
+        {
+          "id": "theron",
+          "pose": "idle",
+          "x": 300,
+          "facing": "right"
+        },
+        {
+          "id": "nerea",
+          "pose": "mend",
+          "x": 1300,
+          "facing": "left"
+        }
+      ],
+      "update": [
+        {
+          "id": "escriba",
+          "pose": "idle",
+          "x": 1800,
+          "facing": "left",
+          "conditions": [
+            {
+              "flag": "nerea_perigo",
+              "min": 2
+            }
+          ]
+        }
+      ],
+      "next": "e_market"
+    },
+    {
+      "id": "e_market",
+      "type": "exploration",
+      "character": "theron",
+      "width": 1920,
+      "start": 300,
+      "hint": "theron04.emarket.hint",
+      "exits": [
+        {
+          "id": "nerea",
+          "from": 950,
+          "to": 1920,
+          "next": "b_danger"
+        }
+      ],
+      "barks": [
+        {
+          "x": 820,
+          "speaker": "nerea",
+          "text": "theron04.bark.nerea",
+          "conditions": [
+            {
+              "flag": "nerea_perigo",
+              "max": 1
+            },
+            {
+              "not": {
+                "flag": "nerea_avisada_por_livia"
+              }
+            }
+          ]
+        },
+        {
+          "x": 820,
+          "speaker": "nerea",
+          "text": "theron04.bark.nerea_danger",
+          "conditions": [
+            {
+              "flag": "nerea_perigo",
+              "min": 2
+            },
+            {
+              "not": {
+                "flag": "nerea_avisada_por_livia"
+              }
+            }
+          ]
+        },
+        {
+          "x": 820,
+          "speaker": "nerea",
+          "text": "theron04.bark.nerea_warned",
+          "conditions": [
+            {
+              "flag": "nerea_avisada_por_livia"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "b_danger",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "nerea_perigo",
+              "min": 2
+            }
+          ],
+          "next": "d_men"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "nerea_perigo",
+              "min": 1
+            }
+          ],
+          "next": "d_warned"
+        }
+      ],
+      "default": "d_alive1"
+    },
+    {
+      "id": "d_men",
+      "type": "dialogue",
+      "text": "theron04.d_men",
+      "next": "b_seal"
+    },
+    {
+      "id": "b_seal",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "theron_viu_selo_escriba"
+            }
+          ],
+          "next": "t_seal"
+        }
+      ],
+      "default": "d_cause_intro"
+    },
+    {
+      "id": "t_seal",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron04.t_seal",
+      "next": "d_cause_intro"
+    },
+    {
+      "id": "d_cause_intro",
+      "type": "dialogue",
+      "speaker": "escriba",
+      "text": "theron04.d_cause_intro",
+      "next": "b_cause_0"
+    },
+    {
+      "id": "b_cause_0",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "colegio_procura_theron"
+            }
+          ],
+          "next": "d_cause_colegio_procura_theron"
+        }
+      ],
+      "default": "b_cause_1"
+    },
+    {
+      "id": "d_cause_colegio_procura_theron",
+      "type": "dialogue",
+      "speaker": "escriba",
+      "text": "theron04.d_cause_colegio_procura_theron",
+      "next": "b_cause_1"
+    },
+    {
+      "id": "b_cause_1",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "caio_vinganca"
+            }
+          ],
+          "next": "d_cause_caio"
+        }
+      ],
+      "default": "b_cause_2"
+    },
+    {
+      "id": "d_cause_caio",
+      "type": "dialogue",
+      "speaker": "escriba",
+      "text": "theron04.d_cause_caio",
+      "next": "b_cause_2"
+    },
+    {
+      "id": "b_cause_2",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "nerea_ameacada"
+            },
+            {
+              "not": {
+                "flag": "caio_vinganca"
+              }
+            }
+          ],
+          "next": "d_cause_ameaca"
+        }
+      ],
+      "default": "b_cause_3"
+    },
+    {
+      "id": "d_cause_ameaca",
+      "type": "dialogue",
+      "speaker": "escriba",
+      "text": "theron04.d_cause_ameaca",
+      "next": "b_cause_3"
+    },
+    {
+      "id": "b_cause_3",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "colegio_alerta",
+              "min": 3
+            }
+          ],
+          "next": "d_cause_alerta"
+        }
+      ],
+      "default": "b_cause_4"
+    },
+    {
+      "id": "d_cause_alerta",
+      "type": "dialogue",
+      "speaker": "escriba",
+      "text": "theron04.d_cause_alerta",
+      "next": "b_cause_4"
+    },
+    {
+      "id": "b_cause_4",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "nerea_ignorada"
+            }
+          ],
+          "next": "d_cause_ignorada"
+        }
+      ],
+      "default": "b_lie"
+    },
+    {
+      "id": "d_cause_ignorada",
+      "type": "dialogue",
+      "speaker": "escriba",
+      "text": "theron04.d_cause_ignorada",
+      "next": "b_lie"
+    },
+    {
+      "id": "b_lie",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "nerea_mente"
+            }
+          ],
+          "next": "d_lie_exposed"
+        }
+      ],
+      "default": "c_last"
+    },
+    {
+      "id": "d_lie_exposed",
+      "type": "dialogue",
+      "speaker": "escriba",
+      "text": "theron04.d_lie_exposed",
+      "effects": [
+        {
+          "flag": "nerea_perigo",
+          "add": 1
+        }
+      ],
+      "next": "c_last"
+    },
+    {
+      "id": "c_last",
+      "type": "choice",
+      "panel": "high",
+      "text": "theron04.c_last",
+      "choices": [
+        {
+          "id": "shout",
+          "text": "theron04.c_last.shout",
+          "thread": "tie",
+          "conditions": [
+            {
+              "flag": "laco",
+              "min": 4
+            }
+          ],
+          "showWhenLocked": true,
+          "effects": [
+            {
+              "flag": "nerea_perigo",
+              "add": -1
+            },
+            {
+              "flag": "theron_gritou_nome",
+              "value": true
+            }
+          ],
+          "next": "d_shout",
+          "lockedHint": "theron04.c_last.shout.locked"
+        },
+        {
+          "id": "net",
+          "text": "theron04.c_last.net",
+          "thread": "tie",
+          "conditions": [
+            {
+              "flag": "item_rede_nerea"
+            }
+          ],
+          "showWhenLocked": true,
+          "lockedHint": "theron04.c_last.net.locked",
+          "effects": [
+            {
+              "flag": "nerea_perigo",
+              "add": -1
+            },
+            {
+              "flag": "theron_disfarce_rede",
+              "value": true
+            }
+          ],
+          "next": "d_net"
+        },
+        {
+          "id": "shadow",
+          "text": "theron04.c_last.shadow",
+          "thread": "cut",
+          "next": "b_final"
+        }
+      ]
+    },
+    {
+      "id": "d_net",
+      "type": "dialogue",
+      "text": "theron04.d_net",
+      "next": "d_net2"
+    },
+    {
+      "id": "d_net2",
+      "type": "dialogue",
+      "speaker": "escriba",
+      "text": "theron04.d_net2",
+      "next": "d_net3"
+    },
+    {
+      "id": "d_net3",
+      "type": "dialogue",
+      "speaker": "nerea",
+      "text": "theron04.d_net3",
+      "next": "b_final"
+    },
+    {
+      "id": "d_shout",
+      "type": "dialogue",
+      "speaker": "theron",
+      "text": "theron04.d_shout",
+      "next": "d_shout2"
+    },
+    {
+      "id": "d_shout2",
+      "type": "dialogue",
+      "text": "theron04.d_shout2",
+      "next": "b_final"
+    },
+    {
+      "id": "b_final",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "nerea_perigo",
+              "min": 4
+            }
+          ],
+          "next": "d_dead1"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "nerea_perigo",
+              "min": 2
+            }
+          ],
+          "next": "b_taken_shout"
+        }
+      ],
+      "default": "s_men_gone"
+    },
+    {
+      "id": "b_taken_shout",
+      "type": "branch",
+      "cases": [
+        {
+          "conditions": [
+            {
+              "flag": "theron_gritou_nome"
+            }
+          ],
+          "next": "d_taken_shout"
+        },
+        {
+          "conditions": [
+            {
+              "flag": "theron_disfarce_rede"
+            }
+          ],
+          "next": "d_taken_net"
+        }
+      ],
+      "default": "d_taken_now"
+    },
+    {
+      "id": "d_taken_shout",
+      "type": "dialogue",
+      "text": "theron04.d_taken_shout",
+      "next": "d_taken_now"
+    },
+    {
+      "id": "d_taken_net",
+      "type": "dialogue",
+      "speaker": "escriba",
+      "text": "theron04.d_taken_net",
+      "next": "d_taken_now"
+    },
+    {
+      "id": "s_men_gone",
+      "type": "stage",
+      "update": [
+        {
+          "id": "escriba",
+          "remove": true
+        }
+      ],
+      "next": "d_alive_after"
+    },
+    {
+      "id": "d_alive_after",
+      "type": "dialogue",
+      "text": "theron04.d_alive_after",
+      "next": "d_alive2"
+    },
+    {
+      "id": "d_taken_now",
+      "type": "dialogue",
+      "text": "theron04.d_taken_now",
+      "effects": [
+        {
+          "flag": "nerea_levada",
+          "value": true
+        }
+      ],
+      "next": "d_taken_words"
+    },
+    {
+      "id": "d_taken_words",
+      "type": "dialogue",
+      "speaker": "nerea",
+      "text": "theron04.d_taken_words",
+      "next": "s_taken"
+    },
+    {
+      "id": "s_taken",
+      "type": "stage",
+      "update": [
+        {
+          "id": "nerea",
+          "remove": true
+        },
+        {
+          "id": "escriba",
+          "remove": true
+        }
+      ],
+      "next": "fe_taken"
+    },
+    {
+      "id": "fe_taken",
+      "type": "fate_event",
+      "thread": "tangle",
+      "next": "d_taken"
+    },
+    {
+      "id": "d_taken",
+      "type": "dialogue",
+      "text": "theron04.d_taken",
+      "next": "t_taken"
+    },
+    {
+      "id": "t_taken",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron04.t_taken",
+      "next": "end"
+    },
+    {
+      "id": "d_dead1",
+      "type": "dialogue",
+      "text": "theron04.d_dead1",
+      "next": "d_dead2"
+    },
+    {
+      "id": "d_dead2",
+      "type": "dialogue",
+      "speaker": "nerea",
+      "pose": "scared",
+      "text": "theron04.d_dead2",
+      "next": "f_nerea"
+    },
+    {
+      "id": "f_nerea",
+      "type": "fate_event",
+      "thread": "cut",
+      "effects": [
+        {
+          "kill": "nerea"
+        }
+      ],
+      "next": "s_dead_after"
+    },
+    {
+      "id": "s_dead_after",
+      "type": "stage",
+      "update": [
+        {
+          "id": "nerea",
+          "remove": true
+        },
+        {
+          "id": "escriba",
+          "remove": true
+        },
+        {
+          "id": "theron",
+          "pose": "forget"
+        }
+      ],
+      "next": "d_dead3"
+    },
+    {
+      "id": "d_dead3",
+      "type": "dialogue",
+      "text": "theron04.d_dead3",
+      "next": "t_dead"
+    },
+    {
+      "id": "t_dead",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron04.t_dead",
+      "next": "end"
+    },
+    {
+      "id": "d_warned",
+      "type": "dialogue",
+      "speaker": "nerea",
+      "text": "theron04.d_warned",
+      "next": "d_alive2"
+    },
+    {
+      "id": "d_alive1",
+      "type": "dialogue",
+      "text": "theron04.d_alive1",
+      "next": "d_alive2"
+    },
+    {
+      "id": "d_alive2",
+      "type": "dialogue",
+      "speaker": "nerea",
+      "text": "theron04.d_alive2",
+      "next": "t_alive"
+    },
+    {
+      "id": "t_alive",
+      "type": "thought",
+      "speaker": "theron",
+      "man": "theron04.t_alive",
+      "next": "end"
+    },
+    {
+      "id": "end",
+      "type": "end"
+    }
+  ]
+}

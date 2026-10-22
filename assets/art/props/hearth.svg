@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="300" viewBox="0 0 100 300">
+  <!-- Invisible anchor for the sacred flame on the altar. The flame itself is drawn in code at the "cup" point
+       (see content/characters/hearth.json); the ground point is (50,300). Placed at the altar's x, the flame sits
+       on the altar bowl. -->
+  <rect width="100" height="300" fill="none"/>
+</svg>
